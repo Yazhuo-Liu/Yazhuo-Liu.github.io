@@ -39,6 +39,31 @@
 
     gtag('config', 'G-8G2QPJ8TQ5');
   </script>
+  
+  <!-- Mathjax -->
+  <script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async>
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      showProcessingMessages: false, //关闭js加载过程信息
+      messageStyle: "none", //不显示信息
+      extensions: ["tex2jax.js"],
+      jax: ["input/TeX", "output/HTML-CSS"],
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre','code','a']
+      },
+      'HTML-CSS': {
+          showMathMenu: false //禁用右键菜单
+      }
+    });
+    MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+  </script>
+  
+  
 
 </head>
 
@@ -128,19 +153,35 @@
 
         <div class="row gy-4">
           <div class="portfolio-description">
-            <h2>Decoupe the entropic energy and enthalpic Energy</h2>
+            <h2>Decouple the entropic and enthalpic contributions to the elastic energy of a polymer network</h2>
             <p>
               Assuming that the deformation of the hyperelastic solid can be divided into two steps: 
-              The first step is purely entropic, which means only the polymer chain configuration is changed and the length of C-C covalent bond is fixed so that the volume is conserved. 
-              And the second step is purely enthalpic, which means the polymer chain configuration is unchanged and only the bond is stretched. 
-              It is reasonable to assume the solids in second step satisfies the linear constitutive law and and only second step contributes to material fracture.
+              The first step is purely entropic, in which the length of each atomic bond is fixed and the volume taken by each atom is unchanged.
+              In other words, the deformation only associates with the rearrangement of the polymer chains modelled as rigid links.
+              And the second step is purely enthalpic, which means the relative positions of all atoms are frozen and only the atomic bond is stretched. 
             </p>
+
+            <p>
+              Mathematically, the total deformation gradient can be decomposed into two parts: 
+              $$F_{iK}=F_{ij^{\prime}}^H F_{j^{\prime}K}^S,$$ where $\boldsymbol{F}^H$ can be any second-order tensor and $\operatorname{det}\boldsymbol{F}^S=1$.
+            </p>
+
+            <p>
+              As the enthalpic deformation is relatively small, we adopt linear elastic assumption. The enthalpic strain energy can be represented by
+              $$W_{\mathrm{H}}\left(\boldsymbol{\epsilon}^{\mathrm{H}}\right)=\frac{1}{2} C_{i j k l}^{\mathrm{H}} \epsilon_{i j}^{\mathrm{H}} \epsilon_{k l}^{\mathrm{H}}$$,
+              in which the small enthalpic strain tensor \(\epsilon_{i j}^{\mathrm{H}}=\frac{1}{2}\left(F_{i j}^{\mathrm{H}}+F_{j i}^{\mathrm{H}}\right)-\delta_{i j}\)
+               is used as internal variables
+            </p>
+
             <p>
               The change of bond length is only reflected in the second enthalpic step, and fracture usually occurs after a covalent bond has been stretched to its limit. 
-              In our model, the stretch of the C-C covalent bond can be represented by the strain energy corresponding to the enthalpic elastic strain.            
-              we can then set the fracture criteria as the enthalpy strain energy reaches a certain threshold. 
-              Note that without a trustworthy stress/strain-based fracture criterion for soft solids, the energy-based fracture criteria above is the closest to the truth that we can find so far.
-              Implemented the above modeling with the Phase-field method then we can get the results shown above.
+              In our model, the stretch of the covalent bond can be represented by the enthalpic strain energy $W_{\mathrm{H}}\left(\boldsymbol{\epsilon}^{\mathrm{H}}\right)$.            
+              Note that without a trustworthy stress/strain-based fracture criterion for soft solids, the energy-based fracture criteria is somehow acceptable. 
+              we then set the fracture criteria as the enthalpic strain energy reaches a certain threshold. 
+            </p>
+
+            <p>
+              Implemented the above discussion with the Phase-field method, then we can get the results shown at the beginning.
             </p>
 
           </div>
