@@ -1194,3 +1194,65 @@ section {
     margin-bottom: 20px;
   }
 }
+
+/* --------------------------------------------------------------
+# Hero Section Optimization
+-------------------------------------------------------------- */
+
+/* 名字样式增强 */
+#hero h1 {
+  margin: 0 0 10px 0;
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 56px;
+  color: #fff;
+  text-transform: uppercase; /* 大写更有气势 */
+  letter-spacing: 2px;       /* 增加字间距，更高级 */
+}
+
+/* 固定副标题 (Ph.D. Candidate...) */
+#hero .hero-subtitle {
+  color: #eee;
+  margin-bottom: 20px;       /* 与下方打字机拉开距离 */
+  font-size: 30px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+}
+
+/* 打字机文字容器 */
+#hero .hero-typed-text {
+  color: #fff;
+  font-size: 26px;
+  font-family: "Poppins", sans-serif;
+  
+  /* === 关键修正：防止抖动 === */
+  min-height: 40px;          /* 预留高度，防止换行时页面跳动 */
+  white-space: nowrap;       /* 强制不换行，防止长单词导致布局错位 */
+  overflow: hidden;          /* 超出部分隐藏（配合移动端适配） */
+}
+
+/* 打字内容的颜色高亮 */
+#hero .hero-typed-text span {
+  color: #fff;
+  border-bottom: 3px solid #149ddd; /* 下划线颜色 */
+  padding-bottom: 6px;
+}
+
+/* === 移动端适配 === */
+@media (max-width: 768px) {
+  #hero h1 {
+    font-size: 36px;
+    line-height: 42px;
+  }
+  
+  #hero .hero-subtitle {
+    font-size: 18px;
+    margin-bottom: 15px;
+  }
+
+  #hero .hero-typed-text {
+    font-size: 18px;     /* 手机上字体调小，防止撑破屏幕 */
+    white-space: normal; /* 手机上允许换行，避免字被切掉 */
+    min-height: 60px;    /* 手机上因为可能换行，预留更多高度 */
+  }
+}
