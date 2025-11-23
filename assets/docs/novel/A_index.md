@@ -1,7 +1,5 @@
 <div align="center">
   <img src="../docs/novel/pic/cover.jpg" width="80%" style="border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-  <br>
-  <small style="color: gray;">封面</small>
 </div>
 
 💔 **“好喜欢这个女孩！！！”** —— 这句话，我在心里说了三年，却始终没敢说出口。
