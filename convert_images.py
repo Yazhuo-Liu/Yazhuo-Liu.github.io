@@ -13,10 +13,10 @@ def convert_to_webp(file_path):
         file_name, ext = os.path.splitext(file_path)
         output_path = f"{file_name}.webp"
 
-        # # Skip if WebP file already exists to avoid duplicate processing
-        # if os.path.exists(output_path):
-        #     print(f"Exists: {output_path}")
-        #     return output_path
+        # Skip if WebP file already exists to avoid duplicate processing
+        if os.path.exists(output_path):
+            print(f"Exists: {output_path}")
+            return output_path
 
         with Image.open(file_path) as img:
             # Save as WebP

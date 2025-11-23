@@ -15,16 +15,14 @@
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   
   <style>
-    /* 针对阅读页面的微调 */
+    /* Tweaks for the reading page */
     body { font-family: "PingFang SC", "Microsoft YaHei", "Heiti SC", sans-serif; }
     
-    /* 覆盖 main 的默认 padding，给文章留出空间 */
     #main {
       padding: 30px;
       min-height: 100vh;
     }
 
-    /* 文章内容样式 */
     .article-content {
       background: #fff;
       padding: 40px;
@@ -32,14 +30,25 @@
       box-shadow: 0 0 20px rgba(0,0,0,0.05);
       max-width: 900px;
       margin: 0 auto;
+      position: relative; /* For positioning context */
     }
     
     .article-content img { max-width: 100%; border-radius: 5px; margin: 20px 0; }
     .article-content blockquote { border-left: 4px solid #149ddd; padding-left: 15px; color: #666; font-style: italic; background: #f9f9f9; padding: 10px; }
     .article-content pre { background: #f4f4f4; padding: 15px; border-radius: 5px; overflow-x: auto; }
     
-    /* 移动端汉堡菜单颜色修正 */
     .mobile-nav-toggle { color: #149ddd; }
+
+    /* Navigation Styles */
+    .nav-btn-group {
+        margin-top: 40px;
+        padding-top: 20px;
+        border-top: 1px solid #eee;
+    }
+    .chapter-select {
+        max-width: 200px;
+        display: inline-block;
+    }
   </style>
 </head>
 
@@ -73,12 +82,18 @@
         </ul>
       </nav>
     </div>
-  </header><main id="main">
+  </header>
+
+  <main id="main">
     
     <div class="container article-content">
-      <div class="mb-4">
+      <div class="d-flex justify-content-between align-items-center mb-4">
         <a id="back-link" href="../../index.html#writings" class="btn btn-sm btn-outline-primary rounded-pill">
           <i class="bi bi-arrow-left"></i> <span id="back-text">Back to List</span>
+        </a>
+
+        <a id="top-next-link" href="#" class="btn btn-sm btn-outline-primary rounded-pill d-none">
+          <span id="top-next-text">Next</span> <i class="bi bi-arrow-right"></i>
         </a>
       </div>
 
@@ -88,22 +103,70 @@
           <p class="mt-2 text-muted">Loading content...</p>
         </div>
       </div>
+
+      <div id="bottom-nav" class="nav-btn-group d-flex flex-wrap justify-content-between align-items-center d-none">
+        <a id="prev-chapter-btn" href="#" class="btn btn-sm btn-outline-secondary rounded-pill mb-2">
+            <i class="bi bi-chevron-left"></i> Previous
+        </a>
+
+        <div class="mb-2">
+            <select id="chapter-selector" class="form-select form-select-sm chapter-select" aria-label="Chapter Select">
+                </select>
+        </div>
+
+        <a id="next-chapter-btn" href="#" class="btn btn-sm btn-outline-secondary rounded-pill mb-2">
+            Next <i class="bi bi-chevron-right"></i>
+        </a>
+      </div>
+
     </div>
 
-  </main><script src="../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  </main>
+
+  <script src="../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="../../assets/js/main.js"></script>
 
   <script>
-    // ----------------------------------------------------
-    // 第一部分：Markdown 内容加载逻辑 (原有代码)
-    // ----------------------------------------------------
+    // ====================================================
+    // CONFIGURATION: Novel Chapter Structure
+    // ====================================================
+    // Define the reading order here.
+    // 'path': needs to match the 'src' parameter used in URL relative to the root or consistent with usage.
+    // 'title': Display name for the dropdown.
+    const novelChapters = [
+      { 
+        path: 'assets/docs/novel/A_index.md', 
+        title: '目录 / Index' 
+      },
+      { 
+        path: 'assets/docs/novel/chap1.md', 
+        title: '第1章 云开见月' 
+      },
+      { 
+        path: 'assets/docs/novel/chap2.md', 
+        title: '第2章 云开见月' 
+      },
+      // Add more chapters here in the future, e.g.:
+      // { path: 'assets/docs/novel/chap2.md', title: '第2章 ...' }
+    ];
+
+    // ====================================================
+    // PART 1: Markdown Loading Logic
+    // ====================================================
     const urlParams = new URLSearchParams(window.location.search);
     const fileSrc = urlParams.get('src');
     const contentDiv = document.getElementById('content');
 
+    // Normalization helper: ensure path matches the format in novelChapters (remove leading ../ or /)
+    function normalizePath(p) {
+        if (!p) return '';
+        // Remove ../ or ./ at the beginning until clean
+        return p.replace(/^(\.\.\/)+/, '').replace(/^(\.\/)+/, '');
+    }
+
     if (fileSrc) {
       let fetchPath = fileSrc;
-      // 路径修正逻辑
+      // Path correction for fetching
       if (!fileSrc.startsWith('..') && !fileSrc.startsWith('http')) {
         fetchPath = '../../' + fileSrc;
       }
@@ -115,6 +178,8 @@
         })
         .then(text => {
           contentDiv.innerHTML = marked.parse(text);
+          // Initialize Navigation after content is loaded
+          initNavigation(normalizePath(fileSrc));
         })
         .catch(err => {
           contentDiv.innerHTML = `<div class="alert alert-danger">Error loading article.<br><small>${err.message}</small></div>`;
@@ -123,23 +188,93 @@
       contentDiv.innerHTML = '<div class="alert alert-warning">No article source specified.</div>';
     }
 
-    // ----------------------------------------------------
-    // 第二部分：智能返回按钮逻辑 (新增代码)
-    // ----------------------------------------------------
+    // ====================================================
+    // PART 2: Smart Navigation Logic
+    // ====================================================
     
-    // 1. 获取 HTML 中我们刚才定义的元素
+    // 1. Back Button Logic (Existing)
     const backLink = document.getElementById('back-link');
     const backText = document.getElementById('back-text');
-
-    // 2. 检查浏览器历史记录
-    // window.history.length > 1 表示用户之前浏览过其他页面（比如目录页）
     if (window.history.length > 1) {
-      // 修改链接行为：不再跳转固定链接，而是执行“浏览器后退”
       backLink.href = "javascript:history.back()";
-      // 修改按钮文字：改为通用的 "Return"
       if(backText) backText.innerText = "Return";
     }
-    // 否则（else），保持 HTML 里默认的 href="../../index.html#writings" 不变
+
+    // 2. Novel Navigation System (New)
+    function initNavigation(currentPath) {
+        const currentIndex = novelChapters.findIndex(ch => normalizePath(ch.path) === currentPath);
+        
+        // If the current file is not in our novel list, likely a standalone article
+        if (currentIndex === -1) return; 
+
+        const topNextLink = document.getElementById('top-next-link');
+        const topNextText = document.getElementById('top-next-text');
+        const bottomNav = document.getElementById('bottom-nav');
+        const prevBtn = document.getElementById('prev-chapter-btn');
+        const nextBtn = document.getElementById('next-chapter-btn');
+        const chapterSelect = document.getElementById('chapter-selector');
+
+        // Show nav elements
+        bottomNav.classList.remove('d-none');
+        topNextLink.classList.remove('d-none');
+
+        // Helper to generate link
+        const getLink = (path) => `article.html?src=${path}`;
+
+        // --- Logic for NEXT (Top & Bottom) ---
+        if (currentIndex < novelChapters.length - 1) {
+            const nextChapter = novelChapters[currentIndex + 1];
+            const nextUrl = getLink(nextChapter.path);
+            
+            // Top Button
+            topNextLink.href = nextUrl;
+            // If specifically on Index page, label it clearly
+            if (currentIndex === 0) {
+                topNextText.innerText = "Start Reading"; // Or "Chapter 1"
+            } else {
+                topNextText.innerText = "Next";
+            }
+
+            // Bottom Button
+            nextBtn.href = nextUrl;
+            nextBtn.classList.remove('disabled');
+        } else {
+            // Last chapter
+            topNextLink.classList.add('disabled');
+            topNextLink.classList.add('d-none'); // Hide top next if finished
+            nextBtn.classList.add('disabled');
+            nextBtn.innerText = "End";
+        }
+
+        // --- Logic for PREVIOUS (Bottom) ---
+        if (currentIndex > 0) {
+            const prevChapter = novelChapters[currentIndex - 1];
+            prevBtn.href = getLink(prevChapter.path);
+            prevBtn.classList.remove('disabled');
+        } else {
+            // First chapter (or Index)
+            prevBtn.classList.add('disabled');
+        }
+
+        // --- Logic for Dropdown Selector ---
+        novelChapters.forEach((ch, idx) => {
+            const option = document.createElement('option');
+            option.value = getLink(ch.path);
+            option.text = ch.title;
+            if (idx === currentIndex) {
+                option.selected = true;
+            }
+            chapterSelect.appendChild(option);
+        });
+
+        // Dropdown change event
+        chapterSelect.addEventListener('change', function() {
+            if (this.value) {
+                window.location.href = this.value;
+            }
+        });
+    }
+
   </script>
 
 </body>
