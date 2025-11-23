@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Reading | Yazhuo Liu</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link href="../../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="../../assets/css/style.css" rel="stylesheet">
+
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  
+  <style>
+    /* Additional fine-tuning for the article page */
+    body { 
+      background: #f5f8fd; 
+      overflow-y: auto; 
+      /* Added: Support for Chinese fonts, prioritizing PingFang and Microsoft YaHei */
+      font-family: "PingFang SC", "Microsoft YaHei", "Heiti SC", sans-serif;
+    }
+    .reader-container {
+      margin-left: 0; /* Override the margin of the homepage Sidebar */
+      padding: 40px 20px;
+      max-width: 900px;
+      margin: 0 auto;
+      background: #fff;
+      min-height: 100vh;
+      box-shadow: 0 0 15px rgba(0,0,0,0.05);
+    }
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      margin-bottom: 30px;
+      padding: 10px 20px;
+      background: #149ddd;
+      color: #fff;
+      border-radius: 50px;
+      text-decoration: none;
+      transition: 0.3s;
+      font-weight: 600;
+    }
+    .back-btn:hover { background: #17b3f4; color: #fff; }
+    .back-btn i { margin-right: 8px; font-size: 20px; }
+    
+    /* Markdown content style optimization */
+    #content img { max-width: 100%; border-radius: 5px; margin: 20px 0; }
+    #content blockquote { border-left: 4px solid #149ddd; padding-left: 15px; color: #666; font-style: italic; background: #f9f9f9; padding: 10px; }
+    #content pre { background: #f4f4f4; padding: 15px; border-radius: 5px; overflow-x: auto; }
+    
+    /* Optimize reading experience */
+    #content {
+      line-height: 1.5; /* Increase line height for better Chinese reading comfort */
+      font-size: 18px;  /* Slightly larger font size */
+      color: #333;
+    }
+
+    #content h1, #content h2, #content h3 {
+      margin-top: 1.5em;
+      margin-bottom: 0.8em;
+      color: #173b6c; /* Keep the deep blue titles consistent with the homepage */
+    }
+
+
+  </style>
+</head>
+
+<body>
+
+  <div class="reader-container">
+    <a href="../../index.html" class="back-btn"><i class="bx bx-arrow-back"></i> Back to Home</a>
+
+    <div id="content">
+      <div class="text-center mt-5">
+        <div class="spinner-border text-primary" role="status"></div>
+        <p class="mt-2">Loading content...</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Get the ?src= parameter from the URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const fileSrc = urlParams.get('src');
+    const contentDiv = document.getElementById('content');
+
+    if (fileSrc) {
+      // Get Markdown content via fetch
+      fetch(fileSrc)
+        .then(response => {
+          if (!response.ok) throw new Error("File not found");
+          return response.text();
+        })
+        .then(text => {
+          // Use marked to parse markdown into HTML and inject
+          contentDiv.innerHTML = marked.parse(text);
+        })
+        .catch(err => {
+          contentDiv.innerHTML = `<div class="alert alert-danger">Error: Could not load the article. (${err.message})</div>`;
+        });
+    } else {
+      contentDiv.innerHTML = '<div class="alert alert-warning">No article specified.</div>';
+    }
+  </script>
+
+</body>
+</html>
