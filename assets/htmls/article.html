@@ -77,8 +77,8 @@
     
     <div class="container article-content">
       <div class="mb-4">
-        <a href="../../index.html#writings" class="btn btn-sm btn-outline-primary rounded-pill">
-          <i class="bi bi-arrow-left"></i> Back to List
+        <a id="back-link" href="../../index.html#writings" class="btn btn-sm btn-outline-primary rounded-pill">
+          <i class="bi bi-arrow-left"></i> <span id="back-text">Back to List</span>
         </a>
       </div>
 
@@ -94,18 +94,16 @@
   <script src="../../assets/js/main.js"></script>
 
   <script>
-    // 获取 Markdown 文件内容
+    // ----------------------------------------------------
+    // 第一部分：Markdown 内容加载逻辑 (原有代码)
+    // ----------------------------------------------------
     const urlParams = new URLSearchParams(window.location.search);
     const fileSrc = urlParams.get('src');
     const contentDiv = document.getElementById('content');
 
     if (fileSrc) {
-      // 注意：fetch 的路径是相对于当前 HTML 文件的
-      // 如果你在主页传参是 "assets/docs/xxx.md"，在这里 fetch 会变成 "assets/htmls/assets/docs/xxx.md" (错误的)
-      // 所以我们要做一个小处理：如果参数不包含 ../，我们假设它是从根目录算的，手动加上 ../../
-      
       let fetchPath = fileSrc;
-      // 简单的判断：如果路径不是以 .. 开头，且不是 http 开头，我们就认为它是基于根目录的路径，需要修正
+      // 路径修正逻辑
       if (!fileSrc.startsWith('..') && !fileSrc.startsWith('http')) {
         fetchPath = '../../' + fileSrc;
       }
@@ -122,8 +120,26 @@
           contentDiv.innerHTML = `<div class="alert alert-danger">Error loading article.<br><small>${err.message}</small></div>`;
         });
     } else {
-      contentDiv.innerHTML = '<div class="alert alert-warning">No article source specified in URL.</div>';
+      contentDiv.innerHTML = '<div class="alert alert-warning">No article source specified.</div>';
     }
+
+    // ----------------------------------------------------
+    // 第二部分：智能返回按钮逻辑 (新增代码)
+    // ----------------------------------------------------
+    
+    // 1. 获取 HTML 中我们刚才定义的元素
+    const backLink = document.getElementById('back-link');
+    const backText = document.getElementById('back-text');
+
+    // 2. 检查浏览器历史记录
+    // window.history.length > 1 表示用户之前浏览过其他页面（比如目录页）
+    if (window.history.length > 1) {
+      // 修改链接行为：不再跳转固定链接，而是执行“浏览器后退”
+      backLink.href = "javascript:history.back()";
+      // 修改按钮文字：改为通用的 "Return"
+      if(backText) backText.innerText = "Return";
+    }
+    // 否则（else），保持 HTML 里默认的 href="../../index.html#writings" 不变
   </script>
 
 </body>
