@@ -15,94 +15,114 @@
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   
   <style>
-    /* Additional fine-tuning for the article page */
-    body { 
-      background: #f5f8fd; 
-      overflow-y: auto; 
-      /* Added: Support for Chinese fonts, prioritizing PingFang and Microsoft YaHei */
-      font-family: "PingFang SC", "Microsoft YaHei", "Heiti SC", sans-serif;
+    /* 针对阅读页面的微调 */
+    body { font-family: "PingFang SC", "Microsoft YaHei", "Heiti SC", sans-serif; }
+    
+    /* 覆盖 main 的默认 padding，给文章留出空间 */
+    #main {
+      padding: 30px;
+      min-height: 100vh;
     }
-    .reader-container {
-      margin-left: 0; /* Override the margin of the homepage Sidebar */
-      padding: 40px 20px;
+
+    /* 文章内容样式 */
+    .article-content {
+      background: #fff;
+      padding: 40px;
+      border-radius: 8px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.05);
       max-width: 900px;
       margin: 0 auto;
-      background: #fff;
-      min-height: 100vh;
-      box-shadow: 0 0 15px rgba(0,0,0,0.05);
     }
-    .back-btn {
-      display: inline-flex;
-      align-items: center;
-      margin-bottom: 30px;
-      padding: 10px 20px;
-      background: #149ddd;
-      color: #fff;
-      border-radius: 50px;
-      text-decoration: none;
-      transition: 0.3s;
-      font-weight: 600;
-    }
-    .back-btn:hover { background: #17b3f4; color: #fff; }
-    .back-btn i { margin-right: 8px; font-size: 20px; }
     
-    /* Markdown content style optimization */
-    #content img { max-width: 100%; border-radius: 5px; margin: 20px 0; }
-    #content blockquote { border-left: 4px solid #149ddd; padding-left: 15px; color: #666; font-style: italic; background: #f9f9f9; padding: 10px; }
-    #content pre { background: #f4f4f4; padding: 15px; border-radius: 5px; overflow-x: auto; }
+    .article-content img { max-width: 100%; border-radius: 5px; margin: 20px 0; }
+    .article-content blockquote { border-left: 4px solid #149ddd; padding-left: 15px; color: #666; font-style: italic; background: #f9f9f9; padding: 10px; }
+    .article-content pre { background: #f4f4f4; padding: 15px; border-radius: 5px; overflow-x: auto; }
     
-    /* Optimize reading experience */
-    #content {
-      line-height: 1.5; /* Increase line height for better Chinese reading comfort */
-      font-size: 18px;  /* Slightly larger font size */
-      color: #333;
-    }
-
-    #content h1, #content h2, #content h3 {
-      margin-top: 1.5em;
-      margin-bottom: 0.8em;
-      color: #173b6c; /* Keep the deep blue titles consistent with the homepage */
-    }
-
-
+    /* 移动端汉堡菜单颜色修正 */
+    .mobile-nav-toggle { color: #149ddd; }
   </style>
 </head>
 
 <body>
 
-  <div class="reader-container">
-    <a href="../../index.html" class="back-btn"><i class="bx bx-arrow-back"></i> Back to Home</a>
+  <i class="bi bi-list mobile-nav-toggle d-xl-none"></i>
 
-    <div id="content">
-      <div class="text-center mt-5">
-        <div class="spinner-border text-primary" role="status"></div>
-        <p class="mt-2">Loading content...</p>
+  <header id="header">
+    <div class="d-flex flex-column">
+
+      <div class="profile">
+        <img src="../../assets/img/profile-img.webp" alt="" class="img-fluid rounded-circle">
+        <h1 class="text-light"><a href="../../index.html">Yazhuo Liu</a></h1>
+        <div class="social-links mt-3 text-center">
+          <a href="https://www.linkedin.com/in/yazhuo-liu-321b45226/" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+          <a href="https://github.com/Yazhuo-Liu" class="github"><i class="bx bxl-github"></i></a>
+          <a href="https://www.facebook.com/yazhuo.liu.758" class="facebook"><i class="bx bxl-facebook"></i></a>
+          <a href="https://www.instagram.com/yazhuo_liu/" class="instagram"><i class="bx bxl-instagram"></i></a>
+          <a href="https://orcid.org/0000-0003-1160-1779" class="orcid"><i class="bx bxs-graduation"></i></a>
+        </div>
+      </div>
+
+      <nav id="navbar" class="nav-menu navbar">
+        <ul>
+          <li><a href="../../index.html#hero" class="nav-link"><i class="bx bx-home"></i> <span>Home</span></a></li>
+          <li><a href="../../index.html#about" class="nav-link"><i class="bx bx-user"></i> <span>About</span></a></li>
+          <li><a href="../../index.html#resume" class="nav-link"><i class="bx bx-file-blank"></i> <span>Resume</span></a></li>
+          <li><a href="../../index.html#portfolio" class="nav-link"><i class="bx bx-book-content"></i> <span>Portfolio</span></a></li>
+          <li><a href="../../index.html#writings" class="nav-link active"><i class="bx bx-pen"></i> <span>Writings & News</span></a></li>
+          <li><a href="../../index.html#contact" class="nav-link"><i class="bx bx-envelope"></i> <span>Contact</span></a></li>
+        </ul>
+      </nav>
+    </div>
+  </header><main id="main">
+    
+    <div class="container article-content">
+      <div class="mb-4">
+        <a href="../../index.html#writings" class="btn btn-sm btn-outline-primary rounded-pill">
+          <i class="bi bi-arrow-left"></i> Back to List
+        </a>
+      </div>
+
+      <div id="content">
+        <div class="text-center mt-5">
+          <div class="spinner-border text-primary" role="status"></div>
+          <p class="mt-2 text-muted">Loading content...</p>
+        </div>
       </div>
     </div>
-  </div>
+
+  </main><script src="../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../../assets/js/main.js"></script>
 
   <script>
-    // Get the ?src= parameter from the URL
+    // 获取 Markdown 文件内容
     const urlParams = new URLSearchParams(window.location.search);
     const fileSrc = urlParams.get('src');
     const contentDiv = document.getElementById('content');
 
     if (fileSrc) {
-      // Get Markdown content via fetch
-      fetch(fileSrc)
+      // 注意：fetch 的路径是相对于当前 HTML 文件的
+      // 如果你在主页传参是 "assets/docs/xxx.md"，在这里 fetch 会变成 "assets/htmls/assets/docs/xxx.md" (错误的)
+      // 所以我们要做一个小处理：如果参数不包含 ../，我们假设它是从根目录算的，手动加上 ../../
+      
+      let fetchPath = fileSrc;
+      // 简单的判断：如果路径不是以 .. 开头，且不是 http 开头，我们就认为它是基于根目录的路径，需要修正
+      if (!fileSrc.startsWith('..') && !fileSrc.startsWith('http')) {
+        fetchPath = '../../' + fileSrc;
+      }
+
+      fetch(fetchPath)
         .then(response => {
-          if (!response.ok) throw new Error("File not found");
+          if (!response.ok) throw new Error("File not found: " + fetchPath);
           return response.text();
         })
         .then(text => {
-          // Use marked to parse markdown into HTML and inject
           contentDiv.innerHTML = marked.parse(text);
         })
         .catch(err => {
-          contentDiv.innerHTML = `<div class="alert alert-danger">Error: Could not load the article. (${err.message})</div>`;
+          contentDiv.innerHTML = `<div class="alert alert-danger">Error loading article.<br><small>${err.message}</small></div>`;
         });
     } else {
-      contentDiv.innerHTML = '<div class="alert alert-warning">No article specified.</div>';
+      contentDiv.innerHTML = '<div class="alert alert-warning">No article source specified in URL.</div>';
     }
   </script>
 
