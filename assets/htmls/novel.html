@@ -189,10 +189,10 @@
           initNavigation(normalizePath(fileSrc));
         })
         .catch(err => {
-          contentDiv.innerHTML = `<div class="alert alert-danger">Error loading article.<br><small>${err.message}</small></div>`;
+          contentDiv.innerHTML = `<div class="alert alert-danger">Error loading novel.<br><small>${err.message}</small></div>`;
         });
     } else {
-      contentDiv.innerHTML = '<div class="alert alert-warning">No article source specified.</div>';
+      contentDiv.innerHTML = '<div class="alert alert-warning">No novel source specified.</div>';
     }
 
     // ====================================================
@@ -226,7 +226,7 @@
         topNextLink.classList.remove('d-none');
 
         // Helper to generate link
-        const getLink = (path) => `article.html?src=${path}`;
+        const getLink = (path) => `novel.html?src=${path}`;
 
         // --- Logic for NEXT (Top & Bottom) ---
         if (currentIndex < novelChapters.length - 1) {
