@@ -29,7 +29,7 @@
 
 
 ## 目录列表
-* [第1章 云开见月](article.html?src=assets/docs/novel/chap1.md)
-* [第2章 开学第一课](article.html?src=assets/docs/novel/chap2.md)
+* [第1章 云开见月](novel.html?src=assets/docs/novel/chap1.md)
+* [第2章 开学第一课](novel.html?src=assets/docs/novel/chap2.md)
 
 未完待续
