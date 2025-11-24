@@ -8,20 +8,20 @@
 We start with the Ginzburg–Landau free energy functional:
 
 $$
-F[c] = \int_\Omega \left[ \frac{\kappa}{2} |\nabla c|^2 + f(c) \right] \, d\boldsymbol{r}
+F[c] = \int_\Omega \left[ \frac{\kappa}{2} |\nabla c|^2 + f(c) \right]  d\boldsymbol{r} \tag{1}
 $$
 
 where $\kappa$ is a gradient energy coefficient and $f(c)$ is the bulk free-energy density.  
 The variational derivative gives the chemical potential
 
 $$
-\mu = \frac{\delta F}{\delta c} = f'(c) - \kappa \nabla^2 c
+\mu = \frac{\delta F}{\delta c} = f'(c) - \kappa \nabla^2 c \tag{2}
 $$
 
 For a symmetric double-well potential, we take
 
 $$
-f'(c) = 10(c-0.05)(c-0.5)(c-0.95)
+f'(c) = 10(c-0.05)(c-0.5)(c-0.95) \tag{3}
 $$
 
 Hence the Cahn–Hilliard dynamics is
@@ -29,7 +29,7 @@ Hence the Cahn–Hilliard dynamics is
 $$
 \frac{\partial c}{\partial t}
 = \nabla \cdot \left( M \nabla \mu \right)
-= M \left[ \nabla^2 f'(c) - \kappa \nabla^4 c \right]
+= M \left[ \nabla^2 f'(c) - \kappa \nabla^4 c \right] \tag{4}
 $$
 
 where $M$ is the (constant) mobility.
@@ -42,25 +42,25 @@ On a periodic domain, the concentration field is expanded in a Fourier series:
 
 $$
 c(\boldsymbol r, t) = \frac{1}{L_x L_y} \sum_{\boldsymbol k} \widehat{c}_{\boldsymbol k}(t)
-e^{i \boldsymbol k \cdot \boldsymbol r}
+e^{i \boldsymbol k \cdot \boldsymbol r} \tag{5}
 $$
 
 with coefficients
 
 $$
 \widehat{c}_{\boldsymbol k}(t) =
-\int_\Omega c(\boldsymbol r, t)\,
-e^{-i \boldsymbol k \cdot \boldsymbol r}\, d\boldsymbol r
+\int_\Omega c(\boldsymbol r, t)
+e^{-i \boldsymbol k \cdot \boldsymbol r}\, d\boldsymbol r \tag{6}
 $$
 
 Discrete wavenumbers are
 
 $$
 k_x = \frac{2\pi m_x}{L_x}, \qquad
-k_y = \frac{2\pi m_y}{L_y}
+k_y = \frac{2\pi m_y}{L_y} \tag{7}
 $$
 
-with $m_x, m_y \in \{-N/2,\dots,N/2-1\}$.
+with $m_x, m_y \in \{-N/2,\dots,N/2-1\}$. 
 
 Fourier identities:
 
@@ -69,21 +69,21 @@ $$
 = -|\boldsymbol k|^2 \widehat g,
 \qquad
 \mathcal{F}\{\nabla^4 g\}
-= |\boldsymbol k|^4 \widehat g
+= |\boldsymbol k|^4 \widehat g \tag{8}
 $$
 
 ---
 
 ## 3. PDE in Fourier Space
 
-Transforming the PDE gives
+Transforming the PDE (4) gives
 
 $$
 \frac{\partial \widehat{c}_{\boldsymbol k}}{\partial t}
 = M\left[
 -|\boldsymbol k|^2 \widehat{f'(c)}
 - \kappa |\boldsymbol k|^4 \widehat{c}_{\boldsymbol k}
-\right]
+\right] \tag{9}
 $$
 
 For the zero mode $\boldsymbol k = 0$,
@@ -108,7 +108,7 @@ $$
 =
 - M |\boldsymbol k|^2 \widehat{f'(c^n)}
 - M \kappa |\boldsymbol k|^4
-\widehat{c}_{\boldsymbol k}^{\,n+1}
+\widehat{c}_{\boldsymbol k}^{\,n+1} \tag{10}
 $$
 
 Rearranging yields the update formula:
@@ -126,7 +126,7 @@ $$
 {
 1 + \Delta t \, M \kappa |\boldsymbol k|^4
 }
-}
+} \tag{11}
 $$
 
 This scheme damps high-frequency modes via the denominator and preserves the mean concentration exactly.

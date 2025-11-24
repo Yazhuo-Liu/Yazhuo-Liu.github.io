@@ -24,8 +24,10 @@
   <script>
     window.MathJax = {
       tex: {
-        inlineMath: [['$', '$'], ['\\(', '\\)']], // 支持 $...$ 行内公式
-        displayMath: [['$$', '$$'], ['\\[', '\\]']] // 支持 $$...$$ 块级公式
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true,
+        processEnvironments: true
       },
       options: {
         skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
@@ -58,6 +60,9 @@
     .article-content blockquote { border-left: 4px solid #149ddd; padding-left: 15px; color: #666; font-style: italic; background: #f9f9f9; padding: 10px; }
     .article-content pre { background: #f4f4f4; padding: 15px; border-radius: 5px; overflow-x: auto; }
     .article-content h1, .article-content h2, .article-content h3 { margin-top: 1.5em; color: #173b6c; }
+    
+    /* Ensure math overflows correctly on mobile */
+    mjx-container { overflow-x: auto; overflow-y: hidden; max-width: 100%; }
   </style>
 </head>
 
@@ -85,8 +90,8 @@
           <li><a href="../../index.html#hero" class="nav-link"><i class="bx bx-home"></i> <span>Home</span></a></li>
           <li><a href="../../index.html#about" class="nav-link"><i class="bx bx-user"></i> <span>About</span></a></li>
           <li><a href="../../index.html#resume" class="nav-link"><i class="bx bx-file-blank"></i> <span>Resume</span></a></li>
-          <li><a href="../../index.html#portfolio" class="nav-link"><i class="bx bx-book-content"></i> <span>Gallery</span></a></li>
-          <li><a href="../../index.html#writings" class="nav-link active"><i class="bx bx-pen"></i> <span>Writings & Blogs</span></a></li>
+          <li><a href="../../index.html#portfolio" class="nav-link"><i class="bx bx-book-content"></i> <span>Portfolio</span></a></li>
+          <li><a href="../../index.html#writings" class="nav-link active"><i class="bx bx-pen"></i> <span>Writings & News</span></a></li>
           <li><a href="../../index.html#contact" class="nav-link"><i class="bx bx-envelope"></i> <span>Contact</span></a></li>
         </ul>
       </nav>
@@ -120,7 +125,48 @@
 
   <script>
     // ====================================================
-    // Markdown Loading Logic with MathJax Support
+    // Math Protection Logic
+    // ====================================================
+    // This prevents 'marked.js' from messing up LaTeX syntax (underscores, backslashes, etc.)
+    const mathStore = [];
+    
+    function protectMath(text) {
+      mathStore.length = 0; // Clear store
+      
+      // 1. Protect Block Math $$ ... $$
+      // Using a placeholder like @@@MATH_BLOCK_x@@@
+      text = text.replace(/\$\$([\s\S]+?)\$\$/g, function(match, code) {
+        const id = mathStore.push({ type: 'block', code: match }) - 1;
+        return '@@@MATH_BLOCK_' + id + '@@@';
+      });
+      
+      // 2. Protect Inline Math $ ... $
+      // We look for $...$ that doesn't span multiple lines (usually)
+      text = text.replace(/\$([^$\n]+?)\$/g, function(match, code) {
+        const id = mathStore.push({ type: 'inline', code: match }) - 1;
+        return '@@@MATH_INLINE_' + id + '@@@';
+      });
+      
+      return text;
+    }
+
+    function restoreMath(html) {
+      // Restore blocks
+      return html.replace(/@@@MATH_(BLOCK|INLINE)_(\d+)@@@/g, function(match, type, id) {
+        const item = mathStore[id];
+        // We need to escape HTML characters inside the latex to prevent browser parsing issues
+        // e.g. "a < b" should become "a &lt; b" inside the HTML source, MathJax will read it correctly.
+        const safeCode = item.code
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;");
+        return safeCode;
+      });
+    }
+
+    // ====================================================
+    // Markdown Loading Logic
     // ====================================================
     const urlParams = new URLSearchParams(window.location.search);
     const fileSrc = urlParams.get('src');
@@ -139,12 +185,24 @@
           return response.text();
         })
         .then(text => {
-          // 1. Render Markdown to HTML
-          contentDiv.innerHTML = marked.parse(text);
+          // STEP 1: Protect Math
+          const protectedText = protectMath(text);
+          
+          // STEP 2: Convert Markdown to HTML
+          let htmlContent = marked.parse(protectedText);
+          
+          // STEP 3: Restore Math
+          htmlContent = restoreMath(htmlContent);
+          
+          // Insert into DOM
+          contentDiv.innerHTML = htmlContent;
 
-          // 2. Trigger MathJax to render formulas in the new content
-          if (window.MathJax) {
-             MathJax.typesetPromise([contentDiv]).catch((err) => console.log('MathJax error:', err));
+          // STEP 4: Trigger MathJax
+          // We check if MathJax is loaded and has the typeset function
+          if (window.MathJax && typeof window.MathJax.typesetPromise === 'function') {
+             MathJax.typesetPromise([contentDiv]).catch((err) => console.log('MathJax Error:', err));
+          } else {
+             console.log('MathJax not ready yet (will auto-render if script loads later)');
           }
         })
         .catch(err => {
@@ -155,13 +213,11 @@
     }
 
     // ====================================================
-    // Navigation Logic (Simplified: Back Button Only)
+    // Navigation Logic
     // ====================================================
-    
     const backLink = document.getElementById('back-link');
     const backText = document.getElementById('back-text');
     
-    // If the browser has history, use the back function
     if (window.history.length > 1) {
       backLink.href = "javascript:history.back()";
       if(backText) backText.innerText = "Return";
