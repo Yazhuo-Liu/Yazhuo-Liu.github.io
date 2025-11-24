@@ -20,6 +20,19 @@
   <link href="../../assets/css/style.css" rel="stylesheet">
 
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']], // 支持 $...$ 行内公式
+        displayMath: [['$$', '$$'], ['\\[', '\\]']] // 支持 $$...$$ 块级公式
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+      }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
   
   <style>
     /* Tweaks for the reading page */
@@ -72,8 +85,8 @@
           <li><a href="../../index.html#hero" class="nav-link"><i class="bx bx-home"></i> <span>Home</span></a></li>
           <li><a href="../../index.html#about" class="nav-link"><i class="bx bx-user"></i> <span>About</span></a></li>
           <li><a href="../../index.html#resume" class="nav-link"><i class="bx bx-file-blank"></i> <span>Resume</span></a></li>
-          <li><a href="../../index.html#portfolio" class="nav-link"><i class="bx bx-book-content"></i> <span>Portfolio</span></a></li>
-          <li><a href="../../index.html#writings" class="nav-link active"><i class="bx bx-pen"></i> <span>Writings & News</span></a></li>
+          <li><a href="../../index.html#portfolio" class="nav-link"><i class="bx bx-book-content"></i> <span>Gallery</span></a></li>
+          <li><a href="../../index.html#writings" class="nav-link active"><i class="bx bx-pen"></i> <span>Writings & Blogs</span></a></li>
           <li><a href="../../index.html#contact" class="nav-link"><i class="bx bx-envelope"></i> <span>Contact</span></a></li>
         </ul>
       </nav>
@@ -107,7 +120,7 @@
 
   <script>
     // ====================================================
-    // Markdown Loading Logic
+    // Markdown Loading Logic with MathJax Support
     // ====================================================
     const urlParams = new URLSearchParams(window.location.search);
     const fileSrc = urlParams.get('src');
@@ -115,7 +128,7 @@
 
     if (fileSrc) {
       let fetchPath = fileSrc;
-      // add relative path if needed
+      // Simple path correction
       if (!fileSrc.startsWith('..') && !fileSrc.startsWith('http')) {
         fetchPath = '../../' + fileSrc;
       }
@@ -126,8 +139,13 @@
           return response.text();
         })
         .then(text => {
+          // 1. Render Markdown to HTML
           contentDiv.innerHTML = marked.parse(text);
-          // Content loaded, no need to initialize complex navigation logic
+
+          // 2. Trigger MathJax to render formulas in the new content
+          if (window.MathJax) {
+             MathJax.typesetPromise([contentDiv]).catch((err) => console.log('MathJax error:', err));
+          }
         })
         .catch(err => {
           contentDiv.innerHTML = `<div class="alert alert-danger">Error loading article.<br><small>${err.message}</small></div>`;
@@ -143,7 +161,7 @@
     const backLink = document.getElementById('back-link');
     const backText = document.getElementById('back-text');
     
-    // If the browser has history, use the back function; otherwise keep href pointing to the default list page
+    // If the browser has history, use the back function
     if (window.history.length > 1) {
       backLink.href = "javascript:history.back()";
       if(backText) backText.innerText = "Return";
