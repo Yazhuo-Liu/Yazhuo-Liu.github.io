@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Articles | Yazhuo Liu</title>
+
+   <link href="../../assets/img/profile-img.webp" rel="icon">
+  <link href="../../assets/img/profile-img.webp" rel="apple-touch-icon">
+
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  
+  <link href="../../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="../../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  
+  <link href="../../assets/css/style.css" rel="stylesheet">
+
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  
+  <style>
+    /* Tweaks for the reading page */
+    body { font-family: "PingFang SC", "Microsoft YaHei", "Heiti SC", sans-serif; }
+    
+    #main {
+      padding: 30px;
+      min-height: 100vh;
+    }
+
+    .article-content {
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+      max-width: 100%;
+      margin: 0 auto;
+      position: relative;
+    }
+    
+    /* Article Element Styles */
+    .article-content img { max-width: 100%; border-radius: 5px; margin: 20px 0; }
+    .article-content blockquote { border-left: 4px solid #149ddd; padding-left: 15px; color: #666; font-style: italic; background: #f9f9f9; padding: 10px; }
+    .article-content pre { background: #f4f4f4; padding: 15px; border-radius: 5px; overflow-x: auto; }
+    .article-content h1, .article-content h2, .article-content h3 { margin-top: 1.5em; color: #173b6c; }
+  </style>
+</head>
+
+<body>
+
+  <i class="bi bi-list mobile-nav-toggle d-xl-none"></i>
+
+  <header id="header">
+    <div class="d-flex flex-column">
+
+      <div class="profile">
+        <img src="../../assets/img/profile-img.webp" alt="" class="img-fluid rounded-circle">
+        <h1 class="text-light"><a href="../../index.html">Yazhuo Liu</a></h1>
+        <div class="social-links mt-3 text-center">
+          <a href="https://www.linkedin.com/in/yazhuo-liu-321b45226/" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+          <a href="https://github.com/Yazhuo-Liu" class="github"><i class="bx bxl-github"></i></a>
+          <a href="https://www.facebook.com/yazhuo.liu.758" class="facebook"><i class="bx bxl-facebook"></i></a>
+          <a href="https://www.instagram.com/yazhuo_liu/" class="instagram"><i class="bx bxl-instagram"></i></a>
+          <a href="https://orcid.org/0000-0003-1160-1779" class="orcid"><i class="bx bxs-graduation"></i></a>
+        </div>
+      </div>
+
+      <nav id="navbar" class="nav-menu navbar">
+        <ul>
+          <li><a href="../../index.html#hero" class="nav-link"><i class="bx bx-home"></i> <span>Home</span></a></li>
+          <li><a href="../../index.html#about" class="nav-link"><i class="bx bx-user"></i> <span>About</span></a></li>
+          <li><a href="../../index.html#resume" class="nav-link"><i class="bx bx-file-blank"></i> <span>Resume</span></a></li>
+          <li><a href="../../index.html#portfolio" class="nav-link"><i class="bx bx-book-content"></i> <span>Portfolio</span></a></li>
+          <li><a href="../../index.html#writings" class="nav-link active"><i class="bx bx-pen"></i> <span>Writings & News</span></a></li>
+          <li><a href="../../index.html#contact" class="nav-link"><i class="bx bx-envelope"></i> <span>Contact</span></a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    
+    <div class="container-fluid article-content">
+      <div class="d-flex justify-content-start align-items-center mb-4">
+        <a id="back-link" href="../../index.html#writings" class="btn btn-sm btn-outline-primary rounded-pill">
+          <i class="bi bi-arrow-left"></i> <span id="back-text">Back to List</span>
+        </a>
+      </div>
+
+      <div id="content">
+        <div class="text-center mt-5">
+          <div class="spinner-border text-primary" role="status"></div>
+          <p class="mt-2 text-muted">Loading content...</p>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <script src="../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../../assets/js/main.js"></script>
+
+  <script>
+    // ====================================================
+    // Markdown Loading Logic
+    // ====================================================
+    const urlParams = new URLSearchParams(window.location.search);
+    const fileSrc = urlParams.get('src');
+    const contentDiv = document.getElementById('content');
+
+    if (fileSrc) {
+      let fetchPath = fileSrc;
+      // add relative path if needed
+      if (!fileSrc.startsWith('..') && !fileSrc.startsWith('http')) {
+        fetchPath = '../../' + fileSrc;
+      }
+
+      fetch(fetchPath)
+        .then(response => {
+          if (!response.ok) throw new Error("File not found: " + fetchPath);
+          return response.text();
+        })
+        .then(text => {
+          contentDiv.innerHTML = marked.parse(text);
+          // Content loaded, no need to initialize complex navigation logic
+        })
+        .catch(err => {
+          contentDiv.innerHTML = `<div class="alert alert-danger">Error loading article.<br><small>${err.message}</small></div>`;
+        });
+    } else {
+      contentDiv.innerHTML = '<div class="alert alert-warning">No article source specified. <br> Usage: ?src=path/to/file.md</div>';
+    }
+
+    // ====================================================
+    // Navigation Logic (Simplified: Back Button Only)
+    // ====================================================
+    
+    const backLink = document.getElementById('back-link');
+    const backText = document.getElementById('back-text');
+    
+    // If the browser has history, use the back function; otherwise keep href pointing to the default list page
+    if (window.history.length > 1) {
+      backLink.href = "javascript:history.back()";
+      if(backText) backText.innerText = "Return";
+    }
+
+  </script>
+
+  <footer id="footer">
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong><span>Yazhuo Liu</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        Powered by <strong><span>GitHub Pages</span></strong>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
