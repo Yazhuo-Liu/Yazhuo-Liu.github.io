@@ -31,5 +31,8 @@
 ## 目录列表
 * [第1章 云开见月](novel.html?src=assets/docs/novel/chap1.md)
 * [第2章 开学第一课](novel.html?src=assets/docs/novel/chap2.md)
+* [第3章 雨季的暗涌](novel.html?src=assets/docs/novel/chap3.md)
+* [第4章 裂痕与流言](novel.html?src=assets/docs/novel/chap4.md)
+* [第5章 笔锋下的暗战](novel.html?src=assets/docs/novel/chap5.md)
 
 未完待续
