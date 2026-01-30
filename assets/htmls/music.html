@@ -116,15 +116,8 @@
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
   <script>
-    // ========== Add your songs here ==========
-    const SONGS = [
-      {
-        title: "向思念问你的名",
-        audio: "assets/music/向思念问你的名.mp3",
-        lyrics: "assets/music/向思念问你的名.lrc",
-        description: "两个人在人海中相遇，需要多少运气？我把答案写进了这首歌里。"
-      },
-    ];
+    // Song list is loaded from assets/music/SongsList.json
+    let SONGS = [];
 
     const songListEl = document.getElementById('song-list');
     const playerSection = document.getElementById('player-section');
@@ -141,7 +134,7 @@
 
     function renderList() {
       if (SONGS.length === 0) {
-        songListEl.innerHTML = '<div class="col-12"><p class="text-muted">No songs yet. Add entries to the <code>SONGS</code> array in <code>assets/htmls/music.html</code>, and place audio and lyrics files in the <code>assets/music/</code> directory. See <code>assets/music/README.md</code> for details.</p></div>';
+        songListEl.innerHTML = '<div class="col-12"><p class="text-muted">No songs yet. Add entries to <code>assets/music/SongsList.json</code>, and place audio and lyrics files in the <code>assets/music/</code> directory. See <code>assets/music/README.md</code> for details.</p></div>';
         return;
       }
       songListEl.innerHTML = SONGS.map((s, i) => `
@@ -194,7 +187,18 @@
       currentLineIndex = idx;
       const nodes = lyricsBox.querySelectorAll('.lrc-line');
       nodes.forEach((n, i) => n.classList.toggle('active', i === idx));
-      if (idx >= 0 && nodes[idx]) nodes[idx].scrollIntoView({ behavior: 'smooth', block: 'center' });
+      
+      if (idx >= 0 && nodes[idx]) {
+        const line = nodes[idx];
+        const lineH = line.offsetHeight;
+        const boxH = lyricsBox.clientHeight;
+        const boxRect = lyricsBox.getBoundingClientRect();
+        const lineRect = line.getBoundingClientRect();
+        const lineTopInContent = lyricsBox.scrollTop + (lineRect.top - boxRect.top);
+        const targetTop = lineTopInContent - (boxH / 2) + (lineH / 2);
+        const maxScroll = lyricsBox.scrollHeight - boxH;
+        lyricsBox.scrollTo({ top: Math.max(0, Math.min(targetTop, maxScroll)), behavior: 'smooth' });
+      }
     }
 
     async function loadLyrics(url) {
@@ -290,13 +294,25 @@
       if (lrcLines.length > 0) updateLrcHighlight(audioEl.currentTime);
     });
 
-    renderList();
-
-    const hash = window.location.hash.replace(/^#/, '');
-    if (hash) {
-      const idx = parseInt(hash, 10);
-      if (!isNaN(idx) && idx >= 0 && idx < SONGS.length) playSong(idx);
+    async function init() {
+      try {
+        const res = await fetch(pathFromHtml('assets/music/SongsList.json'));
+        if (res.ok) {
+          const data = await res.json();
+          SONGS = Array.isArray(data) ? data : (data.songs || data.list || []);
+        }
+      } catch (e) {
+        SONGS = [];
+      }
+      renderList();
+      const hash = window.location.hash.replace(/^#/, '');
+      if (hash) {
+        const idx = parseInt(hash, 10);
+        if (!isNaN(idx) && idx >= 0 && idx < SONGS.length) playSong(idx);
+      }
     }
+
+    init();
   </script>
 
   <footer id="footer">
