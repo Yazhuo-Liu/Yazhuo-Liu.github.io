@@ -1,5 +1,11 @@
 [
   {
+    "title": "长相思·一重帘",
+    "audio": "assets/music/长相思·一重帘.mp3",
+    "lyrics": "assets/music/长相思·一重帘.lrc",
+    "description": "与时间的博弈中，我们都是落子无悔的棋手。"
+  },
+  {
     "title": "向思念问你的名",
     "audio": "assets/music/向思念问你的名.mp3",
     "lyrics": "assets/music/向思念问你的名.lrc",
@@ -16,11 +22,5 @@
     "audio": "assets/music/生命如歌 (Inno La vita).mp3",
     "lyrics": "assets/music/生命如歌 (Inno La vita).lrc",
     "description": "“正确”的建议往往来自旁观者，而真正的选择往往来自自己。"
-  },
-  {
-    "title": "长相思·一重帘",
-    "audio": "assets/music/长相思·一重帘.mp3",
-    "lyrics": "assets/music/长相思·一重帘.lrc",
-    "description": "与时间的博弈中，我们都是落子无悔的棋手。"
   }
 ]
