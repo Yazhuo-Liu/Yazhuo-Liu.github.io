@@ -10,5 +10,11 @@
     "audio": "assets/music/纸间情书.mp3",
     "lyrics": "assets/music/纸间情书.lrc",
     "description": "这是一封无需寄出的情书，因为它已经写在了彼此的心里。"
+  },
+  {
+    "title": "生命如歌 (Inno La vita)",
+    "audio": "assets/music/生命如歌 (Inno La vita).mp3",
+    "lyrics": "assets/music/生命如歌 (Inno La vita).lrc",
+    "description": "“正确”的建议往往来自旁观者，而真正的选择往往来自自己。"
   }
 ]
