@@ -433,43 +433,53 @@ I also want to express my respect for Shubham's support of open source.
     </section>
     <!-- End Portfolio Section -->
 
-    <!-- ======= Writings and News Section ======= -->
+    <!-- ======= Writings and Creative Section ======= -->
     <section id="writings" class="services"> <div class="container">
 
         <div class="section-title">
-          <h2>Writings & Blogs</h2>
-          <p>Here are some of my latest updates, project stories, and casual writings.</p>
+          <h2>Writings & Creative</h2>
+          <p>Writings, project notes, and creative work—including fiction and music.</p>
         </div>
 
+        <h5 class="mb-3 mt-2" style="color: #173b6c;">Writings & articles</h5>
         <div class="row">
 
-          <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up">
-            <div class="icon"><i class="bx bx-book"></i></div>
-            <h4 class="title"><a href="assets/htmls/novel.html?src=assets/docs/novel/A_index.md">三年三十天 (3 years 30 days)</a></h4>
-            <p class="description">一部关于青春、喜欢与遗憾的校园恋爱小说 (a novel about youth, love, and regrets)</p>
+          <div class="col-lg-4 col-md-6" data-aos="fade-up">
+            <a href="assets/htmls/novel.html?src=assets/docs/novel/A_index.md" class="icon-box d-block text-decoration-none" style="color: inherit;">
+              <div class="icon"><i class="bx bx-book"></i></div>
+              <h4 class="title">三年三十天 (3 years 30 days)</h4>
+              <p class="description">一部关于青春、喜欢与遗憾的校园恋爱小说 (a novel about youth, love, and regrets)</p>
+            </a>
           </div>
 
-          <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="100">
-            <div class="icon"><i class="bi bi-journal-text"></i></div>
-            <h4 class="title"><a href="assets/htmls/pdf_viewer.html?src=assets/docs/Crystal_Plasticity_FCC.pdf">Crystal Plasticity Framework</a></h4>
-            <p class="description">A comprehensive framework for FCC crystal plasticity simulations using VUMAT.</p>
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <a href="assets/htmls/pdf_viewer.html?src=assets/docs/Crystal_Plasticity_FCC.pdf" class="icon-box d-block text-decoration-none" style="color: inherit;">
+              <div class="icon"><i class="bi bi-journal-text"></i></div>
+              <h4 class="title">Crystal Plasticity Framework</h4>
+              <p class="description">A comprehensive framework for FCC crystal plasticity simulations using VUMAT.</p>
+            </a>
           </div>
 
-          <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up">
-            <div class="icon"><i class="bi bi-journal-text"></i></div>
-            <h4 class="title"><a href="assets/htmls/article.html?src=assets/docs/Cahn-Hilliard_FFT.md">Solving Cahn-Hilliard equation using FFT</a></h4>
-            <p class="description">A detailed exploration and equation derivation of solving the Cahn-Hilliard equation using Fast Fourier Transform techniques.</p>
+          <div class="col-lg-4 col-md-6" data-aos="fade-up">
+            <a href="assets/htmls/article.html?src=assets/docs/Cahn-Hilliard_FFT.md" class="icon-box d-block text-decoration-none" style="color: inherit;">
+              <div class="icon"><i class="bi bi-journal-text"></i></div>
+              <h4 class="title">Solving Cahn-Hilliard equation using FFT</h4>
+              <p class="description">A detailed exploration and equation derivation of solving the Cahn-Hilliard equation using Fast Fourier Transform techniques.</p>
+            </a>
           </div>
 
-          <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="100">
-            <div class="icon"><i class="bx bx-music"></i></div>
-            <h4 class="title"><a href="assets/htmls/music.html">My Songs</a></h4>
-            <p class="description">My original songs with synchronized lyrics</p>
-          </div>
+        </div>
+
+        <h5 class="mb-3 mt-4" style="color: #173b6c;">Music</h5>
+        <p class="text-muted small mb-2">Words and melody, hand in hand—stories sung into life, one note at a time.<br><span class="text-muted" style="font-size: 0.9em;">字句与旋律相伴，把故事一音一符唱进生命里。</span></p>
+        
+        <div id="home-song-list" class="row">
+          <div class="col-12 text-muted">Loading songs…</div>
+        </div>
 
       </div>
     </section>
-    <!-- End Writings and News Section -->
+    <!-- End Writings and Creative Section -->
 
     <!-- ======= Contact Section ======= -->
     <section id="contact" class="contact">
@@ -556,6 +566,29 @@ I also want to express my respect for Shubham's support of open source.
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+  <script>
+    (function () {
+      var listEl = document.getElementById('home-song-list');
+      if (!listEl) return;
+      fetch('assets/music/SongsList.json')
+        .then(function (r) { return r.ok ? r.json() : []; })
+        .then(function (data) {
+          var songs = Array.isArray(data) ? data : (data.songs || data.list || []);
+          if (songs.length === 0) {
+            listEl.innerHTML = '<div class="col-lg-4 col-md-6" data-aos="fade-up"><a href="assets/htmls/music.html" class="icon-box d-block text-decoration-none" style="color: inherit;"><div class="icon"><i class="bx bx-music"></i></div><h4 class="title">My Songs</h4><p class="description">Open the music page.</p></a></div>';
+            return;
+          }
+          listEl.innerHTML = songs.map(function (s, i) {
+            var title = (s.title || '').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+            var desc = (s.description || '').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+            return '<div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="' + (i % 3) * 100 + '"><a href="assets/htmls/music.html#' + i + '" class="icon-box d-block text-decoration-none" style="color: inherit;"><div class="icon"><i class="bx bx-music"></i></div><h4 class="title">' + title + '</h4>' + (desc ? '<p class="description">' + desc + '</p>' : '') + '</a></div>';
+          }).join('');
+        })
+        .catch(function () {
+          listEl.innerHTML = '<div class="col-lg-4 col-md-6" data-aos="fade-up"><a href="assets/htmls/music.html" class="icon-box d-block text-decoration-none" style="color: inherit;"><div class="icon"><i class="bx bx-music"></i></div><h4 class="title">My Songs</h4><p class="description">Open the music page.</p></a></div>';
+        });
+    })();
+  </script>
 </body>
 
 </html>

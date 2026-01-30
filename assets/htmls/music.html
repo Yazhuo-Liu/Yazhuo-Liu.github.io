@@ -101,6 +101,9 @@
       <div id="player-section" class="player-section" style="display: none;">
         <h4 id="current-title" class="current-title"></h4>
         <div id="story-section" class="story-section" style="display: none;"></div>
+        <div id="play-overlay" class="play-overlay" style="display: none;">
+          <button type="button" class="btn btn-primary btn-lg rounded-pill px-4" id="play-trigger-btn"><i class="bx bx-play-circle"></i> 点击播放</button>
+        </div>
         <div class="audio-controls">
           <audio id="audio" controls preload="metadata"></audio>
         </div>
@@ -287,6 +290,7 @@
       } else {
         showStoryPlaceholder(song);
       }
+      audioEl.load();
       audioEl.play().catch(() => {});
     }
 
@@ -308,7 +312,10 @@
       const hash = window.location.hash.replace(/^#/, '');
       if (hash) {
         const idx = parseInt(hash, 10);
-        if (!isNaN(idx) && idx >= 0 && idx < SONGS.length) playSong(idx);
+        if (!isNaN(idx) && idx >= 0 && idx < SONGS.length) {
+          await playSong(idx);
+          audioEl.play().catch(() => {});
+        }
       }
     }
 
