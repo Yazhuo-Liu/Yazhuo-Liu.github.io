@@ -94,6 +94,7 @@
           <li><a href="../../index.html#resume" class="nav-link"><i class="bx bx-file-blank"></i> <span>Resume</span></a></li>
           <li><a href="../../index.html#portfolio" class="nav-link"><i class="bx bx-book-content"></i> <span>Gallery</span></a></li>
           <li><a href="../../index.html#writings" class="nav-link active"><i class="bx bx-pen"></i> <span>Writings & Blogs</span></a></li>
+          <li><a href="../../assets/htmls/music.html" class="nav-link"><i class="bx bx-music"></i> <span>My Songs</span></a></li>
           <li><a href="../../index.html#contact" class="nav-link"><i class="bx bx-envelope"></i> <span>Contact</span></a></li>
         </ul>
       </nav>
@@ -146,95 +147,85 @@
 
   <script>
     // ====================================================
-    // CONFIGURATION: Novel Chapter Structure
-    // ====================================================
-    // Define the reading order here.
-    // 'path': needs to match the 'src' parameter used in URL relative to the root or consistent with usage.
-    // 'title': Display name for the dropdown.
-    const novelChapters = [
-      { 
-        path: 'assets/docs/novel/A_index.md', 
-        title: '目录 / Index' 
-      },
-      { 
-        path: 'assets/docs/novel/chap1.md', 
-        title: '第1章 云开见月' 
-      },
-      { 
-        path: 'assets/docs/novel/chap2.md', 
-        title: '第2章 开学第一课' 
-      },
-      { 
-        path: 'assets/docs/novel/chap3.md', 
-        title: '第3章 雨季的暗涌' 
-      },
-      { 
-        path: 'assets/docs/novel/chap4.md', 
-        title: '第4章 裂痕与流言' 
-      },
-      { 
-        path: 'assets/docs/novel/chap5.md', 
-        title: '第5章 笔锋下的暗战' 
-      },
-      // Add more chapters here in the future, e.g.:
-      // { path: 'assets/docs/novel/chap2.md', title: '第2章 ...' }
-    ];
-
-    // ====================================================
-    // PART 1: Markdown Loading Logic
+    // Chapter list: assets/docs/novel/chapters.json
+    // Format: array of { "path": "...", "title": "..." } or just "path".
+    // If title is omitted, it is read from the first "# Heading" line in the .md file.
     // ====================================================
     const urlParams = new URLSearchParams(window.location.search);
     const fileSrc = urlParams.get('src');
     const contentDiv = document.getElementById('content');
+    const BASE = '../../';
 
-    // Normalization helper: ensure path matches the format in novelChapters (remove leading ../ or /)
     function normalizePath(p) {
-        if (!p) return '';
-        // Remove ../ or ./ at the beginning until clean
-        return p.replace(/^(\.\.\/)+/, '').replace(/^(\.\/)+/, '');
+      if (!p) return '';
+      return p.replace(/^(\.\.\/)+/, '').replace(/^(\.\/)+/, '');
     }
 
-    if (fileSrc) {
-      let fetchPath = fileSrc;
-      // Path correction for fetching
-      if (!fileSrc.startsWith('..') && !fileSrc.startsWith('http')) {
-        fetchPath = '../../' + fileSrc;
+    /** Extract title from md text: first line matching "# ..." (atx heading). */
+    function titleFromMd(text) {
+      const m = text.match(/^#+\s*(.+)$/m);
+      return m ? m[1].trim() : null;
+    }
+
+    /** Fallback title from path (e.g. chap1.md -> chap1). */
+    function fallbackTitle(path) {
+      return path.replace(/^.*\//, '').replace(/\.md$/i, '');
+    }
+
+    (async function () {
+      let novelChapters = [];
+      try {
+        const listRes = await fetch(BASE + 'assets/docs/novel/chapters.json');
+        if (!listRes.ok) throw new Error('chapters.json not found');
+        const raw = await listRes.json();
+        const list = Array.isArray(raw) ? raw : (raw.chapters || []);
+        novelChapters = list.map(ch => typeof ch === 'string' ? { path: ch } : { path: ch.path, title: ch.title });
+        for (const ch of novelChapters) {
+          if (ch.title) continue;
+          const res = await fetch(BASE + ch.path);
+          if (!res.ok) {
+            ch.title = fallbackTitle(ch.path);
+            continue;
+          }
+          const text = await res.text();
+          ch.title = titleFromMd(text) || fallbackTitle(ch.path);
+        }
+      } catch (e) {
+        contentDiv.innerHTML = '<div class="alert alert-danger">Failed to load chapter list.<br><small>' + (e.message || '') + '</small></div>';
+        return;
       }
 
-      fetch(fetchPath)
-        .then(response => {
-          if (!response.ok) throw new Error("File not found: " + fetchPath);
-          return response.text();
-        })
-        .then(text => {
+      if (fileSrc) {
+        const fetchPath = (fileSrc.startsWith('..') || fileSrc.startsWith('http')) ? fileSrc : BASE + fileSrc;
+        try {
+          const res = await fetch(fetchPath);
+          if (!res.ok) throw new Error('File not found: ' + fetchPath);
+          let text = await res.text();
+          if (text.includes('<!-- AUTO_CHAPTER_LIST -->')) {
+            const listMd = novelChapters.map(ch =>
+              '* [' + (ch.title || '').replace(/\]/g, '\\]') + '](novel.html?src=' + ch.path + ')'
+            ).join('\n');
+            text = text.replace('<!-- AUTO_CHAPTER_LIST -->', listMd);
+          }
           contentDiv.innerHTML = marked.parse(text);
-          // Initialize Navigation after content is loaded
           initNavigation(normalizePath(fileSrc));
-        })
-        .catch(err => {
-          contentDiv.innerHTML = `<div class="alert alert-danger">Error loading novel.<br><small>${err.message}</small></div>`;
-        });
-    } else {
-      contentDiv.innerHTML = '<div class="alert alert-warning">No novel source specified.</div>';
-    }
+        } catch (err) {
+          contentDiv.innerHTML = '<div class="alert alert-danger">Error loading novel.<br><small>' + (err.message || '') + '</small></div>';
+        }
+      } else {
+        contentDiv.innerHTML = '<div class="alert alert-warning">No novel source specified.</div>';
+      }
 
-    // ====================================================
-    // PART 2: Smart Navigation
-    // ====================================================
-    
-    // 1. Back Button Logic (Existing)
-    const backLink = document.getElementById('back-link');
-    const backText = document.getElementById('back-text');
-    if (window.history.length > 1) {
-      backLink.href = "javascript:history.back()";
-      if(backText) backText.innerText = "Return";
-    }
+      // Back button: once on load
+      const backLink = document.getElementById('back-link');
+      const backText = document.getElementById('back-text');
+      if (backLink && backText && window.history.length > 1) {
+        backLink.href = 'javascript:history.back()';
+        backText.innerText = 'Return';
+      }
 
-    // 2. Novel Navigation System (New)
-    function initNavigation(currentPath) {
+      function initNavigation(currentPath) {
         const currentIndex = novelChapters.findIndex(ch => normalizePath(ch.path) === currentPath);
-        
-        // If the current file is not in our novel list, likely a standalone article
         if (currentIndex === -1) return; 
 
         const topNextLink = document.getElementById('top-next-link');
@@ -303,8 +294,8 @@
                 window.location.href = this.value;
             }
         });
-    }
-
+      }
+    })();
   </script>
 
     <!-- ======= Footer ======= -->
