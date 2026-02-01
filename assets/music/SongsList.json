@@ -22,5 +22,11 @@
     "audio": "assets/music/生命如歌 (Inno La vita).mp3",
     "lyrics": "assets/music/生命如歌 (Inno La vita).lrc",
     "description": "“正确”的建议往往来自旁观者，而真正的选择往往来自自己。"
+  },
+  {
+    "title": "刚好是你，刚好有光",
+    "audio": "assets/music/刚好是你，刚好有光.mp3",
+    "lyrics": "assets/music/刚好是你，刚好有光.lrc",
+    "description": "为什么我在梦里笑盈盈？为什么你能温暖冷冰冰?"
   }
 ]
