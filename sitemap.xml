@@ -4,8 +4,6 @@
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
-
 
 <url>
   <loc>https://yazhuoliu.com/</loc>
@@ -14,44 +12,79 @@
   <priority>1.00</priority>
 </url>
 <url>
-  <loc>https://yazhuoliu.com/assets/pdf/Yazhuo_Liu_Curriculum_Vitae.pdf</loc>
-  <lastmod>2026-01-30T06:33:14+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
   <loc>https://yazhuoliu.com/assets/htmls/music.html</loc>
-  <lastmod>2026-01-30T06:33:14+00:00</lastmod>
-  <priority>0.80</priority>
+  <lastmod>2026-02-01T00:00:00+00:00</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.85</priority>
 </url>
 <url>
-  <loc>https://yazhuoliu.com/assets/pdf/Publications/Acta26.pdf</loc>
-  <lastmod>2026-01-30T06:33:14+00:00</lastmod>
-  <priority>0.80</priority>
+  <loc>https://yazhuoliu.com/assets/htmls/teaching.html</loc>
+  <lastmod>2026-02-01T00:00:00+00:00</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.85</priority>
 </url>
 <url>
-  <loc>https://yazhuoliu.com/assets/pdf/Publications/EML23.pdf</loc>
-  <lastmod>2026-01-30T06:33:14+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://yazhuoliu.com/assets/pdf/Publications/EML21.pdf</loc>
-  <lastmod>2026-01-30T06:33:14+00:00</lastmod>
+  <loc>https://yazhuoliu.com/assets/htmls/teaching.html?course=COE3001</loc>
+  <lastmod>2026-02-01T00:00:00+00:00</lastmod>
+  <changefreq>monthly</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://yazhuoliu.com/assets/htmls/novel.html?src=assets/docs/novel/A_index.md</loc>
-  <lastmod>2026-01-30T06:33:14+00:00</lastmod>
+  <lastmod>2026-02-01T00:00:00+00:00</lastmod>
+  <changefreq>monthly</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://yazhuoliu.com/assets/htmls/pdf_viewer.html?src=assets/docs/Crystal_Plasticity_FCC.pdf</loc>
-  <lastmod>2026-01-30T06:33:14+00:00</lastmod>
+  <lastmod>2026-02-01T00:00:00+00:00</lastmod>
+  <changefreq>monthly</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://yazhuoliu.com/assets/htmls/article.html?src=assets/docs/Cahn-Hilliard_FFT.md</loc>
-  <lastmod>2026-01-30T06:33:14+00:00</lastmod>
+  <lastmod>2026-02-01T00:00:00+00:00</lastmod>
+  <changefreq>monthly</changefreq>
   <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://yazhuoliu.com/assets/htmls/article.html?src=assets/docs/Install_lammps-python.md</loc>
+  <lastmod>2026-02-01T00:00:00+00:00</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://yazhuoliu.com/assets/htmls/article.html?src=assets/docs/Install_abaqus_on_ubuntu.md</loc>
+  <lastmod>2026-02-01T00:00:00+00:00</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://yazhuoliu.com/assets/htmls/article.html?src=assets/docs/Install-abaqus-with-fortran-on-windows.md</loc>
+  <lastmod>2026-02-01T00:00:00+00:00</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://yazhuoliu.com/assets/pdf/Yazhuo_Liu_Curriculum_Vitae.pdf</loc>
+  <lastmod>2026-02-01T00:00:00+00:00</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.75</priority>
+</url>
+<url>
+  <loc>https://yazhuoliu.com/assets/pdf/Publications/Acta26.pdf</loc>
+  <lastmod>2026-02-01T00:00:00+00:00</lastmod>
+  <priority>0.75</priority>
+</url>
+<url>
+  <loc>https://yazhuoliu.com/assets/pdf/Publications/EML23.pdf</loc>
+  <lastmod>2026-02-01T00:00:00+00:00</lastmod>
+  <priority>0.75</priority>
+</url>
+<url>
+  <loc>https://yazhuoliu.com/assets/pdf/Publications/EML21.pdf</loc>
+  <lastmod>2026-02-01T00:00:00+00:00</lastmod>
+  <priority>0.75</priority>
 </url>
 
 </urlset>
