@@ -215,6 +215,55 @@
       .teaching-blur-zone { left: 0; }
     }
 
+    /* Mobile: compact main area and nav bar so they don’t dominate the screen */
+    @media (max-width: 768px) {
+      #main {
+        padding: 20px 16px;
+      }
+      .teaching-hero {
+        padding: 28px 16px 24px;
+      }
+      .teaching-hero h1 { font-size: 1.75rem; }
+      .teaching-content {
+        padding: 0 16px 48px;
+      }
+      /* Nav pills: single row, horizontal scroll — saves vertical space */
+      .teaching-nav-pills {
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        padding: 10px 12px;
+        margin-bottom: 28px;
+        top: 60px;
+        border-radius: 24px;
+        gap: 8px;
+        /* Hide scrollbar but keep scroll (optional, for cleaner look) */
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+      }
+      .teaching-nav-pills::-webkit-scrollbar {
+        display: none;
+      }
+      .teaching-nav-pills a {
+        padding: 8px 14px;
+        font-size: 0.8rem;
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
+      .teaching-section {
+        padding: 24px 20px;
+        margin-bottom: 20px;
+      }
+      .teaching-section h2 { font-size: 1.25rem; gap: 8px; }
+      .teaching-section h2 .section-icon {
+        width: 36px;
+        height: 36px;
+        font-size: 1rem;
+      }
+    }
+
     /* Course list (when multiple courses) */
     .course-list-title {
       font-size: 1.5rem;
