@@ -1,0 +1,51 @@
+{
+  "courses": [
+    {
+      "id": "COE3001",
+      "name": "Mechanics of Deformable Bodies",
+      "code": "COE 3001",
+      "institution": "Georgia Institute of Technology",
+      "instructor": "Yazhuo Liu",
+      "term": "Aug 2025 - May 2026",
+      "syllabus": [
+        { "title": "COE3001-H Syllabus (PDF)", "path": "assets/pdf/Teaching/COE3001/25Fall COE3001-H Syllabus.pdf", "meta": "Fall 2025" },
+        { "title": "COE3001-M Syllabus (PDF)", "path": "assets/pdf/Teaching/COE3001/26 Spring COE3001-M Syllabus.pdf", "meta": "Spring 2026" }
+      ],
+      "slides": [
+        { "title": "Lecture 1 - Introduction", "path": "assets/pdf/Teaching/COE3001/LectureNotes/Lecture 1 - Introduction.pdf", "meta": "Spring 2026" },
+        { "title": "Lecture 2 - Review of statics", "path": "assets/pdf/Teaching/COE3001/LectureNotes/Lecture 2 - Review of statics.pdf", "meta": "Spring 2026" },
+        { "title": "Lecture 3 - Mechanical Properties of Materials", "path": "assets/pdf/Teaching/COE3001/LectureNotes/Lecture 3 - Mechanical Properties of Materials.pdf", "meta": "Spring 2026" },
+        { "title": "Lecture 4 - Tension, Compression and Shear", "path": "assets/pdf/Teaching/COE3001/LectureNotes/Lecture 4 - Tension, Compression and Shear.pdf", "meta": "Spring 2026" },
+        { "title": "Lecture 5 - Axially loaded members", "path": "assets/pdf/Teaching/COE3001/LectureNotes/Lecture 5 - Axially loaded members.pdf", "meta": "Spring 2026" },
+        { "title": "Lecture 6 - Thermal Strains and Statically Indeterminate Problems", "path": "assets/pdf/Teaching/COE3001/LectureNotes/Lecture 6 - Thermal Strains and Statically Indeterminate Problems.pdf", "meta": "Spring 2026" },
+        { "title": "Lecture 7 - Problem solving tutorial", "path": "assets/pdf/Teaching/COE3001/LectureNotes/Lecture 7 - Problem solving tutorial.pdf", "meta": "Spring 2026" }
+      ],
+      "homework": [
+        { "title": "Homework 1", "path": "assets/pdf/Teaching/COE3001/Assignments/HW1.pdf", "meta": "Spring 2026" }
+      ],
+      "videos": [
+        { "title": "Lecture 1 - Introduction", "url": "https://youtu.be/WbxXjhaYCa4"},
+        { "title": "Lecture 2 - Review of statics", "url": "https://youtu.be/nOu_8Jv_4BU"},
+        { "title": "Lecture 3 - Mechanical Properties of Materials", "url": "https://youtu.be/qHIJ0KTYe18"},
+        { "title": "Lecture 4 - Tension, Compression and Shear", "url": "https://youtu.be/ZRrjbZ53980"},
+        { "title": "Lecture 5 - Axial loaded members", "url": "https://youtu.be/KcdTSqF6Cpw"}
+      ],
+      "exams": []
+    },
+    {
+      "id": "COE2001",
+      "name": "Statics",
+      "code": "COE 2001",
+      "institution": "Georgia Institute of Technology",
+      "instructor": "Yazhuo Liu",
+      "term": "TBD",
+      "syllabus": [
+        { "title": "Syllabus (PDF)", "path": "assets/pdf/Teaching/COE2001/Syllabus.pdf", "meta": "" }
+      ],
+      "slides": [],
+      "homework": [],
+      "videos": [],
+      "exams": []
+    }
+  ]
+}

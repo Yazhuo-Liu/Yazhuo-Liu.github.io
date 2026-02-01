@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Teaching & Course Materials | Yazhuo Liu</title>
+
+  <link rel="canonical" href="https://yazhuoliu.com/assets/htmls/teaching.html" />
+
+  <link href="../../assets/img/yazhuo-liu-profile.webp" rel="icon">
+  <link href="../../assets/img/yazhuo-liu-profile.webp" rel="apple-touch-icon">
+
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link href="../../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="../../assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../../assets/css/style.css" rel="stylesheet">
+
+  <style>
+    :root {
+      --teaching-primary: #149ddd;
+      --teaching-dark: #173b6c;
+      --teaching-light: #f0f8ff;
+      --teaching-card-shadow: 0 4px 24px rgba(20, 157, 221, 0.08);
+      --teaching-card-shadow-hover: 0 12px 40px rgba(20, 157, 221, 0.18);
+    }
+
+    #main {
+      padding: 40px 30px;
+      min-height: 100vh;
+      background: #fff;
+    }
+
+    .teaching-hero {
+      padding: 40px 24px 36px;
+      text-align: center;
+      color: var(--teaching-dark);
+    }
+    .teaching-hero h1 {
+      font-size: 2.25rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      letter-spacing: 0.02em;
+    }
+    .teaching-hero .course-code {
+      font-size: 1.1rem;
+      color: #5a6c7d;
+      font-weight: 500;
+    }
+    .teaching-hero .instructor {
+      margin-top: 16px;
+      font-size: 0.95rem;
+      color: #6c757d;
+    }
+
+    .teaching-content {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 24px 60px;
+    }
+
+    .teaching-nav-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin-bottom: 40px;
+      position: sticky;
+      top: 80px;
+      z-index: 10;
+      background: linear-gradient(135deg, rgba(220,238,255,0.92) 0%, rgba(200,230,255,0.95) 50%, rgba(220,238,255,0.92) 100%);
+      backdrop-filter: blur(20px) saturate(1.2);
+      -webkit-backdrop-filter: blur(20px) saturate(1.2);
+      padding: 14px 16px;
+      border-radius: 50px;
+      box-shadow: 0 4px 24px rgba(20, 157, 221, 0.12), 0 0 0 1px rgba(20, 157, 221, 0.15);
+    }
+    .teaching-nav-pills a {
+      padding: 10px 20px;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--teaching-dark);
+      background: #fff;
+      border: 2px solid #e8eef2;
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+    .teaching-nav-pills a:hover,
+    .teaching-nav-pills a.active {
+      background: linear-gradient(135deg, var(--teaching-primary), #2eafec);
+      color: #fff;
+      border-color: transparent;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(20, 157, 221, 0.35);
+    }
+
+    .teaching-section {
+      position: relative;
+      background: #fff;
+      border-radius: 20px;
+      padding: 36px 40px;
+      margin-bottom: 28px;
+      box-shadow: var(--teaching-card-shadow);
+      border: 1px solid rgba(20, 157, 221, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      overflow: hidden;
+    }
+    .teaching-section:hover {
+      box-shadow: var(--teaching-card-shadow-hover);
+      transform: translateY(-4px);
+    }
+    .teaching-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 5px;
+      height: 100%;
+      background: linear-gradient(180deg, var(--teaching-primary), #2eafec);
+      border-radius: 20px 0 0 20px;
+    }
+
+    .teaching-section h2 {
+      font-size: 1.5rem;
+      color: var(--teaching-dark);
+      margin-bottom: 8px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .teaching-section h2 .section-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--teaching-primary), #2eafec);
+      color: #fff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+    }
+    .teaching-section .section-desc {
+      color: #5a6c7d;
+      font-size: 0.95rem;
+      margin-bottom: 24px;
+      line-height: 1.6;
+    }
+
+    .resource-card {
+      display: block;
+      padding: 20px 24px;
+      border-radius: 14px;
+      border: 1px solid #e8eef2;
+      background: linear-gradient(135deg, #fafcff 0%, #f5f9fc 100%);
+      margin-bottom: 14px;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      color: inherit;
+    }
+    .resource-card:hover {
+      border-color: var(--teaching-primary);
+      background: linear-gradient(135deg, #f0f8ff 0%, #e8f4fc 100%);
+      box-shadow: 0 8px 24px rgba(20, 157, 221, 0.15);
+      transform: translateX(6px);
+      color: inherit;
+    }
+    .resource-card:last-child { margin-bottom: 0; }
+    .resource-card h5 {
+      margin: 0 0 6px 0;
+      font-size: 1.05rem;
+      color: var(--teaching-dark);
+      font-weight: 600;
+    }
+    .resource-card .meta {
+      font-size: 0.85rem;
+      color: #6c757d;
+    }
+    .resource-card .meta i { margin-right: 6px; }
+
+    .back-to-home {
+      margin-bottom: 24px;
+    }
+    .back-to-home .btn {
+      font-size: 0.9rem;
+      border-radius: 50px;
+      padding: 10px 20px;
+      font-weight: 600;
+    }
+
+    /* Blur zone: from page top to just below nav bar, fades from blurred to clear. Only visible when scrolled (nav bar stuck). */
+    .teaching-blur-zone {
+      position: fixed;
+      top: 0;
+      left: 300px;
+      right: 0;
+      height: 200px;
+      z-index: 5;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.35s ease;
+      backdrop-filter: blur(24px) saturate(1.1);
+      -webkit-backdrop-filter: blur(24px) saturate(1.1);
+      background: linear-gradient(to bottom, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.04) 50%, transparent 100%);
+      mask-image: linear-gradient(to bottom, black 0%, black 50%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to bottom, black 0%, black 50%, transparent 100%);
+    }
+    .teaching-blur-zone.active {
+      opacity: 1;
+    }
+    @media (max-width: 1199px) {
+      .teaching-blur-zone { left: 0; }
+    }
+
+    /* Course list (when multiple courses) */
+    .course-list-title {
+      font-size: 1.5rem;
+      color: var(--teaching-dark);
+      margin-bottom: 24px;
+      font-weight: 700;
+    }
+    .course-list-card {
+      display: block;
+      padding: 24px 28px;
+      border-radius: 16px;
+      border: 1px solid #e8eef2;
+      background: #fff;
+      margin-bottom: 16px;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      color: inherit;
+      box-shadow: var(--teaching-card-shadow);
+    }
+    .course-list-card:hover {
+      border-color: var(--teaching-primary);
+      box-shadow: var(--teaching-card-shadow-hover);
+      transform: translateY(-2px);
+      color: inherit;
+    }
+    .course-list-card h4 { margin: 0 0 8px 0; color: var(--teaching-dark); font-size: 1.2rem; }
+    .course-list-card .meta { font-size: 0.9rem; color: #6c757d; }
+    .teaching-loading, .teaching-error { text-align: center; padding: 60px 24px; color: #6c757d; }
+  </style>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PR8K6WLC14"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-PR8K6WLC14');
+  </script>
+</head>
+
+<body>
+
+  <i class="bi bi-list mobile-nav-toggle d-xl-none"></i>
+
+  <header id="header">
+    <div class="d-flex flex-column">
+      <div class="profile">
+        <img src="../../assets/img/yazhuo-liu-profile.webp" alt="Yazhuo Liu" class="img-fluid rounded-circle">
+        <h1 class="text-light"><a href="../../index.html">Yazhuo Liu</a></h1>
+        <div class="social-links mt-3 text-center">
+          <a href="https://www.linkedin.com/in/yazhuo-liu-321b45226/" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+          <a href="https://github.com/Yazhuo-Liu" class="github"><i class="bx bxl-github"></i></a>
+          <a href="https://www.facebook.com/yazhuo.liu.758" class="facebook"><i class="bx bxl-facebook"></i></a>
+          <a href="https://www.instagram.com/yazhuo_liu/" class="instagram"><i class="bx bxl-instagram"></i></a>
+          <a href="https://orcid.org/0000-0003-1160-1779" class="orcid"><i class="bx bxs-graduation"></i></a>
+        </div>
+      </div>
+      <nav id="navbar" class="nav-menu navbar">
+        <ul>
+          <li><a href="../../index.html#hero" class="nav-link"><i class="bx bx-home"></i> <span>Home</span></a></li>
+          <li><a href="../../index.html#about" class="nav-link"><i class="bx bx-user"></i> <span>About</span></a></li>
+          <li><a href="../../index.html#resume" class="nav-link"><i class="bx bx-file-blank"></i> <span>Resume</span></a></li>
+          <li><a href="../../index.html#portfolio" class="nav-link"><i class="bx bx-book-content"></i> <span>Gallery</span></a></li>
+          <li><a href="../../index.html#writings" class="nav-link active"><i class="bx bx-pen"></i> <span>Writings & Blogs</span></a></li>
+          <li><a href="../../assets/htmls/music.html" class="nav-link"><i class="bx bx-music"></i> <span>My Songs</span></a></li>
+          <li><a href="../../index.html#contact" class="nav-link"><i class="bx bx-envelope"></i> <span>Contact</span></a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="teaching-blur-zone" aria-hidden="true"></div>
+    <div id="teaching-app" class="teaching-content">
+      <div class="teaching-loading">Loading…</div>
+    </div>
+  </main>
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <script src="../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../../assets/vendor/aos/aos.js"></script>
+  <script src="../../assets/js/main.js"></script>
+  <script>
+    (function() {
+      var BASE = '../../';
+      var app = document.getElementById('teaching-app');
+
+      function esc(s) {
+        if (s == null) return '';
+        return String(s)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;');
+      }
+
+      function linkHref(path) {
+        if (!path) return '#';
+        return BASE + path;
+      }
+
+      function renderCourseList(courses) {
+        var html = '<div class="back-to-home" data-aos="fade-up"><a href="../../index.html#writings" class="btn btn-outline-primary rounded-pill"><i class="bi bi-arrow-left"></i> Back to Home</a></div>';
+        html += '<h2 class="course-list-title" data-aos="fade-up">Select a course</h2>';
+        courses.forEach(function(c, i) {
+          var url = 'teaching.html?course=' + encodeURIComponent(c.id);
+          html += '<a href="' + esc(url) + '" class="course-list-card" data-aos="fade-up" data-aos-delay="' + (i * 80) + '">';
+          html += '<h4>' + esc(c.name) + '</h4>';
+          html += '<span class="meta">' + esc(c.code) + ' · ' + esc(c.institution) + ' · ' + esc(c.term) + '</span>';
+          html += '</a>';
+        });
+        app.innerHTML = html;
+        app.classList.remove('teaching-content');
+        app.style.maxWidth = '600px';
+        app.style.margin = '0 auto';
+        app.style.padding = '0 24px 60px';
+      }
+
+      function renderCourse(c) {
+        var syllabusList = Array.isArray(c.syllabus) ? c.syllabus : (c.syllabus && c.syllabus.path ? [c.syllabus] : []);
+        var slides = c.slides || [];
+        var homework = c.homework || [];
+        var exams = c.exams || [];
+
+        var html = '';
+        html += '<div class="teaching-hero" data-aos="fade-down">';
+        html += '<h1>' + esc(c.name) + '</h1>';
+        html += '<p class="course-code">' + esc(c.code) + ' · ' + esc(c.institution) + '</p>';
+        html += '<p class="instructor">Instructor: ' + esc(c.instructor) + ' · ' + esc(c.term) + '</p>';
+        html += '</div>';
+
+        html += '<div class="teaching-content">';
+        html += '<div class="back-to-home" data-aos="fade-up"><a href="../../index.html#writings" class="btn btn-outline-primary rounded-pill"><i class="bi bi-arrow-left"></i> Back to Home</a></div>';
+
+        html += '<nav class="teaching-nav-pills" data-aos="fade-up">';
+        html += '<a href="#syllabus" class="nav-pill active">Syllabus</a>';
+        html += '<a href="#slides" class="nav-pill">Lecture Slides</a>';
+        html += '<a href="#videos" class="nav-pill">Videos</a>';
+        html += '<a href="#homework" class="nav-pill">Homework</a>';
+        html += '<a href="#exams" class="nav-pill">Exams</a>';
+        html += '</nav>';
+
+        html += '<section id="syllabus" class="teaching-section" data-aos="fade-up">';
+        html += '<h2><span class="section-icon"><i class="bx bx-file-blank"></i></span> Syllabus</h2>';
+        html += '<p class="section-desc">Course overview, learning objectives, policies, and schedule.</p>';
+        syllabusList.forEach(function(s) {
+          if (!s.path) return;
+          html += '<a href="' + esc(linkHref(s.path)) + '" class="resource-card" target="_blank" rel="noopener noreferrer">';
+          html += '<h5>' + esc(s.title || (c.code + ' – Syllabus (PDF)')) + '</h5>';
+          html += '<span class="meta"><i class="bx bx-calendar"></i> ' + esc(s.meta || '') + '</span>';
+          html += '</a>';
+        });
+        html += '</section>';
+
+        html += '<section id="slides" class="teaching-section" data-aos="fade-up">';
+        html += '<h2><span class="section-icon"><i class="bx bx-slideshow"></i></span> Lecture Slides</h2>';
+        html += '<p class="section-desc">Slides used in class.</p>';
+        slides.forEach(function(s) {
+          html += '<a href="' + esc(linkHref(s.path)) + '" class="resource-card" target="_blank" rel="noopener noreferrer">';
+          html += '<h5>' + esc(s.title) + '</h5>';
+          html += '<span class="meta"><i class="bx bx-file"></i> ' + esc(s.meta || 'PDF') + '</span>';
+          html += '</a>';
+        });
+        html += '</section>';
+
+        var videos = c.videos || [];
+        html += '<section id="videos" class="teaching-section" data-aos="fade-up">';
+        html += '<h2><span class="section-icon"><i class="bx bxl-youtube"></i></span> Videos</h2>';
+        html += '<p class="section-desc">Lecture recordings and other course videos (YouTube).</p>';
+        videos.forEach(function(v) {
+          var url = (v.url || '').trim();
+          if (!url) return;
+          html += '<a href="' + esc(url) + '" class="resource-card resource-card-video" target="_blank" rel="noopener noreferrer">';
+          html += '<h5><i class="bx bxl-youtube" style="color:#ff0000;margin-right:8px;"></i>' + esc(v.title) + '</h5>';
+          html += (v.meta ? '<span class="meta"><i class="bx bx-time-five"></i> ' + esc(v.meta) + '</span>' : '');
+          html += '</a>';
+        });
+        html += '</section>';
+
+        html += '<section id="homework" class="teaching-section" data-aos="fade-up">';
+        html += '<h2><span class="section-icon"><i class="bx bx-edit-alt"></i></span> Homework</h2>';
+        html += '<p class="section-desc">Problem sets and assignments for the course.</p>';
+        homework.forEach(function(h) {
+          html += '<a href="' + esc(linkHref(h.path)) + '" class="resource-card" target="_blank" rel="noopener noreferrer">';
+          html += '<h5>' + esc(h.title) + '</h5>';
+          html += '<span class="meta"><i class="bx bx-calendar"></i> ' + esc(h.meta || '') + '</span>';
+          html += '</a>';
+        });
+        html += '</section>';
+
+        html += '<section id="exams" class="teaching-section" data-aos="fade-up">';
+        html += '<h2><span class="section-icon"><i class="bx bx-clipboard"></i></span> Exams</h2>';
+        html += '<p class="section-desc">Midterm and final exam materials.</p>';
+        exams.forEach(function(e) {
+          html += '<a href="' + esc(linkHref(e.path)) + '" class="resource-card" target="_blank" rel="noopener noreferrer">';
+          html += '<h5>' + esc(e.title) + '</h5>';
+          html += '<span class="meta"><i class="bx bx-calendar"></i> ' + esc(e.meta || '') + '</span>';
+          html += '</a>';
+        });
+        html += '</section></div>';
+
+        app.innerHTML = html;
+
+        document.title = esc(c.name) + ' | Teaching | Yazhuo Liu';
+
+        var sectionIds = ['syllabus', 'slides', 'videos', 'homework', 'exams'];
+        var pills = app.querySelectorAll('.teaching-nav-pills a.nav-pill');
+        pills.forEach(function(link) {
+          link.addEventListener('click', function(e) {
+            var href = this.getAttribute('href');
+            if (href && href.startsWith('#')) {
+              e.preventDefault();
+              pills.forEach(function(a) { a.classList.remove('active'); });
+              this.classList.add('active');
+              var target = document.querySelector(href);
+              if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+          });
+        });
+        function updateActiveNav() {
+          var fromTop = window.scrollY + 120;
+          for (var i = sectionIds.length - 1; i >= 0; i--) {
+            var el = document.getElementById(sectionIds[i]);
+            if (el && el.offsetTop <= fromTop) {
+              pills.forEach(function(a) {
+                a.classList.toggle('active', a.getAttribute('href') === '#' + sectionIds[i]);
+              });
+              break;
+            }
+          }
+        }
+        window.addEventListener('scroll', updateActiveNav);
+        window.addEventListener('load', updateActiveNav);
+      }
+
+      function getCourseId() {
+        var params = new URLSearchParams(window.location.search);
+        return params.get('course') || '';
+      }
+
+      fetch(BASE + 'assets/pdf/Teaching/CoursesList.json')
+        .then(function(r) { return r.ok ? r.json() : Promise.reject(new Error('Failed to load')); })
+        .then(function(data) {
+          var courses = (data && data.courses) ? data.courses : [];
+          if (courses.length === 0) {
+            app.innerHTML = '<div class="teaching-error">No courses defined. Edit <code>assets/pdf/Teaching/CoursesList.json</code> to add courses.</div>';
+            return;
+          }
+          var courseId = getCourseId();
+          var course = courseId ? courses.filter(function(c) { return c.id === courseId; })[0] : null;
+          if (course) {
+            renderCourse(course);
+            if (typeof AOS !== 'undefined') AOS.init({ duration: 600, offset: 80, once: true });
+          } else if (courses.length === 1 && !courseId) {
+            renderCourse(courses[0]);
+            if (typeof AOS !== 'undefined') AOS.init({ duration: 600, offset: 80, once: true });
+          } else {
+            renderCourseList(courses);
+            if (typeof AOS !== 'undefined') AOS.init({ duration: 600, offset: 80, once: true });
+          }
+        })
+        .catch(function(err) {
+          app.innerHTML = '<div class="teaching-error">Could not load course data. Check that <code>assets/pdf/Teaching/CoursesList.json</code> exists and is valid JSON.</div>';
+        });
+
+      /* Blur zone: only show when scrolled down (nav bar no longer at initial position) */
+      var blurZone = document.querySelector('.teaching-blur-zone');
+      var BLUR_THRESHOLD = 200;
+      function updateBlurZone() {
+        if (!blurZone) return;
+        if (window.scrollY > BLUR_THRESHOLD) blurZone.classList.add('active');
+        else blurZone.classList.remove('active');
+      }
+      window.addEventListener('scroll', updateBlurZone);
+      window.addEventListener('load', updateBlurZone);
+      updateBlurZone();
+    })();
+  </script>
+</body>
+</html>
