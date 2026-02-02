@@ -72,7 +72,7 @@ h6 {
   position: fixed;
   top: 0;
   left: 0;
-  bottom: 0;
+  bottom: 72px; /* Leave space for fixed footer so nav isn’t covered on short viewports (e.g. tablet) */
   width: 300px;
   transition: all ease-in-out 0.5s;
   z-index: 9997;
@@ -1089,6 +1089,8 @@ section {
   width: 300px;
   z-index: 9999;
   background: #040b14;
+  box-sizing: border-box;
+  min-height: 72px;
 }
 
 #footer .copyright {
@@ -1106,7 +1108,7 @@ section {
   #footer {
     position: static;
     width: auto;
-    padding-right: 20px 15px;
+    padding: 20px 15px;
   }
 }
 
