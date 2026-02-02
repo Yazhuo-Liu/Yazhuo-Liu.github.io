@@ -28,5 +28,11 @@
     "audio": "assets/music/刚好是你，刚好有光.mp3",
     "lyrics": "assets/music/刚好是你，刚好有光.lrc",
     "description": "为什么我在梦里笑盈盈？为什么你能温暖冷冰冰?"
+  },
+  {
+    "title": "告白",
+    "audio": "assets/music/告白.mp3",
+    "lyrics": "assets/music/告白.lrc",
+    "description": "现代的雨太慢，而爱太快，我想试试，能不能在架子鼓的节奏里，谈一场跨越千年的恋爱。"
   }
 ]
