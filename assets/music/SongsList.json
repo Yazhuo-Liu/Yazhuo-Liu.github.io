@@ -1,9 +1,9 @@
 [
   {
-    "title": "长相思·一重帘",
-    "audio": "assets/music/长相思·一重帘.mp3",
-    "lyrics": "assets/music/长相思·一重帘.lrc",
-    "description": "与时间的博弈中，我们都是落子无悔的棋手。"
+    "title": "生命如歌 (Inno La vita)",
+    "audio": "assets/music/生命如歌 (Inno La vita).mp3",
+    "lyrics": "assets/music/生命如歌 (Inno La vita).lrc",
+    "description": "“正确”的建议往往来自旁观者，而真正的选择往往来自自己。"
   },
   {
     "title": "向思念问你的名",
@@ -18,10 +18,10 @@
     "description": "这是一封无需寄出的情书，因为它已经写在了彼此的心里。"
   },
   {
-    "title": "生命如歌 (Inno La vita)",
-    "audio": "assets/music/生命如歌 (Inno La vita).mp3",
-    "lyrics": "assets/music/生命如歌 (Inno La vita).lrc",
-    "description": "“正确”的建议往往来自旁观者，而真正的选择往往来自自己。"
+    "title": "长相思·一重帘",
+    "audio": "assets/music/长相思·一重帘.mp3",
+    "lyrics": "assets/music/长相思·一重帘.lrc",
+    "description": "与时间的博弈中，我们都是落子无悔的棋手。"
   },
   {
     "title": "刚好是你，刚好有光",
@@ -33,6 +33,6 @@
     "title": "告白",
     "audio": "assets/music/告白.mp3",
     "lyrics": "assets/music/告白.lrc",
-    "description": "现代的雨太慢，而爱太快.架子鼓的节奏里，可否容得下一场慢慢的恋爱？"
+    "description": "现代的雨太慢，而爱太快。架子鼓的节奏里，是否容得下一场慢慢的恋爱？"
   }
 ]

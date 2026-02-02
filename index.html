@@ -548,7 +548,7 @@ I also want to express my respect for Shubham's support of open source.
 
         </div>
 
-        <h5 class="mb-3 mt-4" style="color: #173b6c;">Music</h5>
+        <h5 class="mb-3 mt-4" style="color: #173b6c;"><a href="assets/htmls/music.html" class="text-decoration-none" style="color: inherit;">Music</a></h5>
         <p class="text-muted small mb-2">Words and melody, hand in hand—stories sung into life, one note at a time.<br><span class="text-muted" style="font-size: 0.9em;">字句与旋律相伴，把故事一音一符唱进生命里。</span></p>
         
         <div id="home-song-list" class="row">
@@ -651,7 +651,8 @@ I also want to express my respect for Shubham's support of open source.
       fetch('assets/music/SongsList.json')
         .then(function (r) { return r.ok ? r.json() : []; })
         .then(function (data) {
-          var songs = Array.isArray(data) ? data : (data.songs || data.list || []);
+          var raw = Array.isArray(data) ? data : (data.songs || data.list || []);
+          var songs = raw.slice().reverse(); // newest first
           if (songs.length === 0) {
             listEl.innerHTML = '<div class="col-lg-4 col-md-6" data-aos="fade-up"><a href="assets/htmls/music.html" class="icon-box d-block text-decoration-none" style="color: inherit;"><div class="icon"><i class="bx bx-music"></i></div><h4 class="title">My Songs</h4><p class="description">Open the music page.</p></a></div>';
             return;

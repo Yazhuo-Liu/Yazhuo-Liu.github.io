@@ -304,7 +304,8 @@
         const res = await fetch(pathFromHtml('assets/music/SongsList.json'));
         if (res.ok) {
           const data = await res.json();
-          SONGS = Array.isArray(data) ? data : (data.songs || data.list || []);
+          const raw = Array.isArray(data) ? data : (data.songs || data.list || []);
+          SONGS = raw.slice().reverse(); // newest first
         }
       } catch (e) {
         SONGS = [];
