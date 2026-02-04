@@ -34,5 +34,11 @@
     "audio": "assets/music/告白.mp3",
     "lyrics": "assets/music/告白.lrc",
     "description": "现代的雨太慢，而爱太快。架子鼓的节奏里，是否容得下一场慢慢的恋爱？"
+  },
+  {
+    "title": "旧时模样",
+    "audio": "assets/music/旧时模样.mp3",
+    "lyrics": "assets/music/旧时模样.lrc",
+    "description": "总角之交，终究抵不过岁月漫长。"
   }
 ]
