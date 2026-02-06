@@ -30,8 +30,12 @@ cd lammps
 Create a `build` directory:
 ```bash
 mkdir build; cd build    # create and use a build directory
+```
+If you just need the original version of lammps
+```bash
 cmake ../cmake           # configuration reading CMake scripts from ../cmake
 ```
+
 If you need to enable any other packages, you need:
 ```bash
 cmake ../cmake -D PKG_KSPACE=yes -D PKG_MC=yes -D PKG_MANYBODY=yes -D PKG_MISC=yes -D PKG_REPLICA=yes -D PKG_RIGID=yes -D PKG_MEAM=yes
@@ -52,8 +56,8 @@ Build LAMMPS as a shared library with MPI support:
 ```bash
 make mpi mode=shlib -j8
 or
-cmake -D BUILD_SHARED_LIBS=yes
-cmake --build . -j10
+cmake ../cmake -D BUILD_SHARED_LIBS=yes
+cmake --build . -j8
 ```
 Potential Output:
 
