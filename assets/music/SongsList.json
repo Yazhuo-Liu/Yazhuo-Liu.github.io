@@ -40,5 +40,11 @@
     "audio": "assets/music/旧时模样.mp3",
     "lyrics": "assets/music/旧时模样.lrc",
     "description": "总角之交，终究抵不过岁月漫长。"
+  },
+  {
+    "title": "岁岁红",
+    "audio": "assets/music/岁岁红.mp3",
+    "lyrics": "assets/music/岁岁红.lrc",
+    "description": "虽然身不能至，但心已远游。这首歌是我给自己，也给所有漂泊在外的人，造的一个最暖的梦。"
   }
 ]
