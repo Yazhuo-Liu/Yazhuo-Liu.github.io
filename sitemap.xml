@@ -7,83 +7,107 @@
 
 <url>
   <loc>https://yazhuoliu.com/</loc>
-  <lastmod>2026-02-01T00:00:00+00:00</lastmod>
+  <lastmod>2026-02-18T00:00:00+00:00</lastmod>
   <changefreq>monthly</changefreq>
   <priority>1.00</priority>
 </url>
 <url>
   <loc>https://yazhuoliu.com/assets/htmls/music.html</loc>
-  <lastmod>2026-02-01T00:00:00+00:00</lastmod>
+  <lastmod>2026-02-18T00:00:00+00:00</lastmod>
   <changefreq>monthly</changefreq>
   <priority>0.85</priority>
 </url>
 <url>
   <loc>https://yazhuoliu.com/assets/htmls/teaching.html</loc>
-  <lastmod>2026-02-01T00:00:00+00:00</lastmod>
+  <lastmod>2026-02-18T00:00:00+00:00</lastmod>
   <changefreq>monthly</changefreq>
   <priority>0.85</priority>
 </url>
 <url>
   <loc>https://yazhuoliu.com/assets/htmls/teaching.html?course=COE3001</loc>
-  <lastmod>2026-02-01T00:00:00+00:00</lastmod>
+  <lastmod>2026-02-18T00:00:00+00:00</lastmod>
   <changefreq>monthly</changefreq>
   <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://yazhuoliu.com/assets/htmls/novel.html</loc>
+  <lastmod>2026-02-18T00:00:00+00:00</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.75</priority>
 </url>
 <url>
   <loc>https://yazhuoliu.com/assets/htmls/novel.html?src=assets/docs/novel/A_index.md</loc>
-  <lastmod>2026-02-01T00:00:00+00:00</lastmod>
+  <lastmod>2026-02-18T00:00:00+00:00</lastmod>
   <changefreq>monthly</changefreq>
   <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://yazhuoliu.com/assets/htmls/pdf_viewer.html</loc>
+  <lastmod>2026-02-18T00:00:00+00:00</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.70</priority>
 </url>
 <url>
   <loc>https://yazhuoliu.com/assets/htmls/pdf_viewer.html?src=assets/docs/Crystal_Plasticity_FCC.pdf</loc>
-  <lastmod>2026-02-01T00:00:00+00:00</lastmod>
+  <lastmod>2026-02-18T00:00:00+00:00</lastmod>
   <changefreq>monthly</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
+  <loc>https://yazhuoliu.com/assets/htmls/article.html</loc>
+  <lastmod>2026-02-18T00:00:00+00:00</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.75</priority>
+</url>
+<url>
   <loc>https://yazhuoliu.com/assets/htmls/article.html?src=assets/docs/Cahn-Hilliard_FFT.md</loc>
-  <lastmod>2026-02-01T00:00:00+00:00</lastmod>
+  <lastmod>2026-02-18T00:00:00+00:00</lastmod>
   <changefreq>monthly</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://yazhuoliu.com/assets/htmls/article.html?src=assets/docs/Install_lammps-python.md</loc>
-  <lastmod>2026-02-01T00:00:00+00:00</lastmod>
+  <lastmod>2026-02-18T00:00:00+00:00</lastmod>
   <changefreq>monthly</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://yazhuoliu.com/assets/htmls/article.html?src=assets/docs/Install_abaqus_on_ubuntu.md</loc>
-  <lastmod>2026-02-01T00:00:00+00:00</lastmod>
+  <lastmod>2026-02-18T00:00:00+00:00</lastmod>
   <changefreq>monthly</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://yazhuoliu.com/assets/htmls/article.html?src=assets/docs/Install-abaqus-with-fortran-on-windows.md</loc>
-  <lastmod>2026-02-01T00:00:00+00:00</lastmod>
+  <lastmod>2026-02-18T00:00:00+00:00</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://yazhuoliu.com/assets/htmls/article.html?src=assets/docs/Install_Gmsh_Neper.md</loc>
+  <lastmod>2026-02-18T00:00:00+00:00</lastmod>
   <changefreq>monthly</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://yazhuoliu.com/assets/pdf/Yazhuo_Liu_Curriculum_Vitae.pdf</loc>
-  <lastmod>2026-02-01T00:00:00+00:00</lastmod>
+  <lastmod>2026-02-18T00:00:00+00:00</lastmod>
   <changefreq>monthly</changefreq>
   <priority>0.75</priority>
 </url>
 <url>
   <loc>https://yazhuoliu.com/assets/pdf/Publications/Acta26.pdf</loc>
-  <lastmod>2026-02-01T00:00:00+00:00</lastmod>
+  <lastmod>2026-02-18T00:00:00+00:00</lastmod>
   <priority>0.75</priority>
 </url>
 <url>
   <loc>https://yazhuoliu.com/assets/pdf/Publications/EML23.pdf</loc>
-  <lastmod>2026-02-01T00:00:00+00:00</lastmod>
+  <lastmod>2026-02-18T00:00:00+00:00</lastmod>
   <priority>0.75</priority>
 </url>
 <url>
   <loc>https://yazhuoliu.com/assets/pdf/Publications/EML21.pdf</loc>
-  <lastmod>2026-02-01T00:00:00+00:00</lastmod>
+  <lastmod>2026-02-18T00:00:00+00:00</lastmod>
   <priority>0.75</priority>
 </url>
 

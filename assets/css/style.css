@@ -72,14 +72,18 @@ h6 {
   position: fixed;
   top: 0;
   left: 0;
-  bottom: 72px; /* Leave space for fixed footer so nav isn’t covered on short viewports (e.g. tablet) */
+  bottom: 0;
   width: 300px;
   transition: all ease-in-out 0.5s;
   z-index: 9997;
   transition: all 0.5s;
-  padding: 0 15px;
+  padding: 0 15px 88px;
   background: #040b14;
   overflow-y: auto;
+}
+
+#header .d-flex.flex-column {
+  min-height: 100%;
 }
 
 #header .profile img {
@@ -133,6 +137,7 @@ h6 {
 @media (max-width: 1199px) {
   #header {
     left: -300px;
+    padding-bottom: 20px;
   }
 
   #main {
@@ -1109,6 +1114,7 @@ section {
     position: static;
     width: auto;
     padding: 20px 15px;
+    min-height: 0;
   }
 }
 
