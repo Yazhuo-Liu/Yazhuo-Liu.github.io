@@ -194,6 +194,8 @@
 
     let lrcLines = [];
     let currentLineIndex = -1;
+    /** Index of the currently playing song in SONGS; used for auto-next and list loop. */
+    let currentSongIndex = -1;
 
     function updateLrcHighlight(currentTime) {
       if (lrcLines.length === 0) return;
@@ -231,7 +233,7 @@
       }
     }
 
-    /** Story URL: same path as audio, extension .md (e.g. assets/music/歌名.mp3 -> assets/music/歌名.md) */
+    /** Story URL: same path as audio, extension .md (e.g. assets/music/songname.mp3 -> assets/music/songname.md) */
     function storyUrlForSong(song) {
       if (!song || !song.audio) return null;
       const base = song.audio.replace(/\.[^.]+$/, '');
@@ -290,8 +292,10 @@
     }
 
     async function playSong(index) {
-      const song = SONGS[Number(index)];
+      const i = Number(index);
+      const song = SONGS[i];
       if (!song || !song.audio) return;
+      currentSongIndex = i;
       const audioUrl = pathFromHtml(song.audio);
       currentTitleEl.textContent = song.title;
       audioEl.src = audioUrl;
@@ -309,6 +313,13 @@
       audioEl.load();
       audioEl.play().catch(() => {});
     }
+
+    /** When the current track ends: play next; loop to first when at end of list. */
+    audioEl.addEventListener('ended', function () {
+      if (SONGS.length === 0 || currentSongIndex < 0) return;
+      const nextIndex = (currentSongIndex + 1) % SONGS.length;
+      playSong(nextIndex);
+    });
 
     audioEl.addEventListener('timeupdate', function () {
       if (lrcLines.length > 0) updateLrcHighlight(audioEl.currentTime);
