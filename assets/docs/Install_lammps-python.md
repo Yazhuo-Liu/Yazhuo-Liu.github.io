@@ -58,7 +58,7 @@ Build LAMMPS as a shared library with MPI support, and disable the GUI function 
 ```bash
 make mpi mode=shlib -j8
 or
-cmake ../cmake -D BUILD_SHARED_LIBS=yes -D WITH_JPEG=OFF
+cmake ../cmake -D BUILD_SHARED_LIBS=yes
 cmake --build . -j8
 ```
 Potential Output:
