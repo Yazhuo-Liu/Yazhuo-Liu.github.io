@@ -18,6 +18,7 @@ conda install -c conda-forge cmake openmpi mpi4py
 conda install -c conda-forge numpy boost pybind11
 conda install -c conda-forge fftw compilers libblas 
 conda install -c conda-forge liblapack gfortran blas lapack
+conda install -c conda-forge jpeg libpng zlib
 ```
 
 ## 3. Download LAMMPS Source Code
@@ -53,16 +54,22 @@ make yes-KSPACE yes-MC yes-MANYBODY yes-MISC yes-REPLICA yes-RIGID yes-MEAM
 ```
 
 ## 5. Build LAMMPS as a Shared Library
-Build LAMMPS as a shared library with MPI support:
+Build LAMMPS as a shared library with MPI support, and disable the GUI function of lammps:
 ```bash
 make mpi mode=shlib -j8
 or
-cmake ../cmake -D BUILD_SHARED_LIBS=yes
+cmake ../cmake -D BUILD_SHARED_LIBS=yes -D WITH_JPEG=OFF
 cmake --build . -j8
 ```
 Potential Output:
 
 The build process may take several minutes. Watch for any errors related to missing libraries or compilation issues. If errors occur, review the `Makefile` for correct paths and ensure all dependencies are installed.
+
+After finished, add binary file of lammps to the conda bin:
+```
+ln -s ./lmp $CONDA_PREFIX/bin/lmp
+```
+
 
 ## 6. Verify the Shared Library
 After a successful build, confirm that `liblammps.so` exists in the `src` directory:
