@@ -67,7 +67,7 @@ The build process may take several minutes. Watch for any errors related to miss
 
 After finished, add binary file of lammps to the conda bin:
 ```
-ln -s ./lmp $CONDA_PREFIX/bin/lmp
+ln -s $PWD/lmp $CONDA_PREFIX/bin/lmp
 ```
 
 
