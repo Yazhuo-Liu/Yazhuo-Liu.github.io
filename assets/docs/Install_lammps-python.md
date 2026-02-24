@@ -26,7 +26,7 @@ Navigate to a directory where you want to download the LAMMPS source code and cl
 git clone -b stable https://github.com/lammps/lammps.git
 cd lammps
 ```
-## 4.1 (Using cmake) Enable the Desired Packages
+## 4 (RECOMMENDED) Enable the Desired Packages using CMAKE
 Create a `build` directory:
 ```bash
 mkdir build; cd build    # create and use a build directory
@@ -38,15 +38,16 @@ cmake ../cmake           # configuration reading CMake scripts from ../cmake
 
 If you need to enable any other packages, you need:
 ```bash
-cmake ../cmake -D PKG_KSPACE=yes -D PKG_MC=yes -D PKG_MANYBODY=yes -D PKG_MISC=yes -D PKG_REPLICA=yes -D PKG_RIGID=yes -D PKG_MEAM=yes
+cmake ../cmake -D PKG_KSPACE=yes -D PKG_MC=yes -D PKG_MANYBODY=yes -D PKG_MISC=yes -D PKG_REPLICA=yes -D PKG_RIGID=yes -D PKG_MEAM=yes -D PKG_KOKKOS=yes
 ```
+The list of packages is here: https://docs.lammps.org/Build_package.html
 
-## 4.2 (Using make) Enable the Desired Packages
+### (legacy) Build with MAKE
 Navigate to the `src` directory:
 ```bash
 cd src
 ```
-Enable the REPLICA package and any other packages you need:
+Enable the packages you need:
 ```bash
 make yes-KSPACE yes-MC yes-MANYBODY yes-MISC yes-REPLICA yes-RIGID yes-MEAM
 ```
