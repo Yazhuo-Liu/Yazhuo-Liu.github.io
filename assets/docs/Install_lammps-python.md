@@ -39,9 +39,20 @@ cmake ../cmake           # configuration reading CMake scripts from ../cmake
 
 If you need to enable any other packages, you need:
 ```bash
-cmake ../cmake -D PKG_KSPACE=yes -D PKG_MC=yes -D PKG_MANYBODY=yes -D PKG_MISC=yes -D PKG_REPLICA=yes -D PKG_RIGID=yes -D PKG_MEAM=yes -D PKG_KOKKOS=yes
+cmake ../cmake -D BUILD_SHARED_LIBS=yes -D PKG_KSPACE=yes -D PKG_MC=yes -D PKG_MANYBODY=yes -D PKG_MISC=yes -D PKG_REPLICA=yes -D PKG_RIGID=yes -D PKG_MEAM=yes -D PKG_KOKKOS=yes
 ```
 The list of packages is here: https://docs.lammps.org/Build_package.html
+
+If you need to use Machine Learning Potentials, you need
+```bash
+cmake -C ../cmake/presets/basic.cmake -C ../cmake/presets/kokkos-cuda.cmake ../cmake -D BUILD_SHARED_LIBS=on -D PKG_REPLICA=on -D PKG_MANYBODY=on -D PKG_KSPACE=on -D PKG_MC=on -D PKG_MISC=on -D PKG_RIGID=on -D PKG_MEAM=on -D PKG_EXTRA-FIX=on -D PKG_DIFFRACTION=on -D PKG_TALLY=on -D PKG_PHONON=on -D PKG_ML-PACE=on -D PKG_ML-SNAP=on -D PKG_SPIN=on -D PKG_ML-IAP=on -D PKG_PYTHON=on -D CMAKE_EXPORT_COMPILE_COMMANDS=on
+```
+If you have `nvcc warning : incompatible redefinition for option 'compiler-bindir', the last value of this option was used`
+then
+```bash
+unset NVCC_PREPEND_FLAGS
+unset NVCC_APPEND_FLAGS
+```
 
 ### (legacy) Build with MAKE
 Navigate to the `src` directory:
@@ -58,7 +69,6 @@ Build LAMMPS as a shared library with MPI support, and disable the GUI function 
 ```bash
 make mpi mode=shlib -j8
 or
-cmake ../cmake -D BUILD_SHARED_LIBS=yes
 cmake --build . -j8
 ```
 Potential Output:
