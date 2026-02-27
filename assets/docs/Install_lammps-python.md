@@ -32,6 +32,13 @@ Create a `build` directory:
 ```bash
 mkdir build; cd build    # create and use a build directory
 ```
+Define environment variables
+``bash
+export MPICC=$(which mpicc)
+export MPICXX=$(which mpicxx)
+export LD_LIBRARY_PATH=$CONDA_PREFIX/lib:$LD_LIBRARY_PATH
+```
+
 If you just need the original version of lammps
 ```bash
 cmake ../cmake           # configuration reading CMake scripts from ../cmake
