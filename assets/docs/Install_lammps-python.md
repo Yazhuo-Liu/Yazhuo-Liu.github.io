@@ -52,7 +52,34 @@ The list of packages is here: https://docs.lammps.org/Build_package.html
 
 If you need to use Machine Learning Potentials, you need
 ```bash
-cmake -C ../cmake/presets/basic.cmake -C ../cmake/presets/kokkos-cuda.cmake ../cmake -D BUILD_SHARED_LIBS=on -D PKG_REPLICA=on -D PKG_MANYBODY=on -D PKG_KSPACE=on -D PKG_MC=on -D PKG_MISC=on -D PKG_RIGID=on -D PKG_MEAM=on -D PKG_EXTRA-FIX=on -D PKG_DIFFRACTION=on -D PKG_TALLY=on -D PKG_PHONON=on -D PKG_ML-PACE=on -D PKG_ML-SNAP=on -D PKG_SPIN=on -D PKG_ML-IAP=on -D PKG_PYTHON=on -D CMAKE_EXPORT_COMPILE_COMMANDS=on
+cmake -C ../cmake/presets/basic.cmake \
+      -C ../cmake/presets/kokkos-cuda.cmake \
+      ../cmake \
+      -D CMAKE_BUILD_TYPE=Release \
+      -D CMAKE_C_COMPILER=mpicc \
+      -D CMAKE_CXX_COMPILER=mpicxx \
+      -D BUILD_MPI=on \
+      -D CUDAToolkit_ROOT=$CUDA_HOME \
+      -D BUILD_SHARED_LIBS=on \
+      -D Python_EXECUTABLE=$(which python) \
+      -D PKG_REPLICA=on \
+      -D PKG_MANYBODY=on \
+      -D PKG_KSPACE=on \
+      -D PKG_MC=on \
+      -D PKG_MISC=on \
+      -D PKG_RIGID=on \
+      -D PKG_MEAM=on \
+      -D PKG_EXTRA-FIX=on \
+      -D PKG_DIFFRACTION=on \
+      -D PKG_TALLY=on \
+      -D PKG_PHONON=on \
+      -D PKG_ML-PACE=on \
+      -D PKG_ML-SNAP=on \
+      -D PKG_SPIN=on \
+      -D PKG_ML-IAP=on \
+      -D PKG_PYTHON=on \
+      -D CMAKE_EXPORT_COMPILE_COMMANDS=on \
+      -D PKG_GRAPHICS=off
 ```
 If you have `nvcc warning : incompatible redefinition for option 'compiler-bindir', the last value of this option was used`
 then
