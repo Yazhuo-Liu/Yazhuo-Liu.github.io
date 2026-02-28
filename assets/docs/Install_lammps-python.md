@@ -33,7 +33,7 @@ Create a `build` directory:
 mkdir build; cd build    # create and use a build directory
 ```
 Define environment variables
-``bash
+```bash
 export MPICC=$(which mpicc)
 export MPICXX=$(which mpicxx)
 export LD_LIBRARY_PATH=$CONDA_PREFIX/lib:$LD_LIBRARY_PATH
@@ -110,7 +110,7 @@ Potential Output:
 The build process may take several minutes. Watch for any errors related to missing libraries or compilation issues. If errors occur, review the `Makefile` for correct paths and ensure all dependencies are installed.
 
 After finished, add binary file of lammps to the conda bin:
-```
+```bash
 ln -s $PWD/lmp $CONDA_PREFIX/bin/lmp
 ```
 
