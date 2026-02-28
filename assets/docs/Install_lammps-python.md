@@ -46,7 +46,7 @@ cmake ../cmake           # configuration reading CMake scripts from ../cmake
 
 If you need to enable any other packages, you need:
 ```bash
-cmake ../cmake -D BUILD_SHARED_LIBS=yes -D PKG_KSPACE=yes -D PKG_MC=yes -D PKG_MANYBODY=yes -D PKG_MISC=yes -D PKG_REPLICA=yes -D PKG_RIGID=yes -D PKG_MEAM=yes -D PKG_KOKKOS=yes
+cmake ../cmake -D BUILD_SHARED_LIBS=yes -D PKG_KSPACE=yes -D PKG_MC=yes -D PKG_MANYBODY=yes -D PKG_MISC=yes -D PKG_REPLICA=yes -D PKG_RIGID=yes -D PKG_MEAM=yes
 ```
 The list of packages is here: https://docs.lammps.org/Build_package.html
 
@@ -130,6 +130,11 @@ Compile LAMMPS with either CMake or the traditional make procedure in shared mod
 ```bash
 make install-python
 ```
+if you are on a HPC environment, you may need to build mpi4py by yourself.
+```bash
+env MPICC=$(which mpicc) pip install --no-binary mpi4py mpi4py
+```
+
 
 ## 8. Test lammps-python
 Ensure that the Conda environment can locate the LAMMPS shared library and Python module.
