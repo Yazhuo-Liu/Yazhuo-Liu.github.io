@@ -15,7 +15,7 @@ conda activate lammps
 Install the required packages within the lammps environment:
 ```bash
 conda install -c conda-forge cmake openmpi mpi4py
-conda install -c conda-forge numpy boost pybind11
+conda install -c conda-forge numpy scipy boost pybind11
 conda install -c conda-forge fftw compilers libblas 
 conda install -c conda-forge liblapack gfortran blas lapack
 conda install -c conda-forge jpeg libpng zlib
