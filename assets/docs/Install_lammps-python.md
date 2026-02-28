@@ -24,7 +24,7 @@ conda install -c conda-forge jpeg libpng zlib
 ## 3. Download LAMMPS Source Code
 Navigate to a directory where you want to download the LAMMPS source code and clone the repository:
 ```bash
-git clone -b stable https://github.com/lammps/lammps.git
+git clone -b release https://github.com/lammps/lammps.git
 cd lammps
 ```
 ## 4 (RECOMMENDED) Enable the Desired Packages using CMAKE
