@@ -46,7 +46,7 @@ cmake ../cmake           # configuration reading CMake scripts from ../cmake
 
 If you need to enable any other packages, you need:
 ```bash
-cmake ../cmake -D BUILD_SHARED_LIBS=yes -D PKG_KSPACE=yes -D PKG_MC=yes -D PKG_MANYBODY=yes -D PKG_MISC=yes -D PKG_REPLICA=yes -D PKG_RIGID=yes -D PKG_MEAM=yes
+cmake ../cmake -D CMAKE_BUILD_TYPE=Release -D BUILD_SHARED_LIBS=on -D PKG_KSPACE=on -D PKG_MC=on -D PKG_MANYBODY=on -D PKG_MISC=on -D PKG_REPLICA=on -D PKG_RIGID=on -D PKG_MEAM=on -D PKG_EXTRA-FIX=on -D PKG_DIFFRACTION=on -D PKG_TALLY=on -D PKG_PHONON=on -D PKG_SPIN=on -D PKG_PYTHON=on -D PKG_GRAPHICS=off
 ```
 The list of packages is here: https://docs.lammps.org/Build_package.html
 
