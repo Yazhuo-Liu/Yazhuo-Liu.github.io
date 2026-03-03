@@ -46,5 +46,11 @@
     "audio": "assets/music/岁岁红.mp3",
     "lyrics": "assets/music/岁岁红.lrc",
     "description": "虽然身不能至，但心已远游。这首歌是我给自己，也给所有漂泊在外的人，造的一个最暖的梦。"
+  },
+  {
+    "title": "风自人海来",
+    "audio": "assets/music/风自人海来.mp3",
+    "lyrics": "assets/music/风自人海来.lrc",
+    "description": "风自人海来，你自人海来。我们不是人海中的过客，而是彼此的归人。"
   }
 ]
