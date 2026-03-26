@@ -52,5 +52,12 @@
     "audio": "assets/music/风自人海来.mp3",
     "lyrics": "assets/music/风自人海来.lrc",
     "description": "风自人海来，你自人海来。我们不是人海中的过客，而是彼此的归人。"
+  },
+  {
+    "title": "San Diego",
+    "audio": "assets/music/SanDiego.mp3",
+    "lyrics": "assets/music/SanDiego.lrc",
+    "description": "会议带来的不只是答案，更多时候是新的问题、新的连接和新的可能。"
   }
+
 ]
