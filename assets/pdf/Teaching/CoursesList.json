@@ -18,10 +18,39 @@
         { "title": "Lecture 4 - Tension, Compression and Shear", "path": "assets/pdf/Teaching/COE3001/LectureNotes/Lecture 4 - Tension, Compression and Shear.pdf", "meta": "Spring 2026" },
         { "title": "Lecture 5 - Axially loaded members", "path": "assets/pdf/Teaching/COE3001/LectureNotes/Lecture 5 - Axially loaded members.pdf", "meta": "Spring 2026" },
         { "title": "Lecture 6 - Thermal Strains and Statically Indeterminate Problems", "path": "assets/pdf/Teaching/COE3001/LectureNotes/Lecture 6 - Thermal Strains and Statically Indeterminate Problems.pdf", "meta": "Spring 2026" },
-        { "title": "Lecture 7 - Problem solving tutorial", "path": "assets/pdf/Teaching/COE3001/LectureNotes/Lecture 7 - Problem solving tutorial.pdf", "meta": "Spring 2026" }
+        { "title": "Lecture 7 - Problem solving tutorial", "path": "assets/pdf/Teaching/COE3001/LectureNotes/Lecture 7 - Problem solving tutorial.pdf", "meta": "Spring 2026" },
+        { "title": "Lecture 8 - Torsion formula", "path": "assets/pdf/Teaching/COE3001/LectureNotes/Lecture 8 - Torsion formula.pdf", "meta": "Spring 2026" },
+        { "title": "Lecture 9 - Torsion formula cont", "path": "assets/pdf/Teaching/COE3001/LectureNotes/Lecture 9 - Torsion formula cont.pdf", "meta": "Spring 2026" },
+        { "title": "Lecture 10 - Torsion Statically Indeterminate Problems", "path": "assets/pdf/Teaching/COE3001/LectureNotes/Lecture 10 - Torsion Statically Indeterminate Problems.pdf", "meta": "Spring 2026" },
+        { "title": "Lecture 11 - Bending - Shear force and bending moment diagrams", "path": "assets/pdf/Teaching/COE3001/LectureNotes/Lecture 11 - Bending - Shear force and bending moment diagrams.pdf", "meta": "Spring 2026" },
+        { "title": "Lecture 12 - Centroid and moment of inertia", "path": "assets/pdf/Teaching/COE3001/LectureNotes/Lecture 12 - Centroid and moment of inertia.pdf", "meta": "Spring 2026" },
+        { "title": "Lecture 13 - Bending - stress in beams", "path": "assets/pdf/Teaching/COE3001/LectureNotes/Lecture 13 - Bending - stress in beams.pdf", "meta": "Spring 2026" },
+        { "title": "Lecture 14 - Bending - deflection", "path": "assets/pdf/Teaching/COE3001/LectureNotes/Lecture 14 - Bending - deflection.pdf", "meta": "Spring 2026" },
+        { "title": "Lecture 15 - Bending - review", "path": "assets/pdf/Teaching/COE3001/LectureNotes/Lecture 15 - Bending - review.pdf", "meta": "Spring 2026" },
+        { "title": "Lecture 16 - Bending - Problem solving tutorial", "path": "assets/pdf/Teaching/COE3001/LectureNotes/Lecture 16 - Bending - Problem solving tutorial.pdf", "meta": "Spring 2026" },
+        { "title": "Lecture 17 - Bending - Problem solving tutorial 2", "path": "assets/pdf/Teaching/COE3001/LectureNotes/Lecture 17 - Bending - Problem solving tutorial 2.pdf", "meta": "Spring 2026" },
+        { "title": "Lecture 18 - Stress transformation", "path": "assets/pdf/Teaching/COE3001/LectureNotes/Lecture 18 - Stress transformation.pdf", "meta": "Spring 2026" },
+        { "title": "Lecture 19 - Strain transformation", "path": "assets/pdf/Teaching/COE3001/LectureNotes/Lecture 19 - Strain transformation.pdf", "meta": "Spring 2026" },
+        { "title": "Lecture 20 - Generalized Hookes law", "path": "assets/pdf/Teaching/COE3001/LectureNotes/Lecture 20 - Generalized Hookes law.pdf", "meta": "Spring 2026" },
+        { "title": "Lecture 21 - Columns 1", "path": "assets/pdf/Teaching/COE3001/LectureNotes/Lecture 21 - Columns 1.pdf", "meta": "Spring 2026" },
+        { "title": "Lecture 22 - Columns 2", "path": "assets/pdf/Teaching/COE3001/LectureNotes/Lecture 22 - Columns 2.pdf", "meta": "Spring 2026" },
+        { "title": "Lecture 24 - Introduction to COMSOL", "path": "assets/pdf/Teaching/COE3001/LectureNotes/Lecture 24 - Introduction to COMSOL.pdf", "meta": "Spring 2026" },
+        { "title": "Lecture 25 - Energy method", "path": "assets/pdf/Teaching/COE3001/LectureNotes/Lecture 25 - Energy method.pdf", "meta": "Fall 2025" },
+        { "title": "Lecture 26 - Final review", "path": "assets/pdf/Teaching/COE3001/LectureNotes/Lecture 26 - Final review.pdf", "meta": "Spring 2026" }
       ],
       "homework": [
-        { "title": "Homework 1", "path": "assets/pdf/Teaching/COE3001/Assignments/HW1.pdf", "meta": "Spring 2026" }
+        { "title": "Homework 1", "path": "assets/pdf/Teaching/COE3001/Assignments/HW1.pdf", "meta": "Spring 2026" },
+        { "title": "Homework 1 Solution", "path": "assets/pdf/Teaching/COE3001/Assignments/HW1_sol.pdf", "meta": "Spring 2026" },
+        { "title": "Homework 2", "path": "assets/pdf/Teaching/COE3001/Assignments/HW2.pdf", "meta": "Spring 2026" },
+        { "title": "Homework 2 Solution", "path": "assets/pdf/Teaching/COE3001/Assignments/HW2_sol.pdf", "meta": "Spring 2026" },
+        { "title": "Homework 3", "path": "assets/pdf/Teaching/COE3001/Assignments/HW3.pdf", "meta": "Spring 2026" },
+        { "title": "Homework 3 Solution", "path": "assets/pdf/Teaching/COE3001/Assignments/HW3_sol.pdf", "meta": "Spring 2026" },
+        { "title": "Homework 4", "path": "assets/pdf/Teaching/COE3001/Assignments/HW4.pdf", "meta": "Spring 2026" },
+        { "title": "Homework 4 Solution", "path": "assets/pdf/Teaching/COE3001/Assignments/HW4_sol.pdf", "meta": "Spring 2026" },
+        { "title": "Homework 5", "path": "assets/pdf/Teaching/COE3001/Assignments/HW5.pdf", "meta": "Spring 2026" },
+        { "title": "Homework 5 Solution", "path": "assets/pdf/Teaching/COE3001/Assignments/HW5_sol.pdf", "meta": "Spring 2026" },
+        { "title": "Homework 6", "path": "assets/pdf/Teaching/COE3001/Assignments/HW6.pdf", "meta": "Spring 2026" },
+        { "title": "Homework 6 Solution", "path": "assets/pdf/Teaching/COE3001/Assignments/HW6_sol.pdf", "meta": "Spring 2026" }
       ],
       "videos": [
         { "title": "Lecture 1 - Introduction", "url": "https://youtu.be/WbxXjhaYCa4"},
@@ -30,7 +59,13 @@
         { "title": "Lecture 4 - Tension, Compression and Shear", "url": "https://youtu.be/ZRrjbZ53980"},
         { "title": "Lecture 5 - Axial loaded members", "url": "https://youtu.be/KcdTSqF6Cpw"}
       ],
-      "exams": []
+      "exams": [
+        { "title": "Fall 2025 Midterm Exam", "path": "assets/pdf/Teaching/COE3001/Exams/25F_Midterm.pdf", "meta": "Fall 2025" },
+        { "title": "Fall 2025 Final Exam", "path": "assets/pdf/Teaching/COE3001/Exams/25F_Final.pdf", "meta": "Fall 2025" },
+        { "title": "Spring 2026 Midterm Exam", "path": "assets/pdf/Teaching/COE3001/Exams/26S_Midterm.pdf", "meta": "Spring 2026" },
+        { "title": "Spring 2026 Final Practice Exam", "path": "assets/pdf/Teaching/COE3001/Exams/26S_Final_Practice.pdf", "meta": "Spring 2026" },
+        { "title": "Spring 2026 Final Exam", "path": "assets/pdf/Teaching/COE3001/Exams/26S_Final.pdf", "meta": "Spring 2026" }
+      ]
     },
     {
       "id": "COE2001",
