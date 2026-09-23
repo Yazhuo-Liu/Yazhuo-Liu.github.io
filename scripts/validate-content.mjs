@@ -57,11 +57,28 @@ if (resume) {
 
 if (gallery) {
   const categoryIds = new Set((gallery.categories || []).map((category) => category.id));
+  const galleryImages = new Set();
   (gallery.items || []).forEach((item, index) => {
     if (!categoryIds.has(item.category)) errors.push(`gallery.items[${index}].category: unknown category ${item.category}`);
-    checkLocalFile(item.thumbnail, `gallery.items[${index}].thumbnail`);
+    if (Object.hasOwn(item, "thumbnail")) {
+      errors.push(`gallery.items[${index}].thumbnail: derived thumbnails must not be stored in source data`);
+    }
+    requireString(item.alt, `gallery.items[${index}].alt`);
+    requireString(item.caption, `gallery.items[${index}].caption`);
     checkLocalFile(item.image, `gallery.items[${index}].image`);
+    if (galleryImages.has(item.image)) errors.push(`gallery.items[${index}].image: duplicate image ${item.image}`);
+    galleryImages.add(item.image);
   });
+
+  const galleryDirectory = path.join(root, "assets/img/photos");
+  for (const filename of fs.readdirSync(galleryDirectory)) {
+    const relativePath = `assets/img/photos/${filename}`;
+    if (/-thumb\.[^.]+$/i.test(filename)) {
+      errors.push(`${relativePath}: generated thumbnails must not be committed`);
+    } else if (/\.(?:jpe?g|png|webp|avif)$/i.test(filename) && !galleryImages.has(relativePath)) {
+      errors.push(`${relativePath}: gallery source image is not referenced by gallery.json`);
+    }
+  }
 }
 
 if (writings) {
@@ -103,6 +120,23 @@ if (Array.isArray(chapters)) {
     const chapterPath = typeof chapter === "string" ? chapter : chapter.path;
     checkLocalFile(chapterPath, `chapters[${index}]`);
   });
+}
+
+for (const legacySource of [
+  "index.html",
+  "sitemap.xml",
+  "robots.txt",
+  "CNAME",
+  "convert_images.py",
+  "assets/htmls/article.html",
+  "assets/htmls/music.html",
+  "assets/htmls/novel.html",
+  "assets/htmls/pdf_viewer.html",
+  "assets/htmls/teaching.html"
+]) {
+  if (fs.existsSync(path.join(root, legacySource))) {
+    errors.push(`${legacySource}: obsolete hand-maintained deployment source must be removed`);
+  }
 }
 
 if (errors.length > 0) {

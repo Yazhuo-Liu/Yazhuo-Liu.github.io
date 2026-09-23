@@ -132,12 +132,25 @@ const robotsTxt = fs.existsSync(robotsPath) ? fs.readFileSync(robotsPath, "utf8"
 const cname = fs.existsSync(cnamePath) ? fs.readFileSync(cnamePath, "utf8").trim() : "";
 const siteOrigin = indexHtml.match(/<link rel=["']canonical["'] href=["'](https?:\/\/[^/]+)/)?.[1];
 const sitemapUrls = new Set([...sitemapXml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]));
+const galleryData = JSON.parse(fs.readFileSync(path.join(root, "src/_data/gallery.json"), "utf8"));
+const generatedImageDirectory = path.join(output, "assets/img/generated");
+const generatedGalleryImages = fs.existsSync(generatedImageDirectory)
+  ? fs.readdirSync(generatedImageDirectory).filter((filename) => filename.endsWith(".webp"))
+  : [];
 
 if (indexHtml.includes("assets/htmls/")) {
   errors.push("index.html still links to a legacy assets/htmls page");
 }
 if (/fetch\(["']assets\/music\/SongsList\.json["']\)/.test(indexHtml)) {
   errors.push("index.html still loads the homepage song list at runtime");
+}
+if (generatedGalleryImages.length !== galleryData.items.length) {
+  errors.push(
+    `generated ${generatedGalleryImages.length} gallery thumbnails; expected ${galleryData.items.length}`
+  );
+}
+if ([...indexHtml.matchAll(/<img[^>]+src=["']\/assets\/img\/generated\//g)].length !== galleryData.items.length) {
+  errors.push("index.html does not reference exactly one generated thumbnail per gallery item");
 }
 for (const obsoletePattern of ["assets/htmls/", "?src=", "?course=", "COE2001"]) {
   if (sitemapXml.includes(obsoletePattern)) {

@@ -1,5 +1,0 @@
-User-agent: *
-Allow: /
-Host: yazhuoliu.com
-
-Sitemap: https://yazhuoliu.com/sitemap.xml

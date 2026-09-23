@@ -1,6 +1,6 @@
 # Teaching course data
 
-The teaching page (`assets/htmls/teaching.html`) is a **template** that reads course data from this folder and renders one page per course.
+Eleventy reads the course data in this folder at build time and generates `/teaching/` plus one clean page per published course.
 
 ## Data file
 
@@ -42,12 +42,12 @@ The teaching page (`assets/htmls/teaching.html`) is a **template** that reads co
 - **Paths** are relative to the **site root** (e.g. `assets/pdf/Teaching/...`). Put your syllabus, slides, homework, and exam PDFs in this folder and reference them in `CoursesList.json`.
 - **syllabus** is an array of `{ "title": "...", "path": "...", "meta": "..." }` so you can list multiple versions (e.g. Fall 2025, Spring 2026). Each item appears as a separate card.
 - **videos** is an array of `{ "title": "...", "url": "https://www.youtube.com/watch?v=...", "meta": "optional" }`. Use the full YouTube URL (watch or youtu.be). Clicking opens the video in a new tab.
-- **id** is used in the URL: `teaching.html?course=COE3001` shows that course.
-- If there is only one course, opening `teaching.html` (no `?course=`) shows it. If there are multiple courses, it shows a list to choose from.
+- **id** is converted to lowercase for the clean URL: `COE3001` is generated at `/teaching/coe3001/`.
+- Set `"draft": true` to keep a course out of the generated site and sitemap.
 
 ## Adding a new course
 
 1. Open `CoursesList.json` in this folder.
 2. Add a new object to the `courses` array with the same fields (id, name, code, institution, instructor, term, syllabus, slides, videos, homework, exams).
 3. Put your PDFs under `assets/pdf/Teaching/` (or a subfolder) and set each `path` in the JSON to that path from the site root (e.g. `assets/pdf/Teaching/OtherCourse_Week1.pdf`).
-4. Open `teaching.html?course=YOUR_COURSE_ID` or, if it’s the only course, just `teaching.html`.
+4. Run `npm run check` from the repository root and open `/teaching/your_course_id/` in the generated site.

@@ -7,84 +7,72 @@
   "items": [
     {
       "category": "group",
-      "thumbnail": "assets/img/photos/PhD Advisor-thumb.webp",
       "image": "assets/img/photos/PhD Advisor.webp",
       "alt": "PhD Advisor",
       "caption": "With my Ph.D. advisor, Prof. Ting Zhu, at Georgia Tech"
     },
     {
       "category": "group",
-      "thumbnail": "assets/img/photos/Undergraduate Advisor-thumb.webp",
       "image": "assets/img/photos/Undergraduate Advisor.webp",
       "alt": "Undergraduate Advisor",
       "caption": "With my undergraduate advisor, Prof. Wei Hong, at SUSTech"
     },
     {
       "category": "group",
-      "thumbnail": "assets/img/photos/Zhu Group-thumb.webp",
       "image": "assets/img/photos/Zhu Group.webp",
       "alt": "Zhu Group",
       "caption": "Zhu Group at Georgia Tech"
     },
     {
       "category": "academic",
-      "thumbnail": "assets/img/photos/David McDowell-thumb.webp",
       "image": "assets/img/photos/David McDowell.webp",
       "alt": "Prof. David McDowell",
       "caption": "With Prof. David L. McDowell at the Symposium on Advances in Multiscale Mechanics."
     },
     {
       "category": "academic",
-      "thumbnail": "assets/img/photos/Qikun Xue-thumb.webp",
       "image": "assets/img/photos/Qikun Xue.webp",
       "alt": "Prof. Qikun Xue",
       "caption": "Meeting Academician Qikun Xue (Winner of China's Highest Science and Technology Award 2023)."
     },
     {
       "category": "academic",
-      "thumbnail": "assets/img/photos/Yonggang Huang-thumb.webp",
       "image": "assets/img/photos/Yonggang Huang.webp",
       "alt": "Prof. Yonggang Huang",
       "caption": "With Prof. Yonggang Huang (Northwestern Univ.), Fellow of NAE/NAS/AAAS."
     },
     {
       "category": "academic",
-      "thumbnail": "assets/img/photos/Arruda-Boyce-thumb.webp",
       "image": "assets/img/photos/Arruda-Boyce.webp",
       "alt": "Profs. Ellen Arruda and Mary Boyce",
       "caption": "With Profs. Ellen M. Arruda and Mary C. Boyce (Originators of the Arruda-Boyce model)."
     },
     {
       "category": "academic",
-      "thumbnail": "assets/img/photos/David Srolovitz-thumb.webp",
       "image": "assets/img/photos/David Srolovitz.webp",
       "alt": "Prof. David Srolovitz",
       "caption": "Meeting Prof. David Srolovitz (HKU), Member of NAE."
     },
     {
       "category": "academic",
-      "thumbnail": "assets/img/photos/William Curtin-thumb.webp",
       "image": "assets/img/photos/William Curtin.webp",
       "alt": "Prof. William Curtin",
       "caption": "With Prof. William A. Curtin (EPFL)."
     },
     {
       "category": "academic",
-      "thumbnail": "assets/img/photos/Anthony Rollett-thumb.webp",
       "image": "assets/img/photos/Anthony Rollett.webp",
       "alt": "Prof. Anthony Rollett",
       "caption": "With Prof. Anthony Rollett (CMU)."
     },
     {
       "category": "life",
-      "thumbnail": "assets/img/photos/Family-thumb.webp",
       "image": "assets/img/photos/Family.webp",
       "alt": "Family",
       "caption": "My Family"
     },
     {
       "category": "life",
-      "thumbnail": "assets/img/photos/racing-thumb.webp",
       "image": "assets/img/photos/racing.webp",
       "alt": "Racing",
       "caption": "Passion for Racing"

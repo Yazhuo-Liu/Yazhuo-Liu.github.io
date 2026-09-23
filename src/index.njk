@@ -171,7 +171,7 @@ eleventyComputed:
         {% for item in gallery.items %}
         <div class="col-lg-4 col-md-6 portfolio-item filter-{{ item.category }}">
           <div class="portfolio-wrap">
-            <img src="/{{ item.thumbnail }}" class="img-fluid" alt="{{ item.alt }}" width="399" height="266" decoding="async">
+            {% galleryThumbnail item.image, item.alt %}
             <div class="portfolio-links">
               <a href="/{{ item.image }}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="{{ item.caption }}" aria-label="View {{ item.alt }}"><i class="bx bx-plus"></i></a>
             </div>

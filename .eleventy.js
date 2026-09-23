@@ -1,6 +1,7 @@
 const fs = require("node:fs");
 const path = require("node:path");
 const MarkdownIt = require("markdown-it");
+const { default: Image } = require("@11ty/eleventy-img");
 
 module.exports = function (eleventyConfig) {
   const markdown = new MarkdownIt({
@@ -9,8 +10,28 @@ module.exports = function (eleventyConfig) {
     typographer: false
   });
 
-  for (const directory of ["css", "docs", "img", "js", "music", "pdf", "vendor"]) {
+  for (const directory of ["css", "docs", "img", "js", "music", "pdf"]) {
     eleventyConfig.addPassthroughCopy(`assets/${directory}`);
+  }
+  for (const vendorAsset of [
+    "aos/aos.css",
+    "aos/aos.js",
+    "bootstrap/css/bootstrap.min.css",
+    "bootstrap/js/bootstrap.bundle.min.js",
+    "bootstrap-icons/bootstrap-icons.css",
+    "bootstrap-icons/fonts",
+    "boxicons/css/boxicons.min.css",
+    "boxicons/fonts",
+    "glightbox/css/glightbox.min.css",
+    "glightbox/js/glightbox.min.js",
+    "isotope-layout/isotope.pkgd.min.js",
+    "purecounter/purecounter_vanilla.js",
+    "swiper/swiper-bundle.min.css",
+    "swiper/swiper-bundle.min.js",
+    "typed.js/typed.min.js",
+    "waypoints/noframework.waypoints.js"
+  ]) {
+    eleventyConfig.addPassthroughCopy(`assets/vendor/${vendorAsset}`);
   }
   eleventyConfig.addPassthroughCopy({ "src/.nojekyll": ".nojekyll" });
 
@@ -34,6 +55,23 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter("songManifest", (songs) => JSON.stringify(
     songs.map(({ title, audio, lyrics, description }) => ({ title, audio, lyrics, description }))
   ).replace(/</g, "\\u003c"));
+
+  eleventyConfig.addShortcode("galleryThumbnail", async (src, alt) => Image(src, {
+    widths: [399],
+    formats: ["webp"],
+    outputDir: "./_site/assets/img/generated/",
+    urlPath: "/assets/img/generated/",
+    fixOrientation: true,
+    sharpWebpOptions: { quality: 76 },
+    returnType: "html",
+    htmlOptions: {
+      imgAttributes: {
+        alt,
+        class: "img-fluid",
+        decoding: "async"
+      }
+    }
+  }));
 
   return {
     dir: {
