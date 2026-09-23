@@ -1,0 +1,120 @@
+.music-main {
+  min-height: 100vh;
+  padding: 40px 30px 80px;
+  background: linear-gradient(180deg, #f6f9fd, #fff 220px);
+}
+
+.music-shell {
+  width: min(960px, 100%);
+  margin: 0 auto;
+  padding: 36px;
+  background: #fff;
+  border: 1px solid rgba(20, 157, 221, 0.1);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(31, 56, 88, 0.08);
+}
+
+.song-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 28px;
+}
+
+.song-card {
+  width: 100%;
+  padding: 20px 22px;
+  color: inherit;
+  text-align: left;
+  background: #fff;
+  border: 1px solid #e5edf3;
+  border-radius: 12px;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.song-card:hover,
+.song-card.active {
+  border-color: #149ddd;
+  box-shadow: 0 6px 20px rgba(20, 157, 221, 0.13);
+  transform: translateY(-2px);
+}
+
+.song-card h2 {
+  color: #173b6c;
+  font-size: 1.08rem;
+  font-weight: 650;
+  margin: 0 0 8px;
+}
+
+.song-card p {
+  color: #5a6c7d;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  margin: 0;
+}
+
+.player-section {
+  display: none;
+  margin-top: 34px;
+  padding-top: 28px;
+  border-top: 1px solid #e5edf3;
+}
+
+.player-section.visible { display: block; }
+
+.current-title {
+  color: #173b6c;
+  font-size: 1.4rem;
+  font-weight: 650;
+}
+
+.audio-controls audio {
+  width: 100%;
+  margin: 12px 0 20px;
+}
+
+.lyrics-box {
+  max-height: 380px;
+  padding: 20px;
+  overflow-y: auto;
+  font-size: 1.03rem;
+  line-height: 1.85;
+  white-space: pre-wrap;
+  background: #f7fafc;
+  border: 1px solid #e5edf3;
+  border-radius: 10px;
+}
+
+.lrc-line {
+  padding: 3px 0;
+  transition: color 0.15s ease;
+}
+
+.lrc-line.active {
+  color: #149ddd;
+  font-weight: 650;
+}
+
+.story-section {
+  margin-top: 22px;
+  padding: 20px 22px;
+  color: #374151;
+  line-height: 1.75;
+  background: #f7fafc;
+  border-left: 4px solid #149ddd;
+  border-radius: 10px;
+}
+
+.story-section h1,
+.story-section h2,
+.story-section h3 {
+  color: #173b6c;
+  font-size: 1.05rem;
+  margin: 1em 0 0.4em;
+}
+
+@media (max-width: 767px) {
+  .music-main { padding: 22px 14px 60px; }
+  .music-shell { padding: 24px 20px; }
+  .song-grid { grid-template-columns: 1fr; }
+}

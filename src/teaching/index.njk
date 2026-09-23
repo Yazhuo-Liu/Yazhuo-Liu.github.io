@@ -1,0 +1,31 @@
+---
+layout: layouts/base.njk
+permalink: teaching/index.html
+activeNav: writings
+bodyClass: teaching-page
+eleventyComputed:
+  title: "Teaching & Course Materials | {{ site.name }}"
+  description: "Teaching materials by {{ site.name }}, including syllabi, lecture slides, videos, homework, exams, and course resources."
+  keywords: "{{ site.name }} teaching, course materials, mechanics, {{ site.institutionShort }}"
+pageStyles:
+  - /assets/css/teaching.css
+---
+<main id="main" class="teaching-main">
+  <div class="teaching-container">
+    <div class="content-toolbar">
+      <a href="/#writings" class="btn btn-sm btn-outline-primary rounded-pill"><i class="bi bi-arrow-left"></i> Back to Home</a>
+    </div>
+    <header class="teaching-hero">
+      <h1>Teaching & Course Materials</h1>
+      <p>Course resources, lecture notes, assignments, videos, and exams.</p>
+    </header>
+    <div class="course-grid">
+      {% for course in courses %}
+      <a class="resource-card" href="/teaching/{{ course.slug }}/">
+        <h3>{{ course.name }}</h3>
+        <span class="meta">{{ course.code }} · {{ course.institution }} · {{ course.term }}</span>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</main>

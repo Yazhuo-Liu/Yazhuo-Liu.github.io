@@ -1,0 +1,76 @@
+{
+  "teaching": [
+    {
+      "title": "COE 3001 – Mechanics of Deformable Bodies",
+      "description": "Syllabus, lecture slides, homework, and exams from my teaching at Georgia Tech.",
+      "href": "teaching/coe3001/",
+      "icon": "bx bx-chalkboard"
+    }
+  ],
+  "items": [
+    {
+      "title": "三年三十天 (3 years 30 days)",
+      "description": "一部关于青春、喜欢与遗憾的校园恋爱小说 (a novel about youth, love, and regrets)",
+      "href": "novel/",
+      "source": "assets/docs/novel/A_index.md",
+      "type": "novel",
+      "slug": "three-years-thirty-days",
+      "icon": "bx bx-book"
+    },
+    {
+      "title": "Crystal Plasticity Framework",
+      "description": "A comprehensive framework for FCC crystal plasticity simulations using VUMAT.",
+      "href": "documents/crystal-plasticity-framework/",
+      "source": "assets/docs/Crystal_Plasticity_FCC.pdf",
+      "type": "document",
+      "slug": "crystal-plasticity-framework",
+      "icon": "bi bi-journal-text",
+      "delay": 100
+    },
+    {
+      "title": "Solving Cahn-Hilliard equation using FFT",
+      "description": "A detailed exploration and equation derivation of solving the Cahn-Hilliard equation using Fast Fourier Transform techniques.",
+      "href": "articles/cahn-hilliard-fft/",
+      "source": "assets/docs/Cahn-Hilliard_FFT.md",
+      "type": "article",
+      "slug": "cahn-hilliard-fft",
+      "icon": "bi bi-journal-text"
+    },
+    {
+      "title": "Install LAMMPS with Python using conda",
+      "description": "Build LAMMPS with Python (conda) and optional packages such as REPLICA and MEAM.",
+      "href": "articles/install-lammps-python/",
+      "source": "assets/docs/Install_lammps-python.md",
+      "type": "article",
+      "slug": "install-lammps-python",
+      "icon": "bi bi-journal-text"
+    },
+    {
+      "title": "Install Abaqus on Ubuntu",
+      "description": "Tutorial for installing Abaqus 2023 and Intel Fortran on Ubuntu 22.04, including user subroutine linking.",
+      "href": "articles/install-abaqus-ubuntu/",
+      "source": "assets/docs/Install_abaqus_on_ubuntu.md",
+      "type": "article",
+      "slug": "install-abaqus-ubuntu",
+      "icon": "bi bi-journal-text"
+    },
+    {
+      "title": "Install Abaqus with Fortran on Windows",
+      "description": "Tutorial for installing Abaqus 2023 with Visual Studio and Intel oneAPI HPC toolkit on Windows.",
+      "href": "articles/install-abaqus-fortran-windows/",
+      "source": "assets/docs/Install-abaqus-with-fortran-on-windows.md",
+      "type": "article",
+      "slug": "install-abaqus-fortran-windows",
+      "icon": "bi bi-journal-text"
+    },
+    {
+      "title": "Install Gmsh and Neper on Ubuntu",
+      "description": "Tutorial for building Gmsh and Neper from source code on Ubuntu.",
+      "href": "articles/install-gmsh-neper/",
+      "source": "assets/docs/Install_Gmsh_Neper.md",
+      "type": "article",
+      "slug": "install-gmsh-neper",
+      "icon": "bi bi-journal-text"
+    }
+  ]
+}

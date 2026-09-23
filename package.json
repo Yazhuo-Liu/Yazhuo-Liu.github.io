@@ -1,0 +1,20 @@
+{
+  "name": "yazhuo-liu-personal-website",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Personal website of Yazhuo Liu, built as a static site with Eleventy.",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "eleventy",
+    "start": "eleventy --serve",
+    "validate": "node scripts/validate-content.mjs",
+    "validate:build": "node scripts/validate-build.mjs",
+    "check": "npm run validate && npm run build && npm run validate:build"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "3.1.6",
+    "markdown-it": "14.3.2"
+  }
+}

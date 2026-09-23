@@ -529,7 +529,7 @@
       fetch(BASE + 'assets/pdf/Teaching/CoursesList.json')
         .then(function(r) { return r.ok ? r.json() : Promise.reject(new Error('Failed to load')); })
         .then(function(data) {
-          var courses = (data && data.courses) ? data.courses : [];
+          var courses = (data && data.courses) ? data.courses.filter(function(c) { return !c.draft; }) : [];
           if (courses.length === 0) {
             app.innerHTML = '<div class="teaching-error">No courses defined. Edit <code>assets/pdf/Teaching/CoursesList.json</code> to add courses.</div>';
             return;

@@ -1,0 +1,81 @@
+---
+layout: layouts/base.njk
+pagination:
+  data: courses
+  size: 1
+  alias: course
+permalink: "teaching/{{ course.slug }}/index.html"
+eleventyComputed:
+  title: "{{ course.name }} | Teaching | {{ site.name }}"
+  contentTitle: "{{ course.name }}"
+  description: "Course materials for {{ course.code }} – {{ course.name }}, taught by {{ course.instructor }} at {{ course.institution }}."
+  keywords: "{{ site.name }} teaching, {{ site.institutionShort }}, mechanics, lecture notes, course materials"
+activeNav: writings
+bodyClass: teaching-page
+schemaType: Course
+pageStyles:
+  - /assets/css/teaching.css
+pageScripts:
+  - /assets/js/teaching.js
+---
+<main id="main" class="teaching-main">
+  <div class="teaching-container">
+    <header class="teaching-hero">
+      <h1>{{ course.name }}</h1>
+      <p>{{ course.code }} · {{ course.institution }}</p>
+      <p>Instructor: {{ course.instructor }} · {{ course.term }}</p>
+    </header>
+
+    <div class="content-toolbar">
+      <a href="/teaching/" class="btn btn-sm btn-outline-primary rounded-pill"><i class="bi bi-arrow-left"></i> All Courses</a>
+    </div>
+
+    <nav class="teaching-nav-pills" aria-label="Course sections">
+      {% if course.syllabus.length %}<a href="#syllabus" class="active">Syllabus</a>{% endif %}
+      {% if course.slides.length %}<a href="#slides">Lecture Slides</a>{% endif %}
+      {% if course.videos.length %}<a href="#videos">Videos</a>{% endif %}
+      {% if course.homework.length %}<a href="#homework">Homework</a>{% endif %}
+      {% if course.exams.length %}<a href="#exams">Exams</a>{% endif %}
+    </nav>
+
+    {% if course.syllabus.length %}
+    <section id="syllabus" class="teaching-section">
+      <h2><span class="section-icon"><i class="bx bx-file-blank"></i></span> Syllabus</h2>
+      <p class="section-desc">Course overview, learning objectives, policies, and schedule.</p>
+      {% for resource in course.syllabus %}<a href="/{{ resource.path }}" class="resource-card" target="_blank" rel="noopener noreferrer"><h3>{{ resource.title }}</h3><span class="meta">{{ resource.meta or 'PDF' }}</span></a>{% endfor %}
+    </section>
+    {% endif %}
+
+    {% if course.slides.length %}
+    <section id="slides" class="teaching-section">
+      <h2><span class="section-icon"><i class="bx bx-slideshow"></i></span> Lecture Slides</h2>
+      <p class="section-desc">Slides and lecture notes used in class.</p>
+      {% for resource in course.slides %}<a href="/{{ resource.path }}" class="resource-card" target="_blank" rel="noopener noreferrer"><h3>{{ resource.title }}</h3><span class="meta">{{ resource.meta or 'PDF' }}</span></a>{% endfor %}
+    </section>
+    {% endif %}
+
+    {% if course.videos.length %}
+    <section id="videos" class="teaching-section">
+      <h2><span class="section-icon"><i class="bx bxl-youtube"></i></span> Videos</h2>
+      <p class="section-desc">Lecture recordings and other course videos.</p>
+      {% for resource in course.videos %}<a href="{{ resource.url }}" class="resource-card" target="_blank" rel="noopener noreferrer"><h3>{{ resource.title }}</h3>{% if resource.meta %}<span class="meta">{{ resource.meta }}</span>{% endif %}</a>{% endfor %}
+    </section>
+    {% endif %}
+
+    {% if course.homework.length %}
+    <section id="homework" class="teaching-section">
+      <h2><span class="section-icon"><i class="bx bx-edit-alt"></i></span> Homework</h2>
+      <p class="section-desc">Problem sets, assignments, and solutions.</p>
+      {% for resource in course.homework %}<a href="/{{ resource.path }}" class="resource-card" target="_blank" rel="noopener noreferrer"><h3>{{ resource.title }}</h3><span class="meta">{{ resource.meta or 'PDF' }}</span></a>{% endfor %}
+    </section>
+    {% endif %}
+
+    {% if course.exams.length %}
+    <section id="exams" class="teaching-section">
+      <h2><span class="section-icon"><i class="bx bx-clipboard"></i></span> Exams</h2>
+      <p class="section-desc">Midterm and final examination materials.</p>
+      {% for resource in course.exams %}<a href="/{{ resource.path }}" class="resource-card" target="_blank" rel="noopener noreferrer"><h3>{{ resource.title }}</h3><span class="meta">{{ resource.meta or 'PDF' }}</span></a>{% endfor %}
+    </section>
+    {% endif %}
+  </div>
+</main>

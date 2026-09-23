@@ -8,7 +8,7 @@ Place your own songs here and add their entries in **`assets/music/SongsList.jso
 - **Lyrics**:
   - **Plain text**: `.txt` file, one line per phrase; the full text is shown while playing.
   - **LRC with timestamps**: `.lrc` file in the form `[mm:ss.xx] lyrics`; the current line is highlighted as the song plays.
-- **Story (optional)**: A `.md` file with the **same base name** as the audio (e.g. `song1.md` for `song1.mp3`) is shown above the player as “歌词背后的故事”. You can write the story behind the lyrics in Markdown.
+- **Story**: A `.md` file with the **same base name** as the audio (for example, `song1.md` for `song1.mp3`) is rendered into the page at build time as “歌词背后的故事”.
 
 ## Adding a Song
 
@@ -23,5 +23,5 @@ Edit **`assets/music/SongsList.json`** and add an object to the array, for examp
 }
 ```
 
-- `title`, `audio` are required. Use `""` for `lyrics` if you have no lyrics file.
-- Save and refresh the music page to see the new song and play it with lyrics.
+- `title`, `audio`, `lyrics`, and the matching story file are validated during the build.
+- Run `npm run check` from the repository root. The new song appears at `/music/` after the site is rebuilt.

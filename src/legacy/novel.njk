@@ -1,0 +1,24 @@
+---
+permalink: assets/htmls/novel.html
+eleventyExcludeFromCollections: true
+---
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, follow">
+  <title>页面已迁移 | 三年三十天</title>
+</head>
+<body>
+  <p>小说阅读页已迁移。<a href="/novel/">打开目录</a>。</p>
+  <script>
+    const routes = {
+      {% for chapter in novel %}{{ chapter.path | json | safe }}: {{ chapter.url | json | safe }}{% if not loop.last %},{% endif %}
+      {% endfor %}
+    };
+    const source = new URLSearchParams(window.location.search).get("src");
+    window.location.replace(routes[source] || "/novel/");
+  </script>
+</body>
+</html>

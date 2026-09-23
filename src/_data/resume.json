@@ -1,0 +1,203 @@
+{
+  "updatedAt": "2026-09-15",
+  "education": [
+    {
+      "institution": "Georgia Institute of Technology",
+      "location": "Atlanta, GA",
+      "period": "Jan. 2022 – Present",
+      "degree": "Ph.D. in Mechanical Engineering",
+      "description": "Focusing on mechanical behavior of metals and solid-state electrolytes at the nano- to macro-scale."
+    },
+    {
+      "institution": "Southern University of Science and Technology",
+      "location": "Shenzhen, China",
+      "period": "Aug. 2017 – Jun. 2021",
+      "degree": "B.Sc. in Theoretical and Applied Mechanics",
+      "description": "Focusing on fracture mechanics of soft materials."
+    }
+  ],
+  "experience": [
+    {
+      "institution": "Georgia Institute of Technology",
+      "location": "Atlanta, GA",
+      "roles": [
+        {
+          "period": "Aug. 2025 – May 2026",
+          "title": "Instructor",
+          "description": "COE 3001 – Mechanics of Deformable Bodies"
+        },
+        {
+          "period": "Jan. 2022 – Present",
+          "title": "Graduate Research Assistant",
+          "description": "Advisor: Prof. Ting Zhu",
+          "url": "https://www.me.gatech.edu/faculty/zhu-1"
+        }
+      ]
+    },
+    {
+      "institution": "Southern University of Science and Technology",
+      "location": "Shenzhen, China",
+      "roles": [
+        {
+          "period": "Jun. 2021 – Dec. 2021",
+          "title": "Research Assistant",
+          "description": "Supervisor: Prof. Wei Hong",
+          "url": "https://faculty.sustech.edu.cn/hongw/en/"
+        },
+        {
+          "period": "Jan. 2019 – Jun. 2021",
+          "title": "Student Teaching Assistant",
+          "description": "Supervisor: Prof. Yan Wei",
+          "url": "https://faculty.sustech.edu.cn/weiy/en/"
+        }
+      ]
+    },
+    {
+      "institution": "Cornell University",
+      "location": "Ithaca, NY",
+      "roles": [
+        {
+          "period": "Jun. 2020 – Sep. 2020",
+          "title": "Summer Research Intern",
+          "description": "Supervisor: Prof. Herbert Hui",
+          "url": "https://www.engineering.cornell.edu/people/herbert-hui/"
+        }
+      ]
+    }
+  ],
+  "publications": [
+    {
+      "authors": [
+        { "name": "K. Ding†" },
+        { "name": "Y. Liu†", "self": true },
+        { "name": "Y. Zhang" },
+        { "name": "L. Wang" },
+        { "name": "X. Han" },
+        { "name": "T. Zhu*" }
+      ],
+      "title": "Misfit-dislocation hierarchy governs sliding of asymmetric non-CSL grain boundaries",
+      "url": "https://arxiv.org/abs/2609.14673",
+      "citation": "Acta Materialia (in progress)."
+    },
+    {
+      "authors": [
+        { "name": "Y. Liu", "self": true },
+        { "name": "Y. Zhang" },
+        { "name": "K. Ding" },
+        { "name": "Y. Yang" },
+        { "name": "A. Barrios" },
+        { "name": "X. Maeder" },
+        { "name": "O. Pierron" },
+        { "name": "X. Liu*" },
+        { "name": "T. Zhu*" }
+      ],
+      "title": "Phase-field modeling of elastically driven abnormal grain growth",
+      "url": "https://arxiv.org/abs/2607.05298",
+      "citation": "Journal of the Mechanics and Physics of Solids (in progress)."
+    },
+    {
+      "authors": [
+        { "name": "Y. Yang" },
+        { "name": "A. Barrios" },
+        { "name": "Q. Li" },
+        { "name": "Y. Liu", "self": true },
+        { "name": "M. Jain" },
+        { "name": "V. Meyers" },
+        { "name": "T. Zhu" },
+        { "name": "B. L. Boyce" },
+        { "name": "O. Pierron*" }
+      ],
+      "title": "Elucidating the origins of grain growth in the high cycle fatigue degradation of Au thin films",
+      "url": "assets/pdf/Publications/Acta26_Yang.pdf",
+      "citation": "Acta Materialia 313, 122301 (2026)."
+    },
+    {
+      "authors": [
+        { "name": "Y. Yang*" },
+        { "name": "Y. Liu", "self": true },
+        { "name": "T. Zhu" },
+        { "name": "O. Pierron" },
+        { "name": "J. Kacher" }
+      ],
+      "title": "Decoupling the effects of temperature and stress on grain growth in nanocrystalline Ni films",
+      "url": "assets/pdf/Publications/Acta26_Yang2.pdf",
+      "citation": "Acta Materialia 313, 122305 (2026)."
+    },
+    {
+      "authors": [
+        { "name": "Y. Liu", "self": true },
+        { "name": "K. Ding" },
+        { "name": "A. J. Birnbaum" },
+        { "name": "A. Rawlings" },
+        { "name": "A. Sun" },
+        { "name": "W. Chen" },
+        { "name": "D. L. McDowell" },
+        { "name": "J. G. Michopoulos" },
+        { "name": "T. Zhu*" }
+      ],
+      "title": "Surface plasticity in laser scanning of metals",
+      "url": "assets/pdf/Publications/Acta26.pdf",
+      "citation": "Acta Materialia 302, 121667 (2026)."
+    },
+    {
+      "authors": [
+        { "name": "Y. Liu", "self": true },
+        { "name": "X. Feng" },
+        { "name": "W. Hong*" }
+      ],
+      "title": "Non-affine dissipation in polymer fracture",
+      "url": "assets/pdf/Publications/EML23.pdf",
+      "citation": "Extreme Mechanics Letters 59, 101955 (2023)."
+    },
+    {
+      "authors": [
+        { "name": "Y. Liu", "self": true },
+        { "name": "C.-Y. Hui" },
+        { "name": "W. Hong*" }
+      ],
+      "title": "A clean cut",
+      "url": "assets/pdf/Publications/EML21.pdf",
+      "citation": "Extreme Mechanics Letters 46, 101343 (2021)."
+    }
+  ],
+  "patents": [
+    {
+      "number": "CN202020206173.X",
+      "title": "Logistics Unmanned Aerial Vehicle",
+      "date": "October 27, 2020",
+      "certificate": "assets/img/Patent-Logistics Unmanned Aerial Vehicle.webp"
+    }
+  ],
+  "awards": [
+    "Summa Cum Laude Graduates (Top 10 Outstanding Graduates), SUSTech, 2021",
+    "Excellent Student, First Class, SUSTech, 2018, 2019, 2020",
+    "CSTAM Finite Element Modeling Competition, Third Prize, 2019",
+    "COMAC 3D Printing Structure Optimization Competition, Third Prize, 2018"
+  ],
+  "presentations": [
+    {
+      "event": "TMS 2024 Annual Meeting & Exhibition",
+      "location": "Orlando, FL",
+      "type": "Oral presentation",
+      "title": "Crystal plasticity modeling of thermo-elastic-plastic deformation during laser-based additive manufacturing"
+    },
+    {
+      "event": "2025 SES Annual Technical Meeting",
+      "location": "Atlanta, GA",
+      "type": "Oral presentation",
+      "title": "Abnormal grain growth under cyclic loading"
+    },
+    {
+      "event": "2025 Physical Metallurgy Gordon Research Conference",
+      "location": "Atlanta, GA",
+      "type": "Poster",
+      "title": "Driving force of abnormal grain growth"
+    },
+    {
+      "event": "TMS 2026 Annual Meeting & Exhibition",
+      "location": "Atlanta, GA",
+      "type": "Oral presentation",
+      "title": "Abnormal Grain Growth under Cyclic Loading"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+---
+permalink: assets/htmls/article.html
+eleventyExcludeFromCollections: true
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, follow">
+  <title>Article moved | {{ site.name }}</title>
+</head>
+<body>
+  <p>This article has moved. <a href="/articles/">Open the article index</a>.</p>
+  <script>
+    const routes = {
+      {% for article in articles %}{{ article.source | json | safe }}: {{ ("/articles/" + article.slug + "/") | json | safe }}{% if not loop.last %},{% endif %}
+      {% endfor %}
+    };
+    const source = new URLSearchParams(window.location.search).get("src");
+    window.location.replace(routes[source] || "/articles/");
+  </script>
+</body>
+</html>

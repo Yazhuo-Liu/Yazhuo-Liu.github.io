@@ -69,6 +69,7 @@
     },
     {
       "id": "COE2001",
+      "draft": true,
       "name": "Statics",
       "code": "COE 2001",
       "institution": "Georgia Institute of Technology",

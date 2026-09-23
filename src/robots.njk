@@ -1,0 +1,9 @@
+---
+permalink: robots.txt
+eleventyExcludeFromCollections: true
+---
+User-agent: *
+Allow: /
+Host: {{ site.url | replace("https://", "") | replace("http://", "") }}
+
+Sitemap: {{ site.url }}/sitemap.xml

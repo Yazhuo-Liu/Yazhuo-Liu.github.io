@@ -5,6 +5,22 @@
 * License: https://bootstrapmade.com/license/
 */
 
+/* Data-driven content helpers */
+.content-group-title {
+  color: #173b6c;
+}
+
+.content-group-title a,
+.content-card-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.music-tagline-zh {
+  color: #6c757d;
+  font-size: 0.9em;
+}
+
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
@@ -310,8 +326,23 @@ section {
   overflow: hidden;
 }
 
+.content-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 26px;
+}
+
 .section-bg {
   background: #f5f8fd;
+}
+
+@media (max-width: 767px) {
+  .content-toolbar {
+    align-items: flex-start;
+    flex-direction: column;
+  }
 }
 
 .section-title {

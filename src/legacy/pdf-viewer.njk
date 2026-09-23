@@ -1,0 +1,24 @@
+---
+permalink: assets/htmls/pdf_viewer.html
+eleventyExcludeFromCollections: true
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, follow">
+  <title>Document moved | {{ site.name }}</title>
+</head>
+<body>
+  <p>This document has moved. <a href="/">Return to the homepage</a>.</p>
+  <script>
+    const routes = {
+      {% for document in documents %}{{ document.source | json | safe }}: {{ ("/documents/" + document.slug + "/") | json | safe }}{% if not loop.last %},{% endif %}
+      {% endfor %}
+    };
+    const source = new URLSearchParams(window.location.search).get("src");
+    window.location.replace(routes[source] || "/#writings");
+  </script>
+</body>
+</html>

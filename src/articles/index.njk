@@ -1,0 +1,30 @@
+---
+layout: layouts/base.njk
+permalink: articles/index.html
+activeNav: writings
+bodyClass: content-page
+eleventyComputed:
+  title: "Articles & Technical Notes | {{ site.name }}"
+  description: "Technical articles and notes by {{ site.name }} on computational mechanics, materials modeling, simulation software, and scientific computing."
+  keywords: "{{ site.name }} articles, computational mechanics, materials modeling, crystal plasticity, simulation tutorials"
+pageStyles:
+  - /assets/css/content-pages.css
+---
+<main id="main" class="content-main">
+  <div class="content-shell">
+    <div class="content-toolbar">
+      <a href="/#writings" class="btn btn-sm btn-outline-primary rounded-pill"><i class="bi bi-arrow-left"></i> Back to Home</a>
+    </div>
+    <span class="content-eyebrow">Research & Engineering</span>
+    <h1 class="content-page-title">Articles & Technical Notes</h1>
+    <p class="content-page-description">Tutorials, derivations, and practical notes on computational mechanics, materials science, and scientific software.</p>
+    <div class="content-list">
+      {% for article in articles %}
+      <a class="content-list-card" href="/articles/{{ article.slug }}/">
+        <h2>{{ article.title }}</h2>
+        <p>{{ article.description }}</p>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</main>

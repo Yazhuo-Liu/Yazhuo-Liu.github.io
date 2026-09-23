@@ -1,0 +1,236 @@
+.content-main {
+  min-height: 100vh;
+  padding: 40px 30px 80px;
+  background: linear-gradient(180deg, #f6f9fd 0, #fff 220px);
+}
+
+.content-shell {
+  width: min(1080px, 100%);
+  margin: 0 auto;
+  padding: 36px 40px;
+  background: #fff;
+  border: 1px solid rgba(20, 157, 221, 0.1);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(31, 56, 88, 0.08);
+}
+
+.content-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 26px;
+}
+
+.content-eyebrow {
+  color: #149ddd;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.content-page-title {
+  color: #173b6c;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 700;
+  margin: 8px 0 12px;
+}
+
+.content-page-description {
+  max-width: 760px;
+  color: #5a6c7d;
+  line-height: 1.7;
+}
+
+.content-list {
+  display: grid;
+  gap: 16px;
+  margin-top: 30px;
+}
+
+.content-list-card {
+  display: block;
+  padding: 22px 24px;
+  color: inherit;
+  text-decoration: none;
+  border: 1px solid #e4ecf3;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #fff, #f8fbfe);
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.content-list-card:hover {
+  color: inherit;
+  border-color: #149ddd;
+  box-shadow: 0 8px 24px rgba(20, 157, 221, 0.14);
+  transform: translateY(-2px);
+}
+
+.content-list-card h2,
+.content-list-card h3 {
+  color: #173b6c;
+  font-size: 1.15rem;
+  font-weight: 650;
+  margin: 0 0 8px;
+}
+
+.content-list-card p {
+  color: #5a6c7d;
+  margin: 0;
+}
+
+.article-body {
+  color: #2d3748;
+  font-size: 1rem;
+  line-height: 1.78;
+  overflow-wrap: anywhere;
+}
+
+.article-body > :first-child {
+  margin-top: 0;
+}
+
+.article-body h1,
+.article-body h2,
+.article-body h3,
+.article-body h4 {
+  color: #173b6c;
+  font-weight: 650;
+  line-height: 1.35;
+  margin: 1.55em 0 0.65em;
+}
+
+.article-body h1 { font-size: 2rem; }
+.article-body h2 { font-size: 1.55rem; }
+.article-body h3 { font-size: 1.25rem; }
+
+.article-body img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 24px auto;
+  border-radius: 8px;
+}
+
+.article-body blockquote {
+  margin: 24px 0;
+  padding: 14px 20px;
+  color: #4a5568;
+  background: #f5f9fc;
+  border-left: 4px solid #149ddd;
+}
+
+.article-body pre {
+  padding: 18px;
+  overflow-x: auto;
+  color: #e6edf3;
+  background: #17202a;
+  border-radius: 10px;
+}
+
+.article-body code {
+  overflow-wrap: normal;
+}
+
+.article-body :not(pre) > code {
+  padding: 0.15em 0.35em;
+  color: #b4235a;
+  background: #f5f7fa;
+  border-radius: 4px;
+}
+
+.article-body table {
+  display: block;
+  width: 100%;
+  margin: 20px 0;
+  overflow-x: auto;
+  border-collapse: collapse;
+}
+
+.article-body th,
+.article-body td {
+  padding: 10px 12px;
+  border: 1px solid #dfe7ee;
+}
+
+.article-body a {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.novel-shell {
+  width: min(900px, 100%);
+}
+
+.novel-shell .article-body {
+  font-family: "Noto Serif SC", "Songti SC", "SimSun", serif;
+  font-size: 1.08rem;
+  line-height: 2;
+}
+
+.chapter-navigation {
+  display: grid;
+  grid-template-columns: 1fr minmax(180px, auto) 1fr;
+  align-items: center;
+  gap: 16px;
+  margin-top: 42px;
+  padding-top: 24px;
+  border-top: 1px solid #e5edf3;
+}
+
+.chapter-navigation .next-link {
+  justify-self: end;
+}
+
+.document-shell {
+  height: calc(100vh - 80px);
+  min-height: 620px;
+  display: flex;
+  flex-direction: column;
+}
+
+.document-frame {
+  flex: 1;
+  width: 100%;
+  min-height: 500px;
+  border: 0;
+  border-radius: 8px;
+  background: #f3f6f8;
+}
+
+mjx-container {
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+@media (max-width: 767px) {
+  .content-main {
+    padding: 22px 14px 60px;
+  }
+
+  .content-shell {
+    padding: 24px 20px;
+    border-radius: 12px;
+  }
+
+  .content-toolbar {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .chapter-navigation {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .chapter-navigation select {
+    grid-column: 1 / -1;
+    grid-row: 1;
+  }
+
+  .document-shell {
+    height: 82vh;
+    min-height: 520px;
+  }
+}

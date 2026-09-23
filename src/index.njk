@@ -1,0 +1,277 @@
+---
+layout: layouts/base.njk
+permalink: index.html
+activeNav: home
+eleventyComputed:
+  title: "{{ site.name }} – {{ site.shortRole }} at {{ site.institutionShort }} | Mechanical Engineering Researcher"
+  description: "{{ site.name }} ({{ site.alternateName }}) is a {{ site.role }} at {{ site.institution }}, advised by {{ site.advisor }}. Research interests include {{ site.researchTopics | join(', ') }}."
+  socialTitle: "{{ site.name }} – {{ site.shortRole }} at {{ site.institutionShort }}"
+  socialDescription: "{{ site.role }} at {{ site.institutionShort }}. Research in {{ site.researchTopics | join(', ') }}."
+  keywords: "{{ site.name }}, {{ site.alternateName }}, {{ site.institutionShort }}, Mechanical Engineering, {{ site.researchTopics | join(', ') }}"
+---
+<section id="hero" class="d-flex flex-column justify-content-center align-items-center">
+  <div class="hero-container" data-aos="fade-in">
+    <h1>{{ site.name }}</h1>
+    <p class="hero-subtitle">{{ site.hero.roles | join(", ") }}</p>
+    <p class="hero-typed-text">
+      Researching on <span class="typed" data-typed-items="{{ site.hero.researchTopics | join(', ') }}"></span>
+    </p>
+  </div>
+</section>
+
+<main id="main">
+  <section id="about" class="about">
+    <div class="container">
+      <div class="section-title">
+        <h2>About</h2>
+        <p>
+          I am a <strong>{{ site.shortRole }}</strong> in Mechanical Engineering at the
+          <a href="{{ site.affiliations[0].url }}" target="_blank" rel="noopener noreferrer"><i>{{ site.institution }}</i></a>,
+          advised by {{ site.advisor }}. My research lies at the intersection of
+          <strong>Solid Mechanics</strong> and <strong>Materials Science</strong>, employing computational methods to unravel
+          the physical mechanisms governing material behavior from the atomic to the continuum scale.
+        </p>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-4" data-aos="fade-right">
+          <img src="/{{ site.images.about }}" class="img-fluid" alt="{{ site.name }} profile">
+        </div>
+        <div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">
+          <h3>Profile</h3>
+          <p class="fst-italic">“Bridging the gap between nano-scale physics and macro-scale applications to design the next generation of resilient materials.”</p>
+          <p>
+            My academic journey began at <a href="{{ site.affiliations[1].url }}" target="_blank" rel="noopener noreferrer"><i>{{ site.affiliations[1].name }}</i></a>
+            ({{ resume.education[1].degree }}), where I developed a strong foundation in fracture mechanics
+            under the guidance of {{ site.undergraduateAdvisor }}. Currently, my doctoral work focuses on <strong>multiscale modeling</strong>,
+            specifically investigating crystal plasticity, grain growth, and the mechanical degradation of solid-state electrolytes.
+          </p>
+
+          <div class="row">
+            <div class="col-lg-6">
+              <ul>
+                <li><i class="bi bi-chevron-right"></i> <strong>Degree:</strong> <span>{{ site.degree }}</span></li>
+                <li><i class="bi bi-chevron-right"></i> <strong>Focus:</strong> <span>{{ site.focus }}</span></li>
+                <li><i class="bi bi-chevron-right"></i> <strong>Location:</strong> <span>{{ site.location }}</span></li>
+              </ul>
+            </div>
+            <div class="col-lg-6">
+              <ul>
+                <li><i class="bi bi-chevron-right"></i> <strong>University:</strong> <span>{{ site.institutionShort }}</span></li>
+                <li><i class="bi bi-chevron-right"></i> <strong>Email:</strong> <span><a href="mailto:{{ site.email }}">{{ site.email }}</a></span></li>
+              </ul>
+            </div>
+          </div>
+
+          <p class="mt-3">
+            I am passionate about using rigorous mechanics principles to solve complex engineering challenges.
+            My goal is to contribute to the fundamental understanding of material reliability, paving the way for
+            safer and more efficient technologies.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="resume" class="resume">
+    <div class="container">
+      <div class="section-title">
+        <h2>Resume</h2>
+        <p>Welcome to my resume! Last updated: {{ resume.updatedAt | readableDate }}</p>
+      </div>
+
+      <div class="resume-masonry" data-aos="fade-up">
+        <div class="resume-block">
+          <h3 class="resume-title">Education</h3>
+          {% for item in resume.education %}
+          <div class="resume-item">
+            <h4>{{ item.institution }} <small class="text-muted fw-normal">{{ item.location }}</small></h4>
+            <h5>{{ item.period }}</h5>
+            <p><em><strong>{{ item.degree }}</strong></em></p>
+            <p>{{ item.description }}</p>
+          </div>
+          {% endfor %}
+        </div>
+
+        <div class="resume-block">
+          <h3 class="resume-title">Experience</h3>
+          {% for item in resume.experience %}
+          <div class="resume-item">
+            <h4>{{ item.institution }} <small class="text-muted fw-normal">{{ item.location }}</small></h4>
+            {% for role in item.roles %}
+            <h5>{{ role.period }}</h5>
+            <p><em><strong>{{ role.title }}</strong>{% if role.description %}, {% if role.url %}<a href="{{ role.url }}" target="_blank" rel="noopener noreferrer">{{ role.description }}</a>{% else %}{{ role.description }}{% endif %}{% endif %}</em></p>
+            {% endfor %}
+          </div>
+          {% endfor %}
+        </div>
+
+        <div class="resume-block">
+          <h3 class="resume-title">Publications</h3>
+          <div class="resume-item">
+            {% for publication in resume.publications %}
+            <p>{% for author in publication.authors %}{% if author.self %}<strong>{{ author.name }}</strong>{% else %}{{ author.name }}{% endif %}{% if not loop.last %}, {% endif %}{% endfor %}, <a href="{{ publication.url }}" target="_blank" rel="noopener noreferrer"><i>{{ publication.title }}</i></a>. {{ publication.citation }}</p>
+            {% endfor %}
+          </div>
+        </div>
+
+        <div class="resume-block">
+          <h3 class="resume-title">Patents</h3>
+          <div class="resume-item">
+            {% for patent in resume.patents %}
+            <div class="portfolio-links">
+              <a href="{{ patent.certificate }}" class="portfolio-lightbox" title="Patent Certificate">
+                <i>[{{ loop.index }}] CN Patent No. {{ patent.number }}: “{{ patent.title }}”, {{ patent.date }}</i>
+              </a>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+
+        <div class="resume-block">
+          <h3 class="resume-title">Awards and Honors</h3>
+          <div class="resume-item">
+            <ul>
+              {% for award in resume.awards %}<li>{{ award }}</li>{% endfor %}
+            </ul>
+          </div>
+        </div>
+
+        <div class="resume-block">
+          <h3 class="resume-title">Presentations</h3>
+          {% for presentation in resume.presentations %}
+          <div class="resume-item">
+            <h4>{{ presentation.event }} <small class="text-muted fw-normal">{{ presentation.location }}</small></h4>
+            <h5>{{ presentation.type }}</h5>
+            <p>Title: <em>{{ presentation.title }}</em></p>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="portfolio" class="portfolio section-bg">
+    <div class="container">
+      <div class="section-title">
+        <h2>Gallery</h2>
+        <p>Moments from my academic journey, research groups, and personal life.</p>
+      </div>
+
+      <div class="row" data-aos="fade-up">
+        <div class="col-lg-12 d-flex justify-content-center">
+          <ul id="portfolio-flters">
+            <li data-filter="*" class="filter-active">All</li>
+            {% for category in gallery.categories %}<li data-filter=".filter-{{ category.id }}">{{ category.label }}</li>{% endfor %}
+          </ul>
+        </div>
+      </div>
+
+      <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="100">
+        {% for item in gallery.items %}
+        <div class="col-lg-4 col-md-6 portfolio-item filter-{{ item.category }}">
+          <div class="portfolio-wrap">
+            <img src="/{{ item.thumbnail }}" class="img-fluid" alt="{{ item.alt }}" width="399" height="266" decoding="async">
+            <div class="portfolio-links">
+              <a href="/{{ item.image }}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="{{ item.caption }}" aria-label="View {{ item.alt }}"><i class="bx bx-plus"></i></a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <section id="writings" class="services">
+    <div class="container">
+      <div class="section-title">
+        <h2>Writings & Creative</h2>
+        <p>Writings, project notes, creative work, and teaching materials—including fiction, music, and course resources.</p>
+      </div>
+
+      <h5 class="content-group-title mb-3 mt-2"><a href="/teaching/">Teaching & course materials</a></h5>
+      <div class="row mb-4">
+        {% for item in writings.teaching %}
+        <div class="col-lg-4 col-md-6" data-aos="fade-up">
+          <a href="/{{ item.href }}" class="icon-box d-block text-decoration-none content-card-link">
+            <div class="icon"><i class="{{ item.icon }}"></i></div>
+            <h4 class="title">{{ item.title }}</h4>
+            <p class="description">{{ item.description }}</p>
+          </a>
+        </div>
+        {% endfor %}
+      </div>
+
+      <h5 class="content-group-title mb-3 mt-2">Writings & articles</h5>
+      <div class="row">
+        {% for item in writings.items %}
+        <div class="col-lg-4 col-md-6" data-aos="fade-up"{% if item.delay %} data-aos-delay="{{ item.delay }}"{% endif %}>
+          <a href="/{{ item.href }}" class="icon-box d-block text-decoration-none content-card-link">
+            <div class="icon"><i class="{{ item.icon }}"></i></div>
+            <h4 class="title">{{ item.title }}</h4>
+            <p class="description">{{ item.description }}</p>
+          </a>
+        </div>
+        {% endfor %}
+      </div>
+
+      <h5 class="content-group-title mb-3 mt-4"><a href="/music/">Music</a></h5>
+      <p class="text-muted small mb-2">Words and melody, hand in hand—stories sung into life, one note at a time.<br><span class="music-tagline-zh">字句与旋律相伴，把故事一音一符唱进生命里。</span></p>
+      <div class="row">
+        {% for song in songs %}
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="{{ (loop.index0 % 3) * 100 }}">
+          <a href="/music/#{{ loop.index0 }}" class="icon-box d-block text-decoration-none content-card-link">
+            <div class="icon"><i class="bx bx-music"></i></div>
+            <h4 class="title">{{ song.title }}</h4>
+            {% if song.description %}<p class="description">{{ song.description }}</p>{% endif %}
+          </a>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="container">
+      <div class="section-title">
+        <h2>Contact</h2>
+        <p>Feel free to reach out for collaborations or inquiries.</p>
+      </div>
+
+      <div class="row gy-4">
+        <div class="col-lg-6">
+          <div class="info">
+            <div class="address">
+              <i class="bi bi-geo-alt"></i>
+              <h4>Location:</h4>
+              <p>{{ site.office }}<br>{{ site.postalAddress }}</p>
+            </div>
+            <div class="email">
+              <i class="bi bi-envelope"></i>
+              <h4>Email:</h4>
+              <p><a href="mailto:{{ site.email }}">{{ site.email }}</a></p>
+            </div>
+            <div class="phone">
+              <i class="bi bi-phone"></i>
+              <h4>Phone:</h4>
+              <p>{{ site.phone }}</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="affiliations">
+            <h4>Academic Affiliations</h4>
+            <div class="affiliations-grid">
+              {% for affiliation in site.affiliations %}
+              <a href="{{ affiliation.url }}" target="_blank" rel="noopener noreferrer" class="affiliation-item" aria-label="{{ affiliation.name }}">
+                <img src="/{{ affiliation.image }}" alt="{{ affiliation.name }} logo" loading="lazy">
+              </a>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>

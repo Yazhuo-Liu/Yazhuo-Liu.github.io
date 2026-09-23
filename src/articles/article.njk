@@ -1,0 +1,31 @@
+---
+layout: layouts/base.njk
+pagination:
+  data: articles
+  size: 1
+  alias: article
+permalink: "articles/{{ article.slug }}/index.html"
+eleventyComputed:
+  title: "{{ article.title }} | {{ site.name }}"
+  contentTitle: "{{ article.title }}"
+  description: "{{ article.description }}"
+  keywords: "{{ site.name }}, computational mechanics, materials modeling, engineering tutorial"
+activeNav: writings
+bodyClass: content-page
+ogType: article
+schemaType: TechArticle
+useMathJax: true
+pageStyles:
+  - /assets/css/content-pages.css
+---
+<main id="main" class="content-main">
+  <article class="content-shell">
+    <div class="content-toolbar">
+      <a href="/articles/" class="btn btn-sm btn-outline-primary rounded-pill"><i class="bi bi-arrow-left"></i> All Articles</a>
+      <a href="/{{ article.source }}" class="btn btn-sm btn-outline-secondary rounded-pill" target="_blank" rel="noopener noreferrer"><i class="bi bi-filetype-md"></i> Source</a>
+    </div>
+    <div class="article-body">
+      {{ article.content | markdown | safe }}
+    </div>
+  </article>
+</main>

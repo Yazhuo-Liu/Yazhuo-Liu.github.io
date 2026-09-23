@@ -1,0 +1,29 @@
+---
+layout: layouts/base.njk
+pagination:
+  data: documents
+  size: 1
+  alias: document
+permalink: "documents/{{ document.slug }}/index.html"
+eleventyComputed:
+  title: "{{ document.title }} | {{ site.name }}"
+  contentTitle: "{{ document.title }}"
+  description: "{{ document.description }}"
+  keywords: "{{ site.name }}, crystal plasticity, technical document, mechanics"
+activeNav: writings
+bodyClass: content-page
+ogType: article
+schemaType: TechArticle
+pageStyles:
+  - /assets/css/content-pages.css
+---
+<main id="main" class="content-main">
+  <article class="content-shell document-shell">
+    <div class="content-toolbar">
+      <a href="/#writings" class="btn btn-sm btn-outline-primary rounded-pill"><i class="bi bi-arrow-left"></i> Back to Home</a>
+      <a href="/{{ document.source }}" class="btn btn-sm btn-outline-secondary rounded-pill" target="_blank" rel="noopener noreferrer"><i class="bi bi-box-arrow-up-right"></i> Open Original</a>
+    </div>
+    <h1 class="visually-hidden">{{ document.title }}</h1>
+    <iframe class="document-frame" src="/{{ document.source }}" title="{{ document.title }} PDF"></iframe>
+  </article>
+</main>

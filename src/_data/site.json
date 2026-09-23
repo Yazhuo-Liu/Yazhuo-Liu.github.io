@@ -1,0 +1,85 @@
+{
+  "name": "Yazhuo Liu",
+  "alternateName": "刘亚卓",
+  "url": "https://yazhuoliu.com",
+  "email": "connect@mail.yazhuoliu.com",
+  "phone": "+1 857-233-0789",
+  "role": "Ph.D. Candidate in Mechanical Engineering",
+  "shortRole": "Ph.D. Candidate",
+  "institution": "Georgia Institute of Technology",
+  "institutionShort": "Georgia Tech",
+  "location": "Atlanta, GA, USA",
+  "office": "801 Ferst Dr (MRDC) Room 4114A",
+  "postalAddress": "Atlanta, GA 30313",
+  "advisor": "Prof. Ting Zhu",
+  "undergraduateAdvisor": "Prof. Wei Hong",
+  "focus": "Mechanics of Materials",
+  "degree": "Ph.D. Candidate",
+  "updatedAt": "2026-09-22",
+  "analyticsId": "G-PR8K6WLC14",
+  "images": {
+    "profile": "assets/img/yazhuo-liu-profile.webp",
+    "about": "assets/img/profile-pic.webp",
+    "hero": "assets/img/hero-bg.webp",
+    "logo": "assets/img/logo.webp",
+    "favicon": "assets/img/favicon.png",
+    "appleTouchIcon": "assets/img/apple-touch-icon.png"
+  },
+  "cv": "assets/pdf/Yazhuo_Liu_Curriculum_Vitae.pdf",
+  "hero": {
+    "roles": ["Ph.D. Candidate", "Lyricist & Writer", "VTuber"],
+    "researchTopics": ["Metal 3D Printing", "Grain Growth", "Solid Electrolyte", "AI Agents"]
+  },
+  "researchTopics": [
+    "Metal 3D printing",
+    "Grain growth",
+    "Solid electrolyte",
+    "Crystal plasticity",
+    "Multiscale modeling",
+    "AI Agents"
+  ],
+  "socials": [
+    {
+      "name": "LinkedIn",
+      "url": "https://www.linkedin.com/in/yazhuo-liu-321b45226/",
+      "className": "linkedin",
+      "icon": "bx bxl-linkedin"
+    },
+    {
+      "name": "GitHub",
+      "url": "https://github.com/Yazhuo-Liu",
+      "className": "github",
+      "icon": "bx bxl-github"
+    },
+    {
+      "name": "Facebook",
+      "url": "https://www.facebook.com/yazhuo.liu.758",
+      "className": "facebook",
+      "icon": "bx bxl-facebook"
+    },
+    {
+      "name": "Instagram",
+      "url": "https://www.instagram.com/yazhuo_liu/",
+      "className": "instagram",
+      "icon": "bx bxl-instagram"
+    },
+    {
+      "name": "ORCID",
+      "url": "https://orcid.org/0000-0003-1160-1779",
+      "className": "orcid",
+      "icon": "bx bxs-graduation"
+    }
+  ],
+  "affiliations": [
+    {
+      "name": "Georgia Institute of Technology",
+      "url": "https://www.gatech.edu/",
+      "image": "assets/img/Georgia_Tech_seal.webp"
+    },
+    {
+      "name": "Southern University of Science and Technology",
+      "url": "https://www.sustech.edu.cn/en/",
+      "image": "assets/img/SUSTech_seal.webp"
+    }
+  ]
+}

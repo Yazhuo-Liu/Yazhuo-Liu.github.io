@@ -119,8 +119,13 @@
    */
   window.addEventListener('load', () => {
     if (window.location.hash) {
-      if (select(window.location.hash)) {
-        scrollto(window.location.hash)
+      let hashId = decodeURIComponent(window.location.hash.slice(1))
+      let hashTarget = document.getElementById(hashId)
+      if (hashTarget) {
+        window.scrollTo({
+          top: hashTarget.offsetTop,
+          behavior: 'smooth'
+        })
       }
     }
   });
@@ -167,6 +172,18 @@
       let portfolioIsotope = new Isotope(portfolioContainer, {
         itemSelector: '.portfolio-item'
       });
+
+      // Image dimensions are needed for Isotope's masonry calculations.
+      // Re-layout as thumbnails finish decoding to avoid overlapping cards on
+      // slow connections or when the browser restores the page from cache.
+      let portfolioImages = select('.portfolio-container img', true);
+      portfolioImages.forEach((image) => {
+        if (!image.complete) {
+          image.addEventListener('load', () => portfolioIsotope.layout(), { once: true });
+          image.addEventListener('error', () => portfolioIsotope.layout(), { once: true });
+        }
+      });
+      portfolioIsotope.layout();
 
       let portfolioFilters = select('#portfolio-flters li', true);
 

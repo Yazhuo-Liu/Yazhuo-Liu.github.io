@@ -1,0 +1,117 @@
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+<title>{{ title }}</title>
+<meta name="description" content="{{ description }}">
+<meta name="keywords" content="{{ keywords }}">
+<meta name="author" content="{{ site.name }}">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+
+<link rel="canonical" href="{{ site.url }}{{ page.url }}">
+
+<meta property="og:type" content="{{ ogType or 'website' }}">
+<meta property="og:url" content="{{ site.url }}{{ page.url }}">
+<meta property="og:title" content="{{ socialTitle or title }}">
+<meta property="og:description" content="{{ socialDescription or description }}">
+<meta property="og:image" content="{{ site.url }}/{{ site.images.profile }}">
+<meta property="og:image:alt" content="Portrait of {{ site.name }}">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="{{ site.name }}">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ socialTitle or title }}">
+<meta name="twitter:description" content="{{ socialDescription or description }}">
+<meta name="twitter:image" content="{{ site.url }}/{{ site.images.profile }}">
+<meta name="twitter:image:alt" content="Portrait of {{ site.name }}">
+
+<link href="/{{ site.images.favicon }}" rel="icon" type="image/png" sizes="64x64">
+<link href="/{{ site.images.appleTouchIcon }}" rel="apple-touch-icon" sizes="180x180">
+
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+<link href="/assets/vendor/aos/aos.css" rel="stylesheet">
+<link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+<link href="/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+<link href="/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+<link href="/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+<link href="/assets/css/style.css" rel="stylesheet">
+{% for stylesheet in pageStyles or [] %}<link href="{{ stylesheet }}" rel="stylesheet">
+{% endfor %}
+
+{% if useMathJax %}
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'] }
+  };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+{% endif %}
+
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ site.analyticsId }}"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', '{{ site.analyticsId }}');
+</script>
+
+{% if page.url == "/" %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "name": {{ site.name | json | safe }},
+      "alternateName": {{ site.alternateName | json | safe }},
+      "url": {{ site.url | json | safe }},
+      "image": {{ (site.url + "/" + site.images.profile) | json | safe }},
+      "jobTitle": {{ site.role | json | safe }},
+      "worksFor": {
+        "@type": "Organization",
+        "name": {{ site.institution | json | safe }},
+        "url": {{ site.affiliations[0].url | json | safe }}
+      },
+      "alumniOf": [
+        {% for affiliation in site.affiliations %}{ "@type": "Organization", "name": {{ affiliation.name | json | safe }}, "url": {{ affiliation.url | json | safe }} }{% if not loop.last %},{% endif %}
+        {% endfor %}
+      ],
+      "knowsAbout": {{ site.researchTopics | json | safe }},
+      "sameAs": [
+        {% for social in site.socials %}{{ social.url | json | safe }}{% if not loop.last %},{% endif %}
+        {% endfor %}
+      ],
+      "email": {{ site.email | json | safe }}
+    },
+    {
+      "@type": "WebSite",
+      "name": "{{ site.name }} – Personal Website",
+      "url": {{ site.url | json | safe }},
+      "author": { "@type": "Person", "name": {{ site.name | json | safe }}, "url": {{ site.url | json | safe }} },
+      "description": {{ description | json | safe }},
+      "inLanguage": ["en", "zh-CN"]
+    }
+  ]
+}
+</script>
+{% endif %}
+
+{% if schemaType %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": {{ schemaType | json | safe }},
+  "headline": {{ contentTitle | json | safe }},
+  "description": {{ description | json | safe }},
+  "url": {{ (site.url + page.url) | json | safe }},
+  "author": { "@type": "Person", "name": {{ site.name | json | safe }}, "url": {{ site.url | json | safe }} }
+}
+</script>
+{% endif %}

@@ -1,6 +1,6 @@
 # Novel
 
-The chapter list is defined in **`chapters.json`**. The reading page loads the table of contents and order from this file.
+The chapter list is defined in **`chapters.json`**. Eleventy reads the table of contents and every Markdown chapter at build time, then creates `/novel/` and one clean URL per chapter.
 
 ## chapters.json format
 
@@ -19,8 +19,10 @@ Example:
 ]
 ```
 
-To add a chapter, append a path to `chapters.json`. As long as the first line of the md file is `# Chapter title`, that title will appear in the dropdown.
+To add a chapter, append a path to `chapters.json`. As long as the first line of the Markdown file is `# Chapter title`, that title will appear in the chapter selector and page metadata after the next build.
 
 ### Auto chapter list in index (A_index.md)
 
-In `A_index.md`, put the placeholder `<!-- AUTO_CHAPTER_LIST -->` where you want the chapter links to appear (e.g. under a "目录列表" heading). The reading page will replace it with a markdown list of all chapters from `chapters.json`, so you don’t need to maintain the list by hand.
+In `A_index.md`, put the placeholder `<!-- AUTO_CHAPTER_LIST -->` where you want the chapter links to appear (for example, under a “目录列表” heading). The build replaces it with a Markdown list of all chapters from `chapters.json`, so you do not need to maintain the list by hand.
+
+Run `npm run check` from the repository root after adding or reordering chapters.

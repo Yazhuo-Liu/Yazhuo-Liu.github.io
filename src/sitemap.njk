@@ -1,0 +1,51 @@
+---
+permalink: sitemap.xml
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>{{ site.url }}/</loc>
+    <lastmod>{{ site.updatedAt }}</lastmod>
+  </url>
+  <url>
+    <loc>{{ site.url }}/music/</loc>
+    <lastmod>{{ site.updatedAt }}</lastmod>
+  </url>
+  <url>
+    <loc>{{ site.url }}/teaching/</loc>
+    <lastmod>{{ site.updatedAt }}</lastmod>
+  </url>
+  {% for course in courses %}
+  <url>
+    <loc>{{ site.url }}/teaching/{{ course.slug }}/</loc>
+    <lastmod>{{ site.updatedAt }}</lastmod>
+  </url>
+  {% endfor %}
+  <url>
+    <loc>{{ site.url }}/articles/</loc>
+    <lastmod>{{ site.updatedAt }}</lastmod>
+  </url>
+  {% for article in articles %}
+  <url>
+    <loc>{{ site.url }}/articles/{{ article.slug }}/</loc>
+    <lastmod>{{ site.updatedAt }}</lastmod>
+  </url>
+  {% endfor %}
+  {% for chapter in novel %}
+  <url>
+    <loc>{{ site.url }}{{ chapter.url }}</loc>
+    <lastmod>{{ site.updatedAt }}</lastmod>
+  </url>
+  {% endfor %}
+  {% for document in documents %}
+  <url>
+    <loc>{{ site.url }}/documents/{{ document.slug }}/</loc>
+    <lastmod>{{ site.updatedAt }}</lastmod>
+  </url>
+  {% endfor %}
+  <url>
+    <loc>{{ site.url }}/{{ site.cv }}</loc>
+    <lastmod>{{ resume.updatedAt }}</lastmod>
+  </url>
+</urlset>

@@ -1,0 +1,45 @@
+---
+layout: layouts/base.njk
+permalink: music/index.html
+lang: zh-CN
+activeNav: music
+bodyClass: music-page
+eleventyComputed:
+  title: "My Songs | {{ site.name }}"
+  description: "Original songs and lyrics by {{ site.name }} ({{ site.alternateName }}), including lyric stories and synchronized audio playback."
+  keywords: "{{ site.name }} songs, {{ site.alternateName }} 音乐, original songs, lyrics, songwriting"
+pageStyles:
+  - /assets/css/music.css
+pageScripts:
+  - /assets/js/music.js
+---
+<main id="main" class="music-main">
+  <div class="music-shell">
+    <div class="content-toolbar">
+      <a href="/#writings" class="btn btn-sm btn-outline-primary rounded-pill"><i class="bi bi-arrow-left"></i> Back to Home</a>
+    </div>
+    <div class="section-title">
+      <h1>My Songs</h1>
+      <p>I weave the narratives while AI sculpts the sound. My lyrics are the heartbeat, eventually finding their pulse in digital harmonies.</p>
+    </div>
+
+    <div class="song-grid">
+      {% for song in songs %}
+      <button type="button" class="song-card" data-song-index="{{ loop.index0 }}">
+        <h2>{{ song.title }}</h2>
+        {% if song.description %}<p>{{ song.description }}</p>{% endif %}
+      </button>
+      {% endfor %}
+    </div>
+
+    <section id="player-section" class="player-section" aria-live="polite">
+      <h2 id="current-title" class="current-title"></h2>
+      <div class="audio-controls"><audio id="audio" controls preload="metadata"></audio></div>
+      <div id="lyrics-box" class="lyrics-box"></div>
+      <div id="story-section" class="story-section" hidden></div>
+    </section>
+
+    <script id="song-data" type="application/json">{{ songs | songManifest | safe }}</script>
+    {% for song in songs %}<template id="song-story-{{ loop.index0 }}">{{ song.storyContent | markdown | safe }}</template>{% endfor %}
+  </div>
+</main>

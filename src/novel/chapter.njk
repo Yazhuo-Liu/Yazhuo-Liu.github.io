@@ -1,0 +1,40 @@
+---
+layout: layouts/base.njk
+pagination:
+  data: novel
+  size: 1
+  alias: chapter
+permalink: "{{ chapter.outputPath }}"
+eleventyComputed:
+  title: "{% if chapter.slug == 'index' %}三年三十天 | {{ site.name }}{% else %}{{ chapter.title }} | 三年三十天{% endif %}"
+  contentTitle: "{% if chapter.slug == 'index' %}三年三十天{% else %}{{ chapter.title }}{% endif %}"
+  description: "原创校园青春小说《三年三十天》：关于青春、喜欢与遗憾的故事。"
+  keywords: "三年三十天, {{ site.alternateName }}, 原创小说, 青春校园小说"
+lang: zh-CN
+activeNav: writings
+bodyClass: content-page
+ogType: article
+schemaType: CreativeWork
+pageStyles:
+  - /assets/css/content-pages.css
+pageScripts:
+  - /assets/js/content-pages.js
+---
+<main id="main" class="content-main">
+  <article class="content-shell novel-shell">
+    <div class="content-toolbar">
+      <a href="/#writings" class="btn btn-sm btn-outline-primary rounded-pill"><i class="bi bi-arrow-left"></i> 返回主页</a>
+      {% if chapter.next %}<a href="{{ chapter.next.url }}" class="btn btn-sm btn-outline-primary rounded-pill">{% if chapter.slug == 'index' %}开始阅读{% else %}下一章{% endif %} <i class="bi bi-arrow-right"></i></a>{% endif %}
+    </div>
+    <div class="article-body">
+      {{ chapter.content | markdown | safe }}
+    </div>
+    <nav class="chapter-navigation" aria-label="章节导航">
+      {% if chapter.previous %}<a href="{{ chapter.previous.url }}" class="btn btn-sm btn-outline-secondary rounded-pill"><i class="bi bi-chevron-left"></i> 上一章</a>{% else %}<span></span>{% endif %}
+      <select class="form-select form-select-sm" data-chapter-selector aria-label="选择章节">
+        {% for item in novel %}<option value="{{ item.url }}"{% if item.slug == chapter.slug %} selected{% endif %}>{{ item.title }}</option>{% endfor %}
+      </select>
+      {% if chapter.next %}<a href="{{ chapter.next.url }}" class="btn btn-sm btn-outline-secondary rounded-pill next-link">下一章 <i class="bi bi-chevron-right"></i></a>{% else %}<span class="next-link text-muted">完</span>{% endif %}
+    </nav>
+  </article>
+</main>

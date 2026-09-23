@@ -1,0 +1,24 @@
+---
+permalink: assets/htmls/teaching.html
+eleventyExcludeFromCollections: true
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, follow">
+  <title>Teaching page moved | {{ site.name }}</title>
+</head>
+<body>
+  <p>The teaching page has moved. <a href="/teaching/">Open teaching materials</a>.</p>
+  <script>
+    const routes = {
+      {% for course in courses %}{{ course.id | json | safe }}: {{ ("/teaching/" + course.slug + "/") | json | safe }}{% if not loop.last %},{% endif %}
+      {% endfor %}
+    };
+    const course = new URLSearchParams(window.location.search).get("course");
+    window.location.replace(routes[course] || "/teaching/");
+  </script>
+</body>
+</html>
