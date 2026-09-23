@@ -2,6 +2,8 @@
 layout: layouts/base.njk
 permalink: index.html
 activeNav: home
+pageScripts:
+  - /assets/js/resume-layout.js
 eleventyComputed:
   title: "{{ site.name }} – {{ site.shortRole }} at {{ site.institutionShort }} | Mechanical Engineering Researcher"
   description: "{{ site.name }} ({{ site.alternateName }}) is a {{ site.role }} at {{ site.institution }}, advised by {{ site.advisor }}. Research interests include {{ site.researchTopics | join(', ') }}."
@@ -81,7 +83,7 @@ eleventyComputed:
       </div>
 
       <div class="resume-masonry" data-aos="fade-up">
-        <div class="resume-block">
+        <div class="resume-block resume-block--education">
           <h3 class="resume-title">Education</h3>
           {% for item in resume.education %}
           <div class="resume-item">
@@ -93,7 +95,7 @@ eleventyComputed:
           {% endfor %}
         </div>
 
-        <div class="resume-block">
+        <div class="resume-block resume-block--experience">
           <h3 class="resume-title">Experience</h3>
           {% for item in resume.experience %}
           <div class="resume-item">
@@ -106,7 +108,7 @@ eleventyComputed:
           {% endfor %}
         </div>
 
-        <div class="resume-block">
+        <div class="resume-block resume-block--publications">
           <h3 class="resume-title">Publications</h3>
           <div class="resume-item">
             {% for publication in resume.publications %}
@@ -115,7 +117,7 @@ eleventyComputed:
           </div>
         </div>
 
-        <div class="resume-block">
+        <div class="resume-block resume-block--patents">
           <h3 class="resume-title">Patents</h3>
           <div class="resume-item">
             {% for patent in resume.patents %}
@@ -128,7 +130,7 @@ eleventyComputed:
           </div>
         </div>
 
-        <div class="resume-block">
+        <div class="resume-block resume-block--awards">
           <h3 class="resume-title">Awards and Honors</h3>
           <div class="resume-item">
             <ul>
@@ -137,7 +139,7 @@ eleventyComputed:
           </div>
         </div>
 
-        <div class="resume-block">
+        <div class="resume-block resume-block--presentations">
           <h3 class="resume-title">Presentations</h3>
           {% for presentation in resume.presentations %}
           <div class="resume-item">

@@ -1144,27 +1144,44 @@ section {
 }
 
 /* --------------------------------------------------------------
-# Resume Masonry Layout
+# Resume balanced layout
 -------------------------------------------------------------- */
 .resume-masonry {
-  column-count: 2;
-  column-gap: 2rem;
+  --resume-column-gap: clamp(2rem, 4vw, 3.5rem);
+  --resume-row-gap: 28px;
 }
 
-/* On smaller screens (tablets/phones), switch to 1 column */
-@media (max-width: 992px) {
-  .resume-masonry {
-    column-count: 1;
-  }
+.resume-masonry.is-measuring {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: var(--resume-column-gap);
+  row-gap: var(--resume-row-gap);
 }
 
-/* This wrapper keeps the Title and the Content together */
 .resume-block {
-  break-inside: avoid;       /* Prevent splitting across columns */
-  page-break-inside: avoid; 
-  margin-bottom: 20px;       /* Space between vertical items */
-  display: inline-block;     /* Fixes alignment issues in some browsers */
-  width: 100%;               /* Ensures full width within the column */
+  width: 100%;
+  margin-bottom: var(--resume-row-gap);
+}
+
+.resume-masonry > .resume-block:first-child .resume-title {
+  margin-top: 0;
+}
+
+.resume-masonry > .resume-block:last-child {
+  margin-bottom: 0;
+}
+
+.resume-masonry.is-measuring .resume-block,
+.resume-masonry.is-balanced .resume-block {
+  margin-bottom: 0;
+}
+
+.resume-masonry.is-balanced {
+  position: relative;
+}
+
+.resume-masonry.is-balanced .resume-block {
+  position: absolute;
 }
 
 /* --------------------------------------------------------------
