@@ -1,28 +1,22 @@
 # Novel
 
-The chapter list is defined in **`chapters.json`**. Eleventy reads the table of contents and every Markdown chapter at build time, then creates `/novel/` and one clean URL per chapter.
+Eleventy automatically scans the Markdown files in this directory and creates `/novel/` plus one clean URL per chapter. No chapter-list JSON file is needed.
 
-## chapters.json format
+## Adding and ordering chapters
 
-- An **array** of chapters in reading order.
-- Each item may be:
-  - **String**: Path only, e.g. `"assets/docs/novel/chap1.md"`. The title is read automatically from the **first `# Title` line** in the corresponding md file.
-  - **Object**: `{ "path": "path/to/file.md", "title": "Display title" }`. If `title` is provided, it is used instead of reading from the md file—useful for index pages or files without a `#` heading.
+- Keep the landing page as `A_index.md` (or `index.md`). It is always placed first and generates `/novel/`.
+- Name chapters `chap1.md`, `chap2.md`, and so on. Filenames use natural sorting, so `chap10.md` comes after `chap9.md`.
+- Put a `# Chapter title` heading in each chapter. The first Markdown heading supplies the selector label and page title automatically.
+- `README.md` is documentation and is excluded from the scan.
 
-Example:
+For example, adding this file is enough to publish chapter 6 at `/novel/chapter-06/`:
 
-```json
-[
-  { "path": "assets/docs/novel/A_index.md", "title": "目录 / Index" },
-  "assets/docs/novel/chap1.md",
-  "assets/docs/novel/chap2.md"
-]
+```text
+assets/docs/novel/chap6.md
 ```
-
-To add a chapter, append a path to `chapters.json`. As long as the first line of the Markdown file is `# Chapter title`, that title will appear in the chapter selector and page metadata after the next build.
 
 ### Auto chapter list in index (A_index.md)
 
-In `A_index.md`, put the placeholder `<!-- AUTO_CHAPTER_LIST -->` where you want the chapter links to appear (for example, under a “目录列表” heading). The build replaces it with a Markdown list of all chapters from `chapters.json`, so you do not need to maintain the list by hand.
+In `A_index.md`, put the placeholder `<!-- AUTO_CHAPTER_LIST -->` where you want the chapter links to appear (for example, under a “目录列表” heading). The build replaces it with links to every discovered chapter, so you do not need to maintain the list by hand.
 
-Run `npm run check` from the repository root after adding or reordering chapters.
+Run `npm run check` from the repository root after adding, renaming, or reordering chapters.

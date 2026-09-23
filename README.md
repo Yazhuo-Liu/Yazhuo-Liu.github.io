@@ -27,7 +27,7 @@ Useful commands:
 | Gallery categories and full-resolution photographs | `src/_data/gallery.json` and `assets/img/photos/*.webp` |
 | Writing cards and article metadata | `src/_data/writings.json` |
 | Article bodies | `assets/docs/*.md` |
-| Novel chapter order and bodies | `assets/docs/novel/chapters.json` and `assets/docs/novel/*.md` |
+| Novel chapter order and bodies | Automatically discovered from `assets/docs/novel/*.md` |
 | Course metadata and resources | `assets/pdf/Teaching/CoursesList.json` |
 | Songs, audio, lyrics, and stories | `assets/music/SongsList.json` and matching media files |
 
@@ -52,7 +52,7 @@ The generated thumbnails and `_site/` are intentionally ignored by Git. `npm run
 
 ## Adding content
 
-For a gallery photograph, add one WebP source image and one data entry—its thumbnail is automatic. For an article, add a Markdown file under `assets/docs/`, then add its title, summary, source, type, and slug to `src/_data/writings.json`. For a novel chapter, add the Markdown file and append it to `assets/docs/novel/chapters.json`. For a course or song, update its JSON source listed above and add the referenced files.
+For a gallery photograph, add one WebP source image and one data entry—its thumbnail is automatic. For an article, add a Markdown file under `assets/docs/`, then add its title, summary, source, type, and slug to `src/_data/writings.json`. For a novel chapter, add a numbered Markdown file such as `chap6.md` under `assets/docs/novel/`; the chapter list is discovered and naturally sorted automatically. For a course or song, update its JSON source listed above and add the referenced files.
 
 Run `npm run check` before committing. The validators report missing files, duplicate slugs or IDs, broken generated links, malformed structured data, and omitted managed routes.
 

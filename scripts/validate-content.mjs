@@ -1,9 +1,11 @@
 import fs from "node:fs";
+import { createRequire } from "node:module";
 import path from "node:path";
 import process from "node:process";
 
 const root = process.cwd();
 const errors = [];
+const require = createRequire(import.meta.url);
 
 function readJson(relativePath) {
   try {
@@ -34,7 +36,13 @@ const gallery = readJson("src/_data/gallery.json");
 const writings = readJson("src/_data/writings.json");
 const songs = readJson("assets/music/SongsList.json");
 const coursesData = readJson("assets/pdf/Teaching/CoursesList.json");
-const chapters = readJson("assets/docs/novel/chapters.json");
+let chapters = [];
+
+try {
+  chapters = require("../src/_data/novel.js");
+} catch (error) {
+  errors.push(`assets/docs/novel: unable to discover chapters (${error.message})`);
+}
 
 if (site) {
   for (const key of ["name", "url", "email", "role", "updatedAt", "analyticsId"]) {
@@ -116,9 +124,12 @@ for (const [index, course] of publicCourses.entries()) {
 }
 
 if (Array.isArray(chapters)) {
+  if (!chapters.some((chapter) => chapter.slug === "index")) {
+    errors.push("assets/docs/novel: A_index.md or index.md is required");
+  }
   chapters.forEach((chapter, index) => {
-    const chapterPath = typeof chapter === "string" ? chapter : chapter.path;
-    checkLocalFile(chapterPath, `chapters[${index}]`);
+    checkLocalFile(chapter.path, `chapters[${index}]`);
+    requireString(chapter.title, `chapters[${index}].title`);
   });
 }
 
@@ -148,5 +159,5 @@ if (errors.length > 0) {
 console.log(
   `Content validation passed: ${resume?.publications?.length || 0} publications, ` +
   `${gallery?.items?.length || 0} gallery items, ${songs?.length || 0} songs, ` +
-  `${publicCourses.length} public course(s).`
+  `${publicCourses.length} public course(s), ${chapters.length} novel page(s).`
 );
