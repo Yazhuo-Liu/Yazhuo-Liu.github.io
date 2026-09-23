@@ -83,7 +83,7 @@ eleventyComputed:
       </div>
 
       <div class="resume-masonry" data-aos="fade-up">
-        <div class="resume-block resume-block--education">
+        <div class="resume-block">
           <h3 class="resume-title">Education</h3>
           {% for item in resume.education %}
           <div class="resume-item">
@@ -95,7 +95,7 @@ eleventyComputed:
           {% endfor %}
         </div>
 
-        <div class="resume-block resume-block--experience">
+        <div class="resume-block">
           <h3 class="resume-title">Experience</h3>
           {% for item in resume.experience %}
           <div class="resume-item">
@@ -108,7 +108,7 @@ eleventyComputed:
           {% endfor %}
         </div>
 
-        <div class="resume-block resume-block--publications">
+        <div class="resume-block">
           <h3 class="resume-title">Publications</h3>
           <div class="resume-item">
             {% for publication in resume.publications %}
@@ -117,7 +117,7 @@ eleventyComputed:
           </div>
         </div>
 
-        <div class="resume-block resume-block--patents">
+        <div class="resume-block">
           <h3 class="resume-title">Patents</h3>
           <div class="resume-item">
             {% for patent in resume.patents %}
@@ -130,7 +130,7 @@ eleventyComputed:
           </div>
         </div>
 
-        <div class="resume-block resume-block--awards">
+        <div class="resume-block">
           <h3 class="resume-title">Awards and Honors</h3>
           <div class="resume-item">
             <ul>
@@ -139,14 +139,19 @@ eleventyComputed:
           </div>
         </div>
 
-        <div class="resume-block resume-block--presentations">
+        <div class="resume-block">
           <h3 class="resume-title">Presentations</h3>
           {% for presentation in resume.presentations %}
-          <div class="resume-item">
-            <h4>{{ presentation.event }} <small class="text-muted fw-normal">{{ presentation.location }}</small></h4>
-            <h5>{{ presentation.type }}</h5>
-            <p>Title: <em>{{ presentation.title }}</em></p>
-          </div>
+          <details class="resume-item resume-presentation">
+            <summary>
+              <span class="resume-presentation-heading">{{ presentation.event }} <small class="text-muted fw-normal">{{ presentation.location }}</small></span>
+              <i class="bi bi-chevron-down resume-presentation-chevron" aria-hidden="true"></i>
+            </summary>
+            <div class="resume-presentation-details">
+              <h5>{{ presentation.type }}</h5>
+              <p>Title: <em>{{ presentation.title }}</em></p>
+            </div>
+          </details>
           {% endfor %}
         </div>
       </div>

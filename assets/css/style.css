@@ -1144,44 +1144,86 @@ section {
 }
 
 /* --------------------------------------------------------------
-# Resume balanced layout
+# Resume adaptive columns
 -------------------------------------------------------------- */
 .resume-masonry {
-  --resume-column-gap: clamp(2rem, 4vw, 3.5rem);
+  --resume-column-gap: clamp(1.5rem, 3vw, 2.5rem);
   --resume-row-gap: 28px;
+  display: grid;
+  gap: var(--resume-row-gap);
 }
 
-.resume-masonry.is-measuring {
-  display: grid;
+.resume-masonry.is-measuring,
+.resume-masonry.is-grouped {
   grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
   column-gap: var(--resume-column-gap);
   row-gap: var(--resume-row-gap);
 }
 
-.resume-block {
+.resume-masonry .resume-block {
   width: 100%;
-  margin-bottom: var(--resume-row-gap);
 }
 
-.resume-masonry > .resume-block:first-child .resume-title {
+.resume-masonry .resume-title {
   margin-top: 0;
 }
 
-.resume-masonry > .resume-block:last-child {
+.resume-column {
+  display: grid;
+  align-content: start;
+  gap: var(--resume-row-gap);
+  min-width: 0;
+}
+
+.resume-presentation summary {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  cursor: pointer;
+  list-style: none;
+}
+
+.resume-presentation summary::-webkit-details-marker {
+  display: none;
+}
+
+.resume-presentation-heading {
+  line-height: 1.35;
+  font-size: 18px;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-family: "Poppins", sans-serif;
+  color: #050d18;
+}
+
+.resume-presentation-chevron {
+  flex: 0 0 auto;
+  color: #149ddd;
+  transition: transform 0.2s ease;
+}
+
+.resume-presentation[open] .resume-presentation-chevron {
+  transform: rotate(180deg);
+}
+
+.resume-presentation[open] summary {
+  padding-bottom: 10px;
+}
+
+.resume-presentation-details {
+  padding-bottom: 4px;
+}
+
+.resume-presentation-details p:last-child {
   margin-bottom: 0;
 }
 
-.resume-masonry.is-measuring .resume-block,
-.resume-masonry.is-balanced .resume-block {
-  margin-bottom: 0;
-}
-
-.resume-masonry.is-balanced {
-  position: relative;
-}
-
-.resume-masonry.is-balanced .resume-block {
-  position: absolute;
+@media (max-width: 576px) {
+  .resume-presentation-heading {
+    font-size: 16px;
+  }
 }
 
 /* --------------------------------------------------------------
