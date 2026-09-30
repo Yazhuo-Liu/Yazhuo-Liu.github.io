@@ -25,6 +25,7 @@ Useful commands:
 | Identity, contact details, navigation, social profiles | `src/_data/site.json` |
 | Education, experience, publications, patents, awards | `src/_data/resume.json` |
 | Gallery categories and full-resolution photographs | `src/_data/gallery.json` and `assets/img/photos/*.webp` |
+| Software project cards | `src/_data/software.json` and `assets/img/software/` |
 | Writing cards and article metadata | `src/_data/writings.json` |
 | Article bodies | `assets/docs/*.md` |
 | Novel chapter order and bodies | Automatically discovered from `assets/docs/novel/*.md` |
@@ -55,6 +56,25 @@ The generated thumbnails and `_site/` are intentionally ignored by Git. `npm run
 For a gallery photograph, add one WebP source image and one data entry—its thumbnail is automatic. For an article, add a Markdown file under `assets/docs/`, then add its title, summary, source, type, and slug to `src/_data/writings.json`. For a novel chapter, add a numbered Markdown file such as `chap6.md` under `assets/docs/novel/`; the chapter list is discovered and naturally sorted automatically. For a course or song, update its JSON source listed above and add the referenced files.
 
 Run `npm run check` before committing. The validators report missing files, duplicate slugs or IDs, broken generated links, malformed structured data, and omitted managed routes.
+
+### Adding software
+
+The homepage's **Software & Tools** section renders every entry in `src/_data/software.json` under `items`, in list order. Add a project object with a unique lowercase `id`, `name`, `description`, and absolute HTTPS product-page `url`. For example:
+
+```json
+{
+  "id": "my-tool",
+  "name": "My Tool",
+  "description": "A short explanation of what the software does and who it helps.",
+  "url": "https://yazhuoliu.com/MyTool/",
+  "github": "https://github.com/Yazhuo-Liu/MyTool",
+  "tags": ["Python", "Research"]
+}
+```
+
+`github` and `tags` are optional. To include a screenshot, place it in `assets/img/software/` and add `image` (the path without a leading slash), `imageAlt`, `imageWidth`, and `imageHeight` (its intrinsic pixel dimensions). Projects without images use a text-only card. Product links open in the current tab; GitHub links open in a new tab. Run `npm run check` before committing.
+
+The DichromaticMap screenshot comes from its [project documentation](https://github.com/Yazhuo-Liu/DichromaticMap/blob/main/docs/images/gui-overview.png).
 
 ## Deployment
 

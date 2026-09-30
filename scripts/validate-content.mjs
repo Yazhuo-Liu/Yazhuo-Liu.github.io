@@ -34,6 +34,7 @@ const site = readJson("src/_data/site.json");
 const resume = readJson("src/_data/resume.json");
 const gallery = readJson("src/_data/gallery.json");
 const writings = readJson("src/_data/writings.json");
+const software = readJson("src/_data/software.json");
 const songs = readJson("assets/music/SongsList.json");
 const coursesData = readJson("assets/pdf/Teaching/CoursesList.json");
 let chapters = [];
@@ -99,6 +100,43 @@ if (writings) {
       slugs.add(item.slug);
     }
   });
+}
+
+if (software) {
+  const ids = new Set();
+  if (!Array.isArray(software.items)) errors.push("software.items: expected an array");
+  for (const [index, item] of (Array.isArray(software.items) ? software.items : []).entries()) {
+    const label = `software.items[${index}]`;
+    if (!item || typeof item !== "object") {
+      errors.push(`${label}: expected a project object`);
+      continue;
+    }
+    for (const key of ["id", "name", "description", "url"]) requireString(item[key], `${label}.${key}`);
+    if (typeof item.id !== "string" || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(item.id)) {
+      errors.push(`${label}.id: expected a lowercase slug`);
+    }
+    if (ids.has(item.id)) errors.push(`${label}.id: duplicate id ${item.id}`);
+    ids.add(item.id);
+    for (const key of ["url", "github"]) {
+      if (key === "github" && !item.github) continue;
+      try {
+        const url = new URL(item[key]);
+        if (url.protocol !== "https:" || url.username || url.password) throw new Error();
+      } catch {
+        errors.push(`${label}.${key}: expected an absolute HTTPS URL without credentials`);
+      }
+    }
+    if (item.image) {
+      checkLocalFile(item.image, `${label}.image`);
+      requireString(item.imageAlt, `${label}.imageAlt`);
+      for (const key of ["imageWidth", "imageHeight"]) {
+        if (!Number.isInteger(item[key]) || item[key] <= 0) errors.push(`${label}.${key}: expected a positive integer`);
+      }
+    }
+    if (item.tags !== undefined && (!Array.isArray(item.tags) || item.tags.some((tag) => typeof tag !== "string" || !tag.trim()))) {
+      errors.push(`${label}.tags: expected an array of non-empty strings`);
+    }
+  }
 }
 
 if (Array.isArray(songs)) {

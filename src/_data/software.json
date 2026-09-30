@@ -1,0 +1,16 @@
+{
+  "items": [
+    {
+      "id": "dichromaticmap",
+      "name": "DichromaticMap",
+      "description": "Open-source research software for visualizing and analyzing cubic grain-boundary dichromatic patterns. Explore coincidence sites, measure crystal vectors, and inspect common cells through an interactive viewer and Python library.",
+      "url": "https://yazhuoliu.com/DichromaticMap/",
+      "github": "https://github.com/Yazhuo-Liu/DichromaticMap",
+      "image": "assets/img/software/dichromaticmap.png",
+      "imageAlt": "DichromaticMap viewer showing an FCC grain-boundary pattern, coincidence sites, and analysis controls",
+      "imageWidth": 1440,
+      "imageHeight": 920,
+      "tags": ["Materials science", "Python", "Interactive visualization"]
+    }
+  ]
+}
