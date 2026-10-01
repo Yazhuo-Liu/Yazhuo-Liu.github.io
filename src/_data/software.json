@@ -6,6 +6,10 @@
       "description": "A privacy-first browser tool that restores NetEase Cloud Music .ncm cache files to MP3, FLAC, M4A, or OGG. Conversion runs locally with Rust and WebAssembly, so files never leave your device.",
       "url": "https://yazhuoliu.com/ncmconverter/",
       "github": "https://github.com/Yazhuo-Liu/ncmconverter",
+      "image": "assets/img/software/ncmconventer.png",
+      "imageAlt": "NCM Converter browser interface with a local file drop zone, format description, and privacy notice",
+      "imageWidth": 1695,
+      "imageHeight": 1464,
       "tags": ["Rust", "WebAssembly", "Audio conversion", "Privacy-first"]
     },
     {
