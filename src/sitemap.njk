@@ -8,6 +8,20 @@ eleventyExcludeFromCollections: true
     <loc>{{ site.url }}/</loc>
     <lastmod>{{ site.updatedAt }}</lastmod>
   </url>
+  {% for project in software.items %}
+  {% if project.includeInSitemap %}
+  <url>
+    <loc>{{ project.url }}</loc>
+    {% if project.updatedAt %}<lastmod>{{ project.updatedAt }}</lastmod>{% endif %}
+  </url>
+  {% for page in project.additionalSitemapUrls %}
+  <url>
+    <loc>{{ page.url }}</loc>
+    {% if page.updatedAt %}<lastmod>{{ page.updatedAt }}</lastmod>{% endif %}
+  </url>
+  {% endfor %}
+  {% endif %}
+  {% endfor %}
   <url>
     <loc>{{ site.url }}/music/</loc>
     <lastmod>{{ site.updatedAt }}</lastmod>

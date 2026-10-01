@@ -2,12 +2,14 @@
   "items": [
     {
       "id": "ncmconverter",
-      "name": "NCM Converter",
+      "name": "ncmconvertor",
       "description": "A privacy-first browser tool that restores NetEase Cloud Music .ncm cache files to MP3, FLAC, M4A, or OGG. Conversion runs locally with Rust and WebAssembly, so files never leave your device.",
       "url": "https://yazhuoliu.com/ncmconverter/",
       "github": "https://github.com/Yazhuo-Liu/ncmconverter",
+      "includeInSitemap": true,
+      "updatedAt": "2026-10-01",
       "image": "assets/img/software/ncmconventer.png",
-      "imageAlt": "NCM Converter browser interface with a local file drop zone, format description, and privacy notice",
+      "imageAlt": "ncmconvertor browser interface with a local file drop zone, format description, and privacy notice",
       "imageWidth": 1695,
       "imageHeight": 1464,
       "tags": ["Rust", "WebAssembly", "Audio conversion", "Privacy-first"]
@@ -18,6 +20,14 @@
       "description": "Open-source research software for visualizing and analyzing cubic grain-boundary dichromatic patterns. Explore coincidence sites, measure crystal vectors, and inspect common cells through an interactive viewer and Python library.",
       "url": "https://yazhuoliu.com/DichromaticMap/",
       "github": "https://github.com/Yazhuo-Liu/DichromaticMap",
+      "includeInSitemap": true,
+      "updatedAt": "2026-10-01",
+      "additionalSitemapUrls": [
+        {
+          "url": "https://yazhuoliu.com/DichromaticMap/use.html",
+          "updatedAt": "2026-10-01"
+        }
+      ],
       "image": "assets/img/software/dichromaticmap.png",
       "imageAlt": "DichromaticMap viewer showing an FCC grain-boundary pattern, coincidence sites, and analysis controls",
       "imageWidth": 1440,

@@ -133,6 +133,7 @@ const cname = fs.existsSync(cnamePath) ? fs.readFileSync(cnamePath, "utf8").trim
 const siteOrigin = indexHtml.match(/<link rel=["']canonical["'] href=["'](https?:\/\/[^/]+)/)?.[1];
 const sitemapUrls = new Set([...sitemapXml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]));
 const galleryData = JSON.parse(fs.readFileSync(path.join(root, "src/_data/gallery.json"), "utf8"));
+const softwareData = JSON.parse(fs.readFileSync(path.join(root, "src/_data/software.json"), "utf8"));
 const generatedImageDirectory = path.join(output, "assets/img/generated");
 const generatedGalleryImages = fs.existsSync(generatedImageDirectory)
   ? fs.readdirSync(generatedImageDirectory).filter((filename) => filename.endsWith(".webp"))
@@ -165,6 +166,22 @@ if (siteOrigin) {
   if (cname !== expectedHost) errors.push(`CNAME is ${cname || "empty"}; expected ${expectedHost}`);
   if (!robotsTxt.includes(`Sitemap: ${siteOrigin}/sitemap.xml`)) {
     errors.push("robots.txt does not reference the canonical sitemap URL");
+  }
+  for (const project of softwareData.items.filter((item) => item.includeInSitemap)) {
+    const projectUrl = new URL(project.url);
+    if (projectUrl.origin !== siteOrigin) {
+      errors.push(`software project sitemap URL uses another origin: ${project.url}`);
+    } else if (!sitemapUrls.has(project.url)) {
+      errors.push(`sitemap.xml is missing software project URL: ${project.url}`);
+    }
+    for (const page of project.additionalSitemapUrls || []) {
+      const pageUrl = new URL(page.url);
+      if (pageUrl.origin !== siteOrigin) {
+        errors.push(`software page sitemap URL uses another origin: ${page.url}`);
+      } else if (!sitemapUrls.has(page.url)) {
+        errors.push(`sitemap.xml is missing software page URL: ${page.url}`);
+      }
+    }
   }
 }
 if (!fs.existsSync(cnamePath)) errors.push("CNAME was not generated");
