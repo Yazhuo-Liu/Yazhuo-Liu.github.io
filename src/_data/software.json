@@ -1,6 +1,14 @@
 {
   "items": [
     {
+      "id": "ncmconverter",
+      "name": "NCM Converter",
+      "description": "A privacy-first browser tool that restores NetEase Cloud Music .ncm cache files to MP3, FLAC, M4A, or OGG. Conversion runs locally with Rust and WebAssembly, so files never leave your device.",
+      "url": "https://yazhuoliu.com/ncmconverter/",
+      "github": "https://github.com/Yazhuo-Liu/ncmconverter",
+      "tags": ["Rust", "WebAssembly", "Audio conversion", "Privacy-first"]
+    },
+    {
       "id": "dichromaticmap",
       "name": "DichromaticMap",
       "description": "Open-source research software for visualizing and analyzing cubic grain-boundary dichromatic patterns. Explore coincidence sites, measure crystal vectors, and inspect common cells through an interactive viewer and Python library.",

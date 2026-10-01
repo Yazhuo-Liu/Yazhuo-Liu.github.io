@@ -64,5 +64,11 @@
     "audio": "assets/music/五分钟的勇敢.mp3",
     "lyrics": "assets/music/五分钟的勇敢.lrc",
     "description": "有些告白不需要一生的勇气，只需要在说晚安以前，再多借五分钟。"
+  },
+  {
+    "title": "故人辞",
+    "audio": "assets/music/故人辞.mp3",
+    "lyrics": "assets/music/故人辞.lrc",
+    "description": "有些告别说出口时，并不知道那会是最后一次；此后山高水远，只能把余生酿成一杯故人酒。"
   }
 ]
