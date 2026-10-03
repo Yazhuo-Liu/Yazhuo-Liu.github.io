@@ -59,7 +59,7 @@ Run `npm run check` before committing. The validators report missing files, dupl
 
 ### Adding software
 
-The homepage's **Software & Tools** section renders every entry in `src/_data/software.json` under `items`, in list order. Add a project object with a unique lowercase `id`, `name`, `description`, and absolute HTTPS product-page `url`. For example:
+The homepage's **Software & Tools** section renders every entry in `src/_data/software.json` under `items`, in list order, as a compact row with a small optional thumbnail. Reorder the entries to change the display order. Add a project object with a unique lowercase `id`, `name`, `description`, and absolute HTTPS product-page `url`. For example:
 
 ```json
 {
@@ -74,7 +74,7 @@ The homepage's **Software & Tools** section renders every entry in `src/_data/so
 
 `github` and `tags` are optional. To include a screenshot, place it in `assets/img/software/` and add `image` (the path without a leading slash), `imageAlt`, `imageWidth`, and `imageHeight` (its intrinsic pixel dimensions). Projects without images use a text-only card. Product links open in the current tab; GitHub links open in a new tab. Run `npm run check` before committing.
 
-The DichromaticMap screenshot comes from its [project documentation](https://github.com/Yazhuo-Liu/DichromaticMap/blob/main/docs/images/gui-overview.png).
+The DichromaticMap screenshot comes from its [project documentation](https://github.com/Yazhuo-Liu/DichromaticMap/blob/main/docs/images/gui-overview.png); the AlloyView screenshot comes from its [project documentation](https://github.com/Yazhuo-Liu/AlloyView/blob/main/docs/images/alloyview-light.png).
 
 ## Deployment
 

@@ -181,12 +181,12 @@ eleventyComputed:
               {% for tag in project.tags %}<li>{{ tag }}</li>{% endfor %}
             </ul>
             {% endif %}
-            <div class="software-actions">
-              <a href="{{ project.url }}" class="software-explore">Explore {{ project.name }} <i class="bx bx-right-arrow-alt" aria-hidden="true"></i></a>
-              {% if project.github %}
-              <a href="{{ project.github }}" class="software-source" target="_blank" rel="noopener noreferrer"><i class="bx bxl-github" aria-hidden="true"></i> Source on GitHub<span class="visually-hidden"> for {{ project.name }} (opens in a new tab)</span></a>
-              {% endif %}
-            </div>
+          </div>
+          <div class="software-actions">
+            <a href="{{ project.url }}" class="software-explore" aria-label="Explore {{ project.name }}">Explore <i class="bx bx-right-arrow-alt" aria-hidden="true"></i></a>
+            {% if project.github %}
+            <a href="{{ project.github }}" class="software-source" target="_blank" rel="noopener noreferrer"><i class="bx bxl-github" aria-hidden="true"></i> Source on GitHub<span class="visually-hidden"> for {{ project.name }} (opens in a new tab)</span></a>
+            {% endif %}
           </div>
         </article>
         {% endfor %}

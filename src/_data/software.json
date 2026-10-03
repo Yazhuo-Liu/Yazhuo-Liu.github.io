@@ -1,23 +1,9 @@
 {
   "items": [
     {
-      "id": "ncmconverter",
-      "name": "ncmconvertor",
-      "description": "A privacy-first browser tool that restores NetEase Cloud Music .ncm cache files to MP3, FLAC, M4A, or OGG. Conversion runs locally with Rust and WebAssembly, so files never leave your device.",
-      "url": "https://yazhuoliu.com/ncmconverter/",
-      "github": "https://github.com/Yazhuo-Liu/ncmconverter",
-      "includeInSitemap": true,
-      "updatedAt": "2026-10-01",
-      "image": "assets/img/software/ncmconventer.png",
-      "imageAlt": "ncmconvertor browser interface with a local file drop zone, format description, and privacy notice",
-      "imageWidth": 1695,
-      "imageHeight": 1464,
-      "tags": ["Rust", "WebAssembly", "Audio conversion", "Privacy-first"]
-    },
-    {
       "id": "dichromaticmap",
       "name": "DichromaticMap",
-      "description": "Open-source research software for visualizing and analyzing cubic grain-boundary dichromatic patterns. Explore coincidence sites, measure crystal vectors, and inspect common cells through an interactive viewer and Python library.",
+      "description": "An interactive viewer and Python library for cubic grain-boundary dichromatic patterns, coincidence sites, crystal vectors, and common cells.",
       "url": "https://yazhuoliu.com/DichromaticMap/",
       "github": "https://github.com/Yazhuo-Liu/DichromaticMap",
       "includeInSitemap": true,
@@ -33,6 +19,34 @@
       "imageWidth": 1440,
       "imageHeight": 920,
       "tags": ["Materials science", "Python", "Interactive visualization"]
+    },
+    {
+      "id": "alloyview",
+      "name": "AlloyView",
+      "description": "A browser-based viewer for atomistic structures and trajectories in metals and alloys. Open CFG or LAMMPS files, analyze crystal environments, and export figures locally.",
+      "url": "https://yazhuoliu.com/AlloyView/",
+      "github": "https://github.com/Yazhuo-Liu/AlloyView",
+      "includeInSitemap": true,
+      "updatedAt": "2026-10-03",
+      "image": "assets/img/software/alloyview.png",
+      "imageAlt": "AlloyView displaying an FCC crystal with a vacancy, colored by coordination number, alongside structure analysis controls",
+      "imageWidth": 1440,
+      "imageHeight": 1000,
+      "tags": ["Materials science", "WebGL", "Atomistic visualization"]
+    },
+    {
+      "id": "ncmconverter",
+      "name": "ncmconvertor",
+      "description": "A privacy-first browser tool that restores NetEase Cloud Music .ncm cache files to MP3, FLAC, M4A, or OGG. Conversion runs locally with Rust and WebAssembly, so files never leave your device.",
+      "url": "https://yazhuoliu.com/ncmconverter/",
+      "github": "https://github.com/Yazhuo-Liu/ncmconverter",
+      "includeInSitemap": true,
+      "updatedAt": "2026-10-01",
+      "image": "assets/img/software/ncmconventer.png",
+      "imageAlt": "ncmconvertor browser interface with a local file drop zone, format description, and privacy notice",
+      "imageWidth": 1695,
+      "imageHeight": 1464,
+      "tags": ["Rust", "WebAssembly", "Audio conversion", "Privacy-first"]
     }
   ]
 }
